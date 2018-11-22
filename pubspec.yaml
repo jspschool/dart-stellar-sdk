@@ -10,6 +10,7 @@ environment:
 
 dependencies:
   convert: ^2.0.2
+  crypto: ^2.0.6
   eventsource: ^0.2.0
   fixnum: ^0.10.9
   http: ^0.12.0
