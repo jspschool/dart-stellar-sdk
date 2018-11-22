@@ -162,6 +162,7 @@ class ResponseHandler<T> {
       }
       return object;
     }
+    return null;
   }
 }
 
