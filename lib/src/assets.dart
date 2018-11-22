@@ -58,7 +58,8 @@ abstract class Asset {
   ///</ul>
   String get type;
 
-  @override
+  int get hashCode;
+
   bool operator ==(Object object);
 
   ///Generates XDR object from a given Asset object
