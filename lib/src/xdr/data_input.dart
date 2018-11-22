@@ -106,7 +106,6 @@ class DataInput {
     var byte = readUnsignedByte(false);
     if (byte == -1) return null;
 
-    bool isCR = false;
     StringBuffer result = StringBuffer();
     while (byte != -1 && byte != 0x0A) {
       if (byte != 0x0D) {
