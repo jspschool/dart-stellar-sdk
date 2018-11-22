@@ -158,25 +158,6 @@ void main() {
 
 ```
 
-## If you find this error ( paymentStream() )
-
-```
-Unhandled exception:
-type '(Duration) => void' is not a subtype of type '(dynamic) => void'
-#0      new EventSource._internal (package:eventsource/eventsource.dart:69:55)
-#1      EventSource.connect (package:eventsource/eventsource.dart:63:26)
-```
-
-You must modify the **eventsource** package source directly.
-
-```
-eventsource-0.2.0/src/decoder.dart : 8 line
-
-typedef void RetryIndicator(Duration); => typedef RetryIndicator = void Function(Duration retry); 
-```
-
-I have requested that bug fixes be applied to https://pub.dartlang.org/.
-
 ## Features and bugs
 
 Please file feature requests and bugs at the [issue tracker][tracker].
