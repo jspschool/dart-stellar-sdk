@@ -1416,39 +1416,67 @@ class Page<T> extends Response implements TypedResponse<Page<T>> {
 }
 
 class ResponseConverter {
-  static dynamic fromJson<T>(Map<String, dynamic> json){
-    switch(T){
-      case AccountResponse : return AccountResponse.fromJson(json);
-      case AssetResponse : return AssetResponse.fromJson(json);
-      case EffectResponse : return EffectResponse.fromJson(json);
-      case LedgerResponse : return LedgerResponse.fromJson(json);
-      case OfferResponse : return OfferResponse.fromJson(json);
-      case OrderBookResponse : return OrderBookResponse.fromJson(json);
-      case OperationResponse : return OperationResponse.fromJson(json);
-      case OperationFeeStatsResponse : return OperationFeeStatsResponse.fromJson(json);
-      case PathResponse : return PathResponse.fromJson(json);
-      case RootResponse : return RootResponse.fromJson(json);
-      case SubmitTransactionResponse : return SubmitTransactionResponse.fromJson(json);
-      case TradeAggregationResponse : return TradeAggregationResponse.fromJson(json);
-      case TradeResponse : return TradeResponse.fromJson(json);
-      case TransactionResponse : return TransactionResponse.fromJson(json);
+  static dynamic fromJson<T>(Map<String, dynamic> json) {
+    switch (T) {
+      case AccountResponse:
+        return AccountResponse.fromJson(json);
+      case AssetResponse:
+        return AssetResponse.fromJson(json);
+      case EffectResponse:
+        return EffectResponse.fromJson(json);
+      case LedgerResponse:
+        return LedgerResponse.fromJson(json);
+      case OfferResponse:
+        return OfferResponse.fromJson(json);
+      case OrderBookResponse:
+        return OrderBookResponse.fromJson(json);
+      case OperationResponse:
+        return OperationResponse.fromJson(json);
+      case OperationFeeStatsResponse:
+        return OperationFeeStatsResponse.fromJson(json);
+      case PathResponse:
+        return PathResponse.fromJson(json);
+      case RootResponse:
+        return RootResponse.fromJson(json);
+      case SubmitTransactionResponse:
+        return SubmitTransactionResponse.fromJson(json);
+      case TradeAggregationResponse:
+        return TradeAggregationResponse.fromJson(json);
+      case TradeResponse:
+        return TradeResponse.fromJson(json);
+      case TransactionResponse:
+        return TransactionResponse.fromJson(json);
     }
 
-    switch(T.toString()){
-      case "Page<AccountResponse>": return Page<AccountResponse>.fromJson(json);
-      case "Page<AssetResponse>": return Page<AssetResponse>.fromJson(json);
-      case "Page<EffectResponse>": return Page<EffectResponse>.fromJson(json);
-      case "Page<LedgerResponse>": return Page<LedgerResponse>.fromJson(json);
-      case "Page<OfferResponse>": return Page<OfferResponse>.fromJson(json);
-      case "Page<OrderBookResponse>": return Page<OrderBookResponse>.fromJson(json);
-      case "Page<OperationResponse>": return Page<OperationResponse>.fromJson(json);
-      case "Page<OperationFeeStatsResponse>": return Page<OperationFeeStatsResponse>.fromJson(json);
-      case "Page<PathResponse>": return Page<PathResponse>.fromJson(json);
-      case "Page<RootResponse>": return Page<RootResponse>.fromJson(json);
-      case "Page<SubmitTransactionResponse>": return Page<SubmitTransactionResponse>.fromJson(json);
-      case "Page<TradeAggregationResponse>": return Page<TradeAggregationResponse>.fromJson(json);
-      case "Page<TradeResponse>": return Page<TradeResponse>.fromJson(json);
-      case "Page<TransactionResponse>": return Page<TransactionResponse>.fromJson(json);
+    switch (T.toString()) {
+      case "Page<AccountResponse>":
+        return Page<AccountResponse>.fromJson(json);
+      case "Page<AssetResponse>":
+        return Page<AssetResponse>.fromJson(json);
+      case "Page<EffectResponse>":
+        return Page<EffectResponse>.fromJson(json);
+      case "Page<LedgerResponse>":
+        return Page<LedgerResponse>.fromJson(json);
+      case "Page<OfferResponse>":
+        return Page<OfferResponse>.fromJson(json);
+      case "Page<OrderBookResponse>":
+        return Page<OrderBookResponse>.fromJson(json);
+      case "Page<OperationResponse>":
+        return Page<OperationResponse>.fromJson(json);
+      case "Page<OperationFeeStatsResponse>":
+        return Page<OperationFeeStatsResponse>.fromJson(json);
+      case "Page<PathResponse>":
+        return Page<PathResponse>.fromJson(json);
+      case "Page<RootResponse>":
+        return Page<RootResponse>.fromJson(json);
+      case "Page<SubmitTransactionResponse>":
+        return Page<SubmitTransactionResponse>.fromJson(json);
+      case "Page<TradeAggregationResponse>":
+        return Page<TradeAggregationResponse>.fromJson(json);
+      case "Page<TradeResponse>":
+        return Page<TradeResponse>.fromJson(json);
+      case "Page<TransactionResponse>":
+        return Page<TransactionResponse>.fromJson(json);
     }
   }
 }

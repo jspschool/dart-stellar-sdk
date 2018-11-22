@@ -156,7 +156,6 @@ class ResponseHandler<T> {
       object.setType(_type);
     }
     return object;
-
   }
 }
 
