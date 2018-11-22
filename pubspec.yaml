@@ -1,5 +1,5 @@
 name: stellar
-version: 0.3.0
+version: 0.3.1
 
 description: Stellar client library for the Dart language.
 author: Jeff Lee <jspschool@gmail.com>
@@ -11,7 +11,7 @@ environment:
 dependencies:
   convert: ^2.0.2
   crypto: ^2.0.6
-  eventsource: ^0.2.0
+  eventsource: ^0.2.1
   fixnum: ^0.10.9
   http: ^0.12.0
   tweetnacl: ^0.3.1
