@@ -10,14 +10,12 @@ void testNullArguments() {
   try {
     new Account(null, 10);
     throw Exception("fail");
-  } catch (e) {
-  }
+  } catch (e) {}
 
   try {
     new Account(KeyPair.random(), null);
     throw Exception("fail");
-  } catch (e) {
-  }
+  } catch (e) {}
 }
 
 void testGetIncrementedSequenceNumber() {

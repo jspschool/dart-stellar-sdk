@@ -110,8 +110,7 @@ class XdrTransactionEnvelope {
 
   List<XdrDecoratedSignature> _signatures;
   List<XdrDecoratedSignature> get signatures => this._signatures;
-  set signatures(List<XdrDecoratedSignature> value) =>
-      this._signatures = value;
+  set signatures(List<XdrDecoratedSignature> value) => this._signatures = value;
 
   static void encode(XdrDataOutputStream stream,
       XdrTransactionEnvelope encodedTransactionEnvelope) {
@@ -125,7 +124,8 @@ class XdrTransactionEnvelope {
   }
 
   static XdrTransactionEnvelope decode(XdrDataInputStream stream) {
-    XdrTransactionEnvelope decodedTransactionEnvelope = XdrTransactionEnvelope();
+    XdrTransactionEnvelope decodedTransactionEnvelope =
+        XdrTransactionEnvelope();
     decodedTransactionEnvelope._tx = XdrTransaction.decode(stream);
     int signaturessize = stream.readInt();
     decodedTransactionEnvelope._signatures =
@@ -160,7 +160,8 @@ class XdrTransactionMeta {
         int operationssize = encodedTransactionMeta.operations.length;
         stream.writeInt(operationssize);
         for (int i = 0; i < operationssize; i++) {
-          XdrOperationMeta.encode(stream, encodedTransactionMeta._operations[i]);
+          XdrOperationMeta.encode(
+              stream, encodedTransactionMeta._operations[i]);
         }
         break;
       case 1:
@@ -176,9 +177,11 @@ class XdrTransactionMeta {
     switch (decodedTransactionMeta.discriminant) {
       case 0:
         int operationssize = stream.readInt();
-        decodedTransactionMeta._operations = List<XdrOperationMeta>(operationssize);
+        decodedTransactionMeta._operations =
+            List<XdrOperationMeta>(operationssize);
         for (int i = 0; i < operationssize; i++) {
-          decodedTransactionMeta._operations[i] = XdrOperationMeta.decode(stream);
+          decodedTransactionMeta._operations[i] =
+              XdrOperationMeta.decode(stream);
         }
         break;
       case 1:
@@ -199,8 +202,8 @@ class XdrTransactionMetaV1 {
   List<XdrOperationMeta> get operations => this._operations;
   set operations(List<XdrOperationMeta> value) => this._operations = value;
 
-  static void encode(
-      XdrDataOutputStream stream, XdrTransactionMetaV1 encodedTransactionMetaV1) {
+  static void encode(XdrDataOutputStream stream,
+      XdrTransactionMetaV1 encodedTransactionMetaV1) {
     XdrLedgerEntryChanges.encode(stream, encodedTransactionMetaV1._txChanges);
     int operationssize = encodedTransactionMetaV1.operations.length;
     stream.writeInt(operationssize);
@@ -213,7 +216,8 @@ class XdrTransactionMetaV1 {
     XdrTransactionMetaV1 decodedTransactionMetaV1 = XdrTransactionMetaV1();
     decodedTransactionMetaV1._txChanges = XdrLedgerEntryChanges.decode(stream);
     int operationssize = stream.readInt();
-    decodedTransactionMetaV1._operations = List<XdrOperationMeta>(operationssize);
+    decodedTransactionMetaV1._operations =
+        List<XdrOperationMeta>(operationssize);
     for (int i = 0; i < operationssize; i++) {
       decodedTransactionMetaV1._operations[i] = XdrOperationMeta.decode(stream);
     }
@@ -235,8 +239,8 @@ class XdrTransactionResult {
   XdrTransactionResultExt get ext => this._ext;
   set ext(XdrTransactionResultExt value) => this._ext = value;
 
-  static void encode(
-      XdrDataOutputStream stream, XdrTransactionResult encodedTransactionResult) {
+  static void encode(XdrDataOutputStream stream,
+      XdrTransactionResult encodedTransactionResult) {
     XdrInt64.encode(stream, encodedTransactionResult._feeCharged);
     XdrTransactionResultResult.encode(stream, encodedTransactionResult._result);
     XdrTransactionResultExt.encode(stream, encodedTransactionResult._ext);
@@ -245,7 +249,8 @@ class XdrTransactionResult {
   static XdrTransactionResult decode(XdrDataInputStream stream) {
     XdrTransactionResult decodedTransactionResult = XdrTransactionResult();
     decodedTransactionResult._feeCharged = XdrInt64.decode(stream);
-    decodedTransactionResult._result = XdrTransactionResultResult.decode(stream);
+    decodedTransactionResult._result =
+        XdrTransactionResultResult.decode(stream);
     decodedTransactionResult._ext = XdrTransactionResultExt.decode(stream);
     return decodedTransactionResult;
   }
@@ -263,8 +268,7 @@ class XdrTransactionResultResult {
 
   static void encode(XdrDataOutputStream stream,
       XdrTransactionResultResult encodedTransactionResultResult) {
-    stream
-        .writeInt(encodedTransactionResultResult.discriminant.value);
+    stream.writeInt(encodedTransactionResultResult.discriminant.value);
     switch (encodedTransactionResultResult.discriminant) {
       case XdrTransactionResultCode.txSUCCESS:
       case XdrTransactionResultCode.txFAILED:
@@ -283,7 +287,8 @@ class XdrTransactionResultResult {
   static XdrTransactionResultResult decode(XdrDataInputStream stream) {
     XdrTransactionResultResult decodedTransactionResultResult =
         XdrTransactionResultResult();
-    XdrTransactionResultCode discriminant = XdrTransactionResultCode.decode(stream);
+    XdrTransactionResultCode discriminant =
+        XdrTransactionResultCode.decode(stream);
     decodedTransactionResultResult.discriminant = discriminant;
     switch (decodedTransactionResultResult.discriminant) {
       case XdrTransactionResultCode.txSUCCESS:
@@ -462,11 +467,9 @@ class XdrTransactionSignaturePayloadTaggedTransaction {
       XdrDataOutputStream stream,
       XdrTransactionSignaturePayloadTaggedTransaction
           encodedTransactionSignaturePayloadTaggedTransaction) {
-    stream.writeInt(encodedTransactionSignaturePayloadTaggedTransaction
-        .discriminant
-        .value);
-    switch (
-        encodedTransactionSignaturePayloadTaggedTransaction.discriminant) {
+    stream.writeInt(
+        encodedTransactionSignaturePayloadTaggedTransaction.discriminant.value);
+    switch (encodedTransactionSignaturePayloadTaggedTransaction.discriminant) {
       case XdrEnvelopeType.ENVELOPE_TYPE_TX:
         XdrTransaction.encode(
             stream, encodedTransactionSignaturePayloadTaggedTransaction._tx);
@@ -480,10 +483,9 @@ class XdrTransactionSignaturePayloadTaggedTransaction {
         decodedTransactionSignaturePayloadTaggedTransaction =
         XdrTransactionSignaturePayloadTaggedTransaction();
     XdrEnvelopeType discriminant = XdrEnvelopeType.decode(stream);
-    decodedTransactionSignaturePayloadTaggedTransaction
-        .discriminant = discriminant;
-    switch (
-        decodedTransactionSignaturePayloadTaggedTransaction.discriminant) {
+    decodedTransactionSignaturePayloadTaggedTransaction.discriminant =
+        discriminant;
+    switch (decodedTransactionSignaturePayloadTaggedTransaction.discriminant) {
       case XdrEnvelopeType.ENVELOPE_TYPE_TX:
         decodedTransactionSignaturePayloadTaggedTransaction._tx =
             XdrTransaction.decode(stream);

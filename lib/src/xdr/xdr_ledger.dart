@@ -163,7 +163,8 @@ class XdrLedgerKey {
   XdrLedgerKeyData get data => this._data;
   set data(XdrLedgerKeyData value) => this._data = value;
 
-  static void encode(XdrDataOutputStream stream, XdrLedgerKey encodedLedgerKey) {
+  static void encode(
+      XdrDataOutputStream stream, XdrLedgerKey encodedLedgerKey) {
     stream.writeInt(encodedLedgerKey.discriminant.value);
     switch (encodedLedgerKey.discriminant) {
       case XdrLedgerEntryType.ACCOUNT:
@@ -303,8 +304,8 @@ class XdrLedgerSCPMessages {
   List<XdrSCPEnvelope> get messages => this._messages;
   set messages(List<XdrSCPEnvelope> value) => this._messages = value;
 
-  static void encode(
-      XdrDataOutputStream stream, XdrLedgerSCPMessages encodedLedgerSCPMessages) {
+  static void encode(XdrDataOutputStream stream,
+      XdrLedgerSCPMessages encodedLedgerSCPMessages) {
     XdrUint32.encode(stream, encodedLedgerSCPMessages.ledgerSeq);
     int messagessize = encodedLedgerSCPMessages.messages.length;
     stream.writeInt(messagessize);
@@ -369,7 +370,7 @@ class XdrLedgerUpgrade {
   static XdrLedgerUpgrade decode(XdrDataInputStream stream) {
     XdrLedgerUpgrade decodedLedgerUpgrade = XdrLedgerUpgrade();
     XdrLedgerUpgradeType discriminant = XdrLedgerUpgradeType.decode(stream);
-    decodedLedgerUpgrade.discriminant = discriminant ;
+    decodedLedgerUpgrade.discriminant = discriminant;
     switch (decodedLedgerUpgrade.discriminant) {
       case XdrLedgerUpgradeType.LEDGER_UPGRADE_VERSION:
         decodedLedgerUpgrade._newLedgerVersion = XdrUint32.decode(stream);

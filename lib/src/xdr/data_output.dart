@@ -86,5 +86,4 @@ class DataOutput {
   }
 
   List<int> get bytes => data;
-
 }

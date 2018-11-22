@@ -30,23 +30,30 @@ void testDeserializeCreateAccountOperation() {
       "  \"type\": \"create_account\",\n" +
       "  \"type_i\": 0\n" +
       "}";
-  CreateAccountOperationResponse operation = CreateAccountOperationResponse.fromJson(json.decode(jsonData));
+  CreateAccountOperationResponse operation =
+      CreateAccountOperationResponse.fromJson(json.decode(jsonData));
 
-  assert(operation.sourceAccount.accountId ==  "GD6WU64OEP5C4LRBH6NK3MHYIA2ADN6K6II6EXPNVUR3ERBXT4AN4ACD");
+  assert(operation.sourceAccount.accountId ==
+      "GD6WU64OEP5C4LRBH6NK3MHYIA2ADN6K6II6EXPNVUR3ERBXT4AN4ACD");
   assert(operation.pagingToken == "3936840037961729");
   assert(operation.id == 3936840037961729);
 
-  assert(operation.account.accountId == "GAR4DDXYNSN2CORG3XQFLAPWYKTUMLZYHYWV4Y2YJJ4JO6ZJFXMJD7PT");
+  assert(operation.account.accountId ==
+      "GAR4DDXYNSN2CORG3XQFLAPWYKTUMLZYHYWV4Y2YJJ4JO6ZJFXMJD7PT");
   assert(operation.startingBalance == "299454.904954");
-  assert(operation.funder.accountId == "GD6WU64OEP5C4LRBH6NK3MHYIA2ADN6K6II6EXPNVUR3ERBXT4AN4ACD");
+  assert(operation.funder.accountId ==
+      "GD6WU64OEP5C4LRBH6NK3MHYIA2ADN6K6II6EXPNVUR3ERBXT4AN4ACD");
 
-  assert(operation.links.effects.href == "/operations/3936840037961729/effects{?cursor,limit,order}");
-  assert(operation.links.precedes.href == "/operations?cursor=3936840037961729&order=asc");
+  assert(operation.links.effects.href ==
+      "/operations/3936840037961729/effects{?cursor,limit,order}");
+  assert(operation.links.precedes.href ==
+      "/operations?cursor=3936840037961729&order=asc");
   assert(operation.links.self.href == "/operations/3936840037961729");
-  assert(operation.links.succeeds.href == "/operations?cursor=3936840037961729&order=desc");
-  assert(operation.links.transaction.href == "/transactions/75608563ae63757ffc0650d84d1d13c0f3cd4970a294a2a6b43e3f454e0f9e6d");
+  assert(operation.links.succeeds.href ==
+      "/operations?cursor=3936840037961729&order=desc");
+  assert(operation.links.transaction.href ==
+      "/transactions/75608563ae63757ffc0650d84d1d13c0f3cd4970a294a2a6b43e3f454e0f9e6d");
 }
-
 
 void testDeserializePaymentOperation() {
   String jsonData = "{\n" +
@@ -78,17 +85,20 @@ void testDeserializePaymentOperation() {
       "        \"type\": \"payment\",\n" +
       "        \"type_i\": 1\n" +
       "      }";
-  PaymentOperationResponse operation = PaymentOperationResponse.fromJson(json.decode(jsonData));
+  PaymentOperationResponse operation =
+      PaymentOperationResponse.fromJson(json.decode(jsonData));
 
-  assert(operation.sourceAccount.accountId == "GB6NVEN5HSUBKMYCE5ZOWSK5K23TBWRUQLZY3KNMXUZ3AQ2ESC4MY4AQ");
+  assert(operation.sourceAccount.accountId ==
+      "GB6NVEN5HSUBKMYCE5ZOWSK5K23TBWRUQLZY3KNMXUZ3AQ2ESC4MY4AQ");
   assert(operation.id == 3940808587743233);
 
-  assert(operation.from.accountId == "GB6NVEN5HSUBKMYCE5ZOWSK5K23TBWRUQLZY3KNMXUZ3AQ2ESC4MY4AQ");
-  assert(operation.to.accountId == "GDWNY2POLGK65VVKIH5KQSH7VWLKRTQ5M6ADLJAYC2UEHEBEARCZJWWI");
+  assert(operation.from.accountId ==
+      "GB6NVEN5HSUBKMYCE5ZOWSK5K23TBWRUQLZY3KNMXUZ3AQ2ESC4MY4AQ");
+  assert(operation.to.accountId ==
+      "GDWNY2POLGK65VVKIH5KQSH7VWLKRTQ5M6ADLJAYC2UEHEBEARCZJWWI");
   assert(operation.amount == "100.0");
   assert(operation.asset == new AssetTypeNative());
 }
-
 
 void testDeserializeNonNativePaymentOperation() {
   String jsonData = "{\n" +
@@ -122,14 +132,20 @@ void testDeserializeNonNativePaymentOperation() {
       "        \"amount\": \"1000000000.0\"\n" +
       "      }";
 
-  PaymentOperationResponse operation = PaymentOperationResponse.fromJson(json.decode(jsonData));
+  PaymentOperationResponse operation =
+      PaymentOperationResponse.fromJson(json.decode(jsonData));
 
-  assert(operation.from.accountId == "GAZN3PPIDQCSP5JD4ETQQQ2IU2RMFYQTAL4NNQZUGLLO2XJJJ3RDSDGA");
-  assert(operation.to.accountId == "GBHUSIZZ7FS2OMLZVZ4HLWJMXQ336NFSXHYERD7GG54NRITDTEWWBBI6");
+  assert(operation.from.accountId ==
+      "GAZN3PPIDQCSP5JD4ETQQQ2IU2RMFYQTAL4NNQZUGLLO2XJJJ3RDSDGA");
+  assert(operation.to.accountId ==
+      "GBHUSIZZ7FS2OMLZVZ4HLWJMXQ336NFSXHYERD7GG54NRITDTEWWBBI6");
   assert(operation.amount == "1000000000.0");
-  assert(operation.asset == Asset.createNonNativeAsset("EUR", KeyPair.fromAccountId("GAZN3PPIDQCSP5JD4ETQQQ2IU2RMFYQTAL4NNQZUGLLO2XJJJ3RDSDGA")));
+  assert(operation.asset ==
+      Asset.createNonNativeAsset(
+          "EUR",
+          KeyPair.fromAccountId(
+              "GAZN3PPIDQCSP5JD4ETQQQ2IU2RMFYQTAL4NNQZUGLLO2XJJJ3RDSDGA")));
 }
-
 
 void testDeserializeAllowTrustOperation() {
   String jsonData = "{\n" +
@@ -163,14 +179,20 @@ void testDeserializeAllowTrustOperation() {
       "        \"authorize\": true\n" +
       "      }";
 
-  AllowTrustOperationResponse operation = AllowTrustOperationResponse.fromJson(json.decode(jsonData));
+  AllowTrustOperationResponse operation =
+      AllowTrustOperationResponse.fromJson(json.decode(jsonData));
 
-  assert(operation.trustee.accountId == "GDIROJW2YHMSFZJJ4R5XWWNUVND5I45YEWS5DSFKXCHMADZ5V374U2LM");
-  assert(operation.trustor.accountId == "GDZ55LVXECRTW4G36EZPTHI4XIYS5JUC33TUS22UOETVFVOQ77JXWY4F");
+  assert(operation.trustee.accountId ==
+      "GDIROJW2YHMSFZJJ4R5XWWNUVND5I45YEWS5DSFKXCHMADZ5V374U2LM");
+  assert(operation.trustor.accountId ==
+      "GDZ55LVXECRTW4G36EZPTHI4XIYS5JUC33TUS22UOETVFVOQ77JXWY4F");
   assert(operation.authorize == true);
-  assert(operation.asset == Asset.createNonNativeAsset("EUR", KeyPair.fromAccountId("GDIROJW2YHMSFZJJ4R5XWWNUVND5I45YEWS5DSFKXCHMADZ5V374U2LM")));
+  assert(operation.asset ==
+      Asset.createNonNativeAsset(
+          "EUR",
+          KeyPair.fromAccountId(
+              "GDIROJW2YHMSFZJJ4R5XWWNUVND5I45YEWS5DSFKXCHMADZ5V374U2LM")));
 }
-
 
 void testDeserializeChangeTrustOperation() {
   String jsonData = "{\n" +
@@ -204,14 +226,20 @@ void testDeserializeChangeTrustOperation() {
       "        \"trustor\": \"GDZ55LVXECRTW4G36EZPTHI4XIYS5JUC33TUS22UOETVFVOQ77JXWY4F\"\n" +
       "      }";
 
-  ChangeTrustOperationResponse operation = ChangeTrustOperationResponse.fromJson(json.decode(jsonData));
+  ChangeTrustOperationResponse operation =
+      ChangeTrustOperationResponse.fromJson(json.decode(jsonData));
 
-  assert(operation.trustee.accountId == "GDIROJW2YHMSFZJJ4R5XWWNUVND5I45YEWS5DSFKXCHMADZ5V374U2LM");
-  assert(operation.trustor.accountId == "GDZ55LVXECRTW4G36EZPTHI4XIYS5JUC33TUS22UOETVFVOQ77JXWY4F");
+  assert(operation.trustee.accountId ==
+      "GDIROJW2YHMSFZJJ4R5XWWNUVND5I45YEWS5DSFKXCHMADZ5V374U2LM");
+  assert(operation.trustor.accountId ==
+      "GDZ55LVXECRTW4G36EZPTHI4XIYS5JUC33TUS22UOETVFVOQ77JXWY4F");
   assert(operation.limit == "922337203685.4775807");
-  assert(operation.asset == Asset.createNonNativeAsset("EUR", KeyPair.fromAccountId("GDIROJW2YHMSFZJJ4R5XWWNUVND5I45YEWS5DSFKXCHMADZ5V374U2LM")));
+  assert(operation.asset ==
+      Asset.createNonNativeAsset(
+          "EUR",
+          KeyPair.fromAccountId(
+              "GDIROJW2YHMSFZJJ4R5XWWNUVND5I45YEWS5DSFKXCHMADZ5V374U2LM")));
 }
-
 
 void testDeserializeSetOptionsOperation() {
   String jsonData = "{\n" +
@@ -238,28 +266,32 @@ void testDeserializeSetOptionsOperation() {
       "        \"type\": \"set_options\",\n" +
       "        \"type_i\": 5,\n" +
       "        \"signer_key\": \"GD3ZYXVC7C3ECD5I4E5NGPBFJJSULJ6HJI2FBHGKYFV34DSIWB4YEKJZ\",\n" +
-      "        \"signer_weight\": 1,\n"+
-      "        \"home_domain\": \"stellar.org\","+
-      "        \"inflation_dest\": \"GBYWSY4NPLLPTP22QYANGTT7PEHND64P4D4B6LFEUHGUZRVYJK2H4TBE\","+
+      "        \"signer_weight\": 1,\n" +
+      "        \"home_domain\": \"stellar.org\"," +
+      "        \"inflation_dest\": \"GBYWSY4NPLLPTP22QYANGTT7PEHND64P4D4B6LFEUHGUZRVYJK2H4TBE\"," +
       "        \"low_threshold\": 1,\n" +
       "        \"med_threshold\": 2,\n" +
       "        \"high_threshold\": 3,\n" +
       "        \"master_key_weight\": 4,\n" +
       "        \"set_flags_s\": [\n" +
       "          \"auth_required_flag\"\n" +
-      "        ],"+
+      "        ]," +
       "        \"clear_flags_s\": [\n" +
       "          \"auth_revocable_flag\"\n" +
-      "        ]"+
+      "        ]" +
       "      }";
 
-  SetOptionsOperationResponse operation = SetOptionsOperationResponse.fromJson(json.decode(jsonData));
+  SetOptionsOperationResponse operation =
+      SetOptionsOperationResponse.fromJson(json.decode(jsonData));
 
-  assert(operation.signer.accountId == "GD3ZYXVC7C3ECD5I4E5NGPBFJJSULJ6HJI2FBHGKYFV34DSIWB4YEKJZ");
-  assert(operation.signerKey == "GD3ZYXVC7C3ECD5I4E5NGPBFJJSULJ6HJI2FBHGKYFV34DSIWB4YEKJZ");
+  assert(operation.signer.accountId ==
+      "GD3ZYXVC7C3ECD5I4E5NGPBFJJSULJ6HJI2FBHGKYFV34DSIWB4YEKJZ");
+  assert(operation.signerKey ==
+      "GD3ZYXVC7C3ECD5I4E5NGPBFJJSULJ6HJI2FBHGKYFV34DSIWB4YEKJZ");
   assert(operation.signerWeight == 1);
   assert(operation.homeDomain == "stellar.org");
-  assert(operation.inflationDestination.accountId == "GBYWSY4NPLLPTP22QYANGTT7PEHND64P4D4B6LFEUHGUZRVYJK2H4TBE");
+  assert(operation.inflationDestination.accountId ==
+      "GBYWSY4NPLLPTP22QYANGTT7PEHND64P4D4B6LFEUHGUZRVYJK2H4TBE");
   assert(operation.lowThreshold == 1);
   assert(operation.medThreshold == 2);
   assert(operation.highThreshold == 3);
@@ -267,7 +299,6 @@ void testDeserializeSetOptionsOperation() {
   assert(operation.setFlags[0] == "auth_required_flag");
   assert(operation.clearFlags[0] == "auth_revocable_flag");
 }
-
 
 void testDeserializeSetOptionsOperationWithNonEd25519Key() {
   String jsonData = "{\n" +
@@ -299,7 +330,8 @@ void testDeserializeSetOptionsOperationWithNonEd25519Key() {
       "        \"signer_weight\": 1\n" +
       "      }";
 
-  SetOptionsOperationResponse operation = SetOptionsOperationResponse.fromJson(json.decode(jsonData));
+  SetOptionsOperationResponse operation =
+      SetOptionsOperationResponse.fromJson(json.decode(jsonData));
 
   try {
     operation.signer;
@@ -307,9 +339,9 @@ void testDeserializeSetOptionsOperationWithNonEd25519Key() {
   } catch (e) {
     assert(e.toString().contains("Version byte is invalid"));
   }
-  assert(operation.signerKey == "TBGFYVCU76LJ7GZOCGR4X7DG2NV42JPG5CKRL42LA5FZOFI3U2WU7ZAL");
+  assert(operation.signerKey ==
+      "TBGFYVCU76LJ7GZOCGR4X7DG2NV42JPG5CKRL42LA5FZOFI3U2WU7ZAL");
 }
-
 
 void testDeserializeAccountMergeOperation() {
   String jsonData = "{\n" +
@@ -339,12 +371,14 @@ void testDeserializeAccountMergeOperation() {
       "        \"into\": \"GAZWSWPDQTBHFIPBY4FEDFW2J6E2LE7SZHJWGDZO6Q63W7DBSRICO2KN\"\n" +
       "      }";
 
-  AccountMergeOperationResponse operation = AccountMergeOperationResponse.fromJson(json.decode(jsonData));
+  AccountMergeOperationResponse operation =
+      AccountMergeOperationResponse.fromJson(json.decode(jsonData));
 
-  assert(operation.account.accountId == "GD6GKRABNDVYDETEZJQEPS7IBQMERCN44R5RCI4LJNX6BMYQM2KPGGZ2");
-  assert(operation.into.accountId == "GAZWSWPDQTBHFIPBY4FEDFW2J6E2LE7SZHJWGDZO6Q63W7DBSRICO2KN");
+  assert(operation.account.accountId ==
+      "GD6GKRABNDVYDETEZJQEPS7IBQMERCN44R5RCI4LJNX6BMYQM2KPGGZ2");
+  assert(operation.into.accountId ==
+      "GAZWSWPDQTBHFIPBY4FEDFW2J6E2LE7SZHJWGDZO6Q63W7DBSRICO2KN");
 }
-
 
 void testDeserializeManageOfferOperation() {
   String jsonData = "{\n" +
@@ -378,14 +412,18 @@ void testDeserializeManageOfferOperation() {
       "        \"selling_asset_type\": \"native\"\n" +
       "      }";
 
-  ManageOfferOperationResponse operation = ManageOfferOperationResponse.fromJson(json.decode(jsonData));
+  ManageOfferOperationResponse operation =
+      ManageOfferOperationResponse.fromJson(json.decode(jsonData));
 
   assert(operation.offerId == 0);
   assert(operation.amount == "100.0");
-  assert(operation.buyingAsset== Asset.createNonNativeAsset("CNY", KeyPair.fromAccountId("GAZWSWPDQTBHFIPBY4FEDFW2J6E2LE7SZHJWGDZO6Q63W7DBSRICO2KN")));
+  assert(operation.buyingAsset ==
+      Asset.createNonNativeAsset(
+          "CNY",
+          KeyPair.fromAccountId(
+              "GAZWSWPDQTBHFIPBY4FEDFW2J6E2LE7SZHJWGDZO6Q63W7DBSRICO2KN")));
   assert(operation.sellingAsset == new AssetTypeNative());
 }
-
 
 void testDeserializePathPaymentOperation() {
   String jsonData = "{\n" +
@@ -424,16 +462,22 @@ void testDeserializePathPaymentOperation() {
       "  \"source_asset_issuer\": \"GBVOL67TMUQBGL4TZYNMY3ZQ5WGQYFPFD5VJRWXR72VA33VFNL225PL5\"\n" +
       "}";
 
-  PathPaymentOperationResponse operation = PathPaymentOperationResponse.fromJson(json.decode(jsonData));
+  PathPaymentOperationResponse operation =
+      PathPaymentOperationResponse.fromJson(json.decode(jsonData));
 
-  assert(operation.from.accountId == "GC45JH537XZD4DY4WTV5PCUJL4KPOIE4WMGX5OP5KSPS2OLGRUOVVIGD");
-  assert(operation.to.accountId == "GC45JH537XZD4DY4WTV5PCUJL4KPOIE4WMGX5OP5KSPS2OLGRUOVVIGD");
+  assert(operation.from.accountId ==
+      "GC45JH537XZD4DY4WTV5PCUJL4KPOIE4WMGX5OP5KSPS2OLGRUOVVIGD");
+  assert(operation.to.accountId ==
+      "GC45JH537XZD4DY4WTV5PCUJL4KPOIE4WMGX5OP5KSPS2OLGRUOVVIGD");
   assert(operation.amount == "2.5000000");
   assert(operation.sourceMax == "1.1779523");
   assert(operation.asset == new AssetTypeNative());
-  assert(operation.sourceAsset == Asset.createNonNativeAsset("XRP", KeyPair.fromAccountId("GBVOL67TMUQBGL4TZYNMY3ZQ5WGQYFPFD5VJRWXR72VA33VFNL225PL5")));
+  assert(operation.sourceAsset ==
+      Asset.createNonNativeAsset(
+          "XRP",
+          KeyPair.fromAccountId(
+              "GBVOL67TMUQBGL4TZYNMY3ZQ5WGQYFPFD5VJRWXR72VA33VFNL225PL5")));
 }
-
 
 void testDeserializePathPaymentOperationSourceAssetNative() {
   String jsonData = "{\n" +
@@ -472,16 +516,22 @@ void testDeserializePathPaymentOperationSourceAssetNative() {
       "  \"source_asset_type\": \"native\"\n" +
       "}";
 
-  PathPaymentOperationResponse operation = PathPaymentOperationResponse.fromJson(json.decode(jsonData));
+  PathPaymentOperationResponse operation =
+      PathPaymentOperationResponse.fromJson(json.decode(jsonData));
 
-  assert(operation.from.accountId == "GC45JH537XZD4DY4WTV5PCUJL4KPOIE4WMGX5OP5KSPS2OLGRUOVVIGD");
-  assert(operation.to.accountId == "GC45JH537XZD4DY4WTV5PCUJL4KPOIE4WMGX5OP5KSPS2OLGRUOVVIGD");
+  assert(operation.from.accountId ==
+      "GC45JH537XZD4DY4WTV5PCUJL4KPOIE4WMGX5OP5KSPS2OLGRUOVVIGD");
+  assert(operation.to.accountId ==
+      "GC45JH537XZD4DY4WTV5PCUJL4KPOIE4WMGX5OP5KSPS2OLGRUOVVIGD");
   assert(operation.amount == "2.5000000");
   assert(operation.sourceMax == "1.1779523");
   assert(operation.sourceAsset == new AssetTypeNative());
-  assert(operation.asset == Asset.createNonNativeAsset("XRP", KeyPair.fromAccountId("GBVOL67TMUQBGL4TZYNMY3ZQ5WGQYFPFD5VJRWXR72VA33VFNL225PL5")));
+  assert(operation.asset ==
+      Asset.createNonNativeAsset(
+          "XRP",
+          KeyPair.fromAccountId(
+              "GBVOL67TMUQBGL4TZYNMY3ZQ5WGQYFPFD5VJRWXR72VA33VFNL225PL5")));
 }
-
 
 void testDeserializeCreatePassiveOfferOperation() {
   String jsonData = "{\n" +
@@ -520,13 +570,17 @@ void testDeserializeCreatePassiveOfferOperation() {
       "  \"type\": \"create_passive_offer\"\n" +
       "}";
 
-  CreatePassiveOfferOperationResponse operation = CreatePassiveOfferOperationResponse.fromJson(json.decode(jsonData));
+  CreatePassiveOfferOperationResponse operation =
+      CreatePassiveOfferOperationResponse.fromJson(json.decode(jsonData));
 
   assert(operation.amount == "11.27827");
-  assert(operation.buyingAsset == Asset.createNonNativeAsset("USD", KeyPair.fromAccountId("GDS5JW5E6DRSSN5XK4LW7E6VUMFKKE2HU5WCOVFTO7P2RP7OXVCBLJ3Y")));
+  assert(operation.buyingAsset ==
+      Asset.createNonNativeAsset(
+          "USD",
+          KeyPair.fromAccountId(
+              "GDS5JW5E6DRSSN5XK4LW7E6VUMFKKE2HU5WCOVFTO7P2RP7OXVCBLJ3Y")));
   assert(operation.sellingAsset == new AssetTypeNative());
 }
-
 
 void testDeserializeInflationOperation() {
   String jsonData = "{\n" +
@@ -554,11 +608,11 @@ void testDeserializeInflationOperation() {
       "  \"type\": \"inflation\"\n" +
       "}";
 
-  InflationOperationResponse operation = InflationOperationResponse.fromJson(json.decode(jsonData));
+  InflationOperationResponse operation =
+      InflationOperationResponse.fromJson(json.decode(jsonData));
 
   assert(operation.id == 12884914177);
 }
-
 
 void testDeserializeManageDataOperation() {
   String jsonData = "{\n" +
@@ -588,13 +642,13 @@ void testDeserializeManageDataOperation() {
       "  \"value\": \"MjAwMA==\"\n" +
       "}";
 
-  ManageDataOperationResponse operation = ManageDataOperationResponse.fromJson(json.decode(jsonData));
+  ManageDataOperationResponse operation =
+      ManageDataOperationResponse.fromJson(json.decode(jsonData));
 
-  assert(operation.id== 14336188517191688);
+  assert(operation.id == 14336188517191688);
   assert(operation.name == "CollateralValue");
   assert(operation.value == "MjAwMA==");
 }
-
 
 void testDeserializeManageDataOperationValueEmpty() {
   String jsonData = "{\n" +
@@ -624,11 +678,11 @@ void testDeserializeManageDataOperationValueEmpty() {
       "  \"value\": null\n" +
       "}";
 
-  ManageDataOperationResponse operation = ManageDataOperationResponse.fromJson(json.decode(jsonData));
+  ManageDataOperationResponse operation =
+      ManageDataOperationResponse.fromJson(json.decode(jsonData));
 
   assert(operation.value == null);
 }
-
 
 void testDeserializeBumpSequenceOperation() {
   String jsonData = "{\n" +
@@ -657,7 +711,8 @@ void testDeserializeBumpSequenceOperation() {
       "  \"bump_to\": \"79473726952833048\"\n" +
       "}";
 
-  BumpSequenceOperationResponse operation = BumpSequenceOperationResponse.fromJson(json.decode(jsonData));
+  BumpSequenceOperationResponse operation =
+      BumpSequenceOperationResponse.fromJson(json.decode(jsonData));
 
   assert(operation.id == 12884914177);
   assert(operation.bumpTo == 79473726952833048);

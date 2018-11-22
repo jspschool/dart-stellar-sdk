@@ -88,31 +88,40 @@ class Server {
   }
 
   ///Returns AccountsRequestBuilder instance.
-  AccountsRequestBuilder get accounts =>new AccountsRequestBuilder(httpClient, _serverURI);
+  AccountsRequestBuilder get accounts =>
+      new AccountsRequestBuilder(httpClient, _serverURI);
 
   ///Returns AssetsRequestBuilder instance.
-  AssetsRequestBuilder get assets => new AssetsRequestBuilder(httpClient, _serverURI);
+  AssetsRequestBuilder get assets =>
+      new AssetsRequestBuilder(httpClient, _serverURI);
 
   ///Returns EffectsRequestBuilder instance.
-  EffectsRequestBuilder get effects => new EffectsRequestBuilder(httpClient, _serverURI);
+  EffectsRequestBuilder get effects =>
+      new EffectsRequestBuilder(httpClient, _serverURI);
 
   ///Returns LedgersRequestBuilder instance.
-  LedgersRequestBuilder get ledgers => new LedgersRequestBuilder(httpClient, _serverURI);
+  LedgersRequestBuilder get ledgers =>
+      new LedgersRequestBuilder(httpClient, _serverURI);
 
   ///Returns OffersRequestBuilder instance.
-  OffersRequestBuilder get offers => new OffersRequestBuilder(httpClient, _serverURI);
+  OffersRequestBuilder get offers =>
+      new OffersRequestBuilder(httpClient, _serverURI);
 
   ///Returns OperationsRequestBuilder instance.
-  OperationsRequestBuilder get operations => new OperationsRequestBuilder(httpClient, _serverURI);
+  OperationsRequestBuilder get operations =>
+      new OperationsRequestBuilder(httpClient, _serverURI);
 
   ///Returns OperationFeeStatsResponse instance.
-  OperationFeeStatsRequestBuilder get operationFeeStats => new OperationFeeStatsRequestBuilder(httpClient, _serverURI);
+  OperationFeeStatsRequestBuilder get operationFeeStats =>
+      new OperationFeeStatsRequestBuilder(httpClient, _serverURI);
 
   ///Returns OrderBookRequestBuilder instance.
-  OrderBookRequestBuilder get orderBook => new OrderBookRequestBuilder(httpClient, _serverURI);
+  OrderBookRequestBuilder get orderBook =>
+      new OrderBookRequestBuilder(httpClient, _serverURI);
 
   ///Returns TradesRequestBuilder instance.
-  TradesRequestBuilder get trades => new TradesRequestBuilder(httpClient, _serverURI);
+  TradesRequestBuilder get trades =>
+      new TradesRequestBuilder(httpClient, _serverURI);
 
   ///Returns TradeAggregationsRequestBuilder instance.
   TradeAggregationsRequestBuilder tradeAggregations(
@@ -127,13 +136,16 @@ class Server {
   }
 
   ///Returns PathsRequestBuilder instance.
-  PathsRequestBuilder get paths => new PathsRequestBuilder(httpClient, _serverURI);
+  PathsRequestBuilder get paths =>
+      new PathsRequestBuilder(httpClient, _serverURI);
 
   ///Returns PaymentsRequestBuilder instance.
-  PaymentsRequestBuilder get payments => new PaymentsRequestBuilder(httpClient, _serverURI);
+  PaymentsRequestBuilder get payments =>
+      new PaymentsRequestBuilder(httpClient, _serverURI);
 
   ///Returns TransactionsRequestBuilder instance.
-  TransactionsRequestBuilder get transactions => new TransactionsRequestBuilder(httpClient, _serverURI);
+  TransactionsRequestBuilder get transactions =>
+      new TransactionsRequestBuilder(httpClient, _serverURI);
 
   ///Submits transaction to the network.
   Future<SubmitTransactionResponse> submitTransaction(

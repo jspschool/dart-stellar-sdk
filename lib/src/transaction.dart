@@ -118,7 +118,8 @@ class Transaction {
     signature.signature = preimage;
 
     Uint8List hash = Util.hash(preimage);
-    Uint8List signatureHintBytes = Uint8List.fromList(hash.getRange(hash.length - 4, hash.length).toList());
+    Uint8List signatureHintBytes = Uint8List.fromList(
+        hash.getRange(hash.length - 4, hash.length).toList());
     XdrSignatureHint signatureHint = XdrSignatureHint();
     signatureHint.signatureHint = signatureHintBytes;
 
@@ -253,8 +254,7 @@ class Transaction {
     XdrTransaction transaction = this.toXdr();
     xdrTe.tx = transaction;
 
-    List<XdrDecoratedSignature> signatures =
-        List<XdrDecoratedSignature>();
+    List<XdrDecoratedSignature> signatures = List<XdrDecoratedSignature>();
     signatures.addAll(_mSignatures);
     xdrTe.signatures = signatures;
     return xdrTe;
@@ -289,7 +289,6 @@ class TransactionBuilder {
     _mSourceAccount = sourceAccount;
     _mOperations = List<Operation>();
   }
-
 
   ///Adds a <a href="https://www.stellar.org/developers/learn/concepts/list-of-operations.html" target="_blank">operation</a> to this transaction.
   TransactionBuilder addOperation(Operation operation) {

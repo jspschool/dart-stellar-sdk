@@ -45,6 +45,6 @@ void testFromDouble() {
   }
 }
 
-void main(){
+void main() {
   testFromDouble();
 }

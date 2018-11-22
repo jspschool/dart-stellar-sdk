@@ -154,7 +154,6 @@ abstract class MemoHashAbstract extends Memo {
   ///</code>
   String get hexValue => Util.bytesToHex(this._bytes).toLowerCase();
 
-
   ///<p>Returns hex representation of bytes contained in this memo until null byte (0x00) is found.</p>
   ///<p>Example:</p>
   ///<code>
@@ -215,7 +214,7 @@ class MemoId extends Memo {
   }
 
   @override
-  bool operator ==(Object o){
+  bool operator ==(Object o) {
     if (o == null || !(o is MemoId)) return false;
     MemoId memoId = o as MemoId;
     return _id == memoId.id;
@@ -249,8 +248,7 @@ class MemoText extends Memo {
 
     int length = utf8.encode(text).length;
     if (length > 28) {
-      throw MemoTooLongException(
-          "text must be <= 28 bytes. length=$length");
+      throw MemoTooLongException("text must be <= 28 bytes. length=$length");
     }
   }
 

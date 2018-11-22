@@ -323,7 +323,8 @@ class XdrPublicKey {
   XdrUint256 getEd25519() => this._ed25519;
   void setEd25519(XdrUint256 value) => this._ed25519 = value;
 
-  static void encode(XdrDataOutputStream stream, XdrPublicKey encodedPublicKey) {
+  static void encode(
+      XdrDataOutputStream stream, XdrPublicKey encodedPublicKey) {
     stream.writeInt(encodedPublicKey.getDiscriminant().value);
     switch (encodedPublicKey.getDiscriminant()) {
       case XdrPublicKeyType.PUBLIC_KEY_TYPE_ED25519:
@@ -400,7 +401,8 @@ class XdrSignerKey {
   XdrUint256 get hashX => this._hashX;
   set hashX(XdrUint256 value) => this._hashX = value;
 
-  static void encode(XdrDataOutputStream stream, XdrSignerKey encodedSignerKey) {
+  static void encode(
+      XdrDataOutputStream stream, XdrSignerKey encodedSignerKey) {
     stream.writeInt(encodedSignerKey.discriminant.value);
     switch (encodedSignerKey.discriminant) {
       case XdrSignerKeyType.SIGNER_KEY_TYPE_ED25519:

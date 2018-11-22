@@ -3,11 +3,10 @@ import 'data_output.dart';
 import 'data_input.dart';
 import "dart:convert";
 
-class XdrDataInputStream extends DataInput  {
-
+class XdrDataInputStream extends DataInput {
   XdrDataInputStream(Uint8List data) : super.fromUint8List(data);
 
-  int read(){
+  int read() {
     return readByte();
   }
 
@@ -15,7 +14,6 @@ class XdrDataInputStream extends DataInput  {
     int length = readInt();
     List<int> bytes = readBytes(length);
     return utf8.decode(bytes);
-
   }
 
   List<int> readIntArray() {
@@ -44,15 +42,14 @@ class XdrDataInputStream extends DataInput  {
     }
     return result;
   }
-
 }
 
-class XdrDataOutputStream extends DataOutput  {
-
+class XdrDataOutputStream extends DataOutput {
   writeString(String s) {
     if (s == null) throw ArgumentError("String cannot be null");
     List<int> bytesNeeded = utf8.encode(s);
-    if (bytesNeeded.length > 65535) throw FormatException("Length cannot be greater than 65535");
+    if (bytesNeeded.length > 65535)
+      throw FormatException("Length cannot be greater than 65535");
     writeInt(bytesNeeded.length);
     write(bytesNeeded);
   }
@@ -77,6 +74,4 @@ class XdrDataOutputStream extends DataOutput  {
       writeDouble(a[i]);
     }
   }
-
-
 }

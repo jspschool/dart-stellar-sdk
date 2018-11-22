@@ -18,10 +18,10 @@ String serializeNull(dynamic src) {
   return null;
 }
 
-int convertInt(var src){
-  if(src == null) return null;
-  if(src is int) return src;
-  if(src is String) return int.parse(src);
+int convertInt(var src) {
+  if (src == null) return null;
+  if (src is int) return src;
+  if (src is String) return int.parse(src);
   throw Exception("Not integer");
 }
 
@@ -215,10 +215,8 @@ class Flags {
   Flags(this.authRequired, this.authRevocable, this.authImmutable);
 
   factory Flags.fromJson(Map<String, dynamic> json) {
-    return new Flags(
-        json['auth_required'] as bool,
-        json['auth_revocable'] as bool,
-        json['auth_immutable'] as bool);
+    return new Flags(json['auth_required'] as bool,
+        json['auth_revocable'] as bool, json['auth_immutable'] as bool);
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
@@ -284,8 +282,8 @@ class Signer {
   String get accountId => key;
 
   factory Signer.fromJson(Map<String, dynamic> json) {
-    return new Signer(
-        json['key'] as String, json['type'] as String, convertInt(json['weight']));
+    return new Signer(json['key'] as String, json['type'] as String,
+        convertInt(json['weight']));
   }
 
   Map<String, dynamic> toJson() =>
@@ -293,15 +291,14 @@ class Signer {
 }
 
 ///Data connected to account.
-class AccountResponseData  {
-
-  Map<String,dynamic> _map = {};
+class AccountResponseData {
+  Map<String, dynamic> _map = {};
 
   AccountResponseData(this._map);
 
   int get length => _map.length;
 
-  Iterable<String> get keys =>_map.keys;
+  Iterable<String> get keys => _map.keys;
 
   ///Gets base64-encoded value for a given key.
   String operator [](Object key) => _map[key] as String;
@@ -416,7 +413,9 @@ class AccountResponse extends Response implements TransactionBuilderAccount {
                 ? null
                 : new Signer.fromJson(e as Map<String, dynamic>))
             ?.toList(),
-        json['data'] == null ? null : new AccountResponseData(json['data'] as Map<String,dynamic>),
+        json['data'] == null
+            ? null
+            : new AccountResponseData(json['data'] as Map<String, dynamic>),
         json['_links'] == null
             ? null
             : new AccountResponseLinks.fromJson(
@@ -434,7 +433,7 @@ class AccountResponse extends Response implements TransactionBuilderAccount {
         'flags': flags,
         'balances': balances,
         'signers': signers,
-        'data' : data,
+        'data': data,
         '_links': links
       };
 }
@@ -486,25 +485,25 @@ class AssetResponse extends Response {
         json['_links'] == null
             ? null
             : new AssetResponseLinks.fromJson(
-            json['_links'] as Map<String, dynamic>))
+                json['_links'] as Map<String, dynamic>))
       ..rateLimitLimit = convertInt(json['rateLimitLimit'])
       ..rateLimitRemaining = convertInt(json['rateLimitRemaining'])
       ..rateLimitReset = convertInt(json['rateLimitReset']);
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'rateLimitLimit': rateLimitLimit,
-    'rateLimitRemaining': rateLimitRemaining,
-    'rateLimitReset': rateLimitReset,
-    'asset_type': assetType,
-    'asset_code': assetCode,
-    'asset_issuer': assetIssuer,
-    'paging_token': pagingToken,
-    'amount': amount,
-    'num_accounts': numAccounts,
-    'flags': flags,
-    '_links': links
-  };
+        'rateLimitLimit': rateLimitLimit,
+        'rateLimitRemaining': rateLimitRemaining,
+        'rateLimitReset': rateLimitReset,
+        'asset_type': assetType,
+        'asset_code': assetCode,
+        'asset_issuer': assetIssuer,
+        'paging_token': pagingToken,
+        'amount': amount,
+        'num_accounts': numAccounts,
+        'flags': flags,
+        '_links': links
+      };
 }
 
 ///Links connected to ledger.
@@ -534,11 +533,11 @@ class LedgerResponseLinks {
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'effects': effects,
-    'operations': operations,
-    'self': self,
-    'transactions': transactions
-  };
+        'effects': effects,
+        'operations': operations,
+        'self': self,
+        'transactions': transactions
+      };
 }
 
 ///Represents ledger response.
@@ -601,34 +600,34 @@ class LedgerResponse extends Response {
         json['_links'] == null
             ? null
             : new LedgerResponseLinks.fromJson(
-            json['_links'] as Map<String, dynamic>))
+                json['_links'] as Map<String, dynamic>))
       ..rateLimitLimit = convertInt(json['rateLimitLimit'])
       ..rateLimitRemaining = convertInt(json['rateLimitRemaining'])
       ..rateLimitReset = convertInt(json['rateLimitReset']);
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'rateLimitLimit': rateLimitLimit,
-    'rateLimitRemaining': rateLimitRemaining,
-    'rateLimitReset': rateLimitReset,
-    'sequence': sequence,
-    'hash': hash,
-    'paging_token': pagingToken,
-    'prev_hash': prevHash,
-    'transaction_count': transactionCount,
-    'operation_count': operationCount,
-    'closed_at': closedAt,
-    'total_coins': totalCoins,
-    'fee_pool': feePool,
-    'base_fee': baseFee,
-    'base_reserve': baseReserve,
-    'base_fee_in_stroops': baseFeeInStroops,
-    'base_reserve_in_stroops': baseReserveInStroops,
-    'max_tx_set_size': maxTxSetSize,
-    'protocol_version': protocolVersion,
-    'header_xdr': headerXdr,
-    '_links': links
-  };
+        'rateLimitLimit': rateLimitLimit,
+        'rateLimitRemaining': rateLimitRemaining,
+        'rateLimitReset': rateLimitReset,
+        'sequence': sequence,
+        'hash': hash,
+        'paging_token': pagingToken,
+        'prev_hash': prevHash,
+        'transaction_count': transactionCount,
+        'operation_count': operationCount,
+        'closed_at': closedAt,
+        'total_coins': totalCoins,
+        'fee_pool': feePool,
+        'base_fee': baseFee,
+        'base_reserve': baseReserve,
+        'base_fee_in_stroops': baseFeeInStroops,
+        'base_reserve_in_stroops': baseReserveInStroops,
+        'max_tx_set_size': maxTxSetSize,
+        'protocol_version': protocolVersion,
+        'header_xdr': headerXdr,
+        '_links': links
+      };
 }
 
 ///Links connected to ledger.
@@ -684,25 +683,25 @@ class OfferResponse extends Response {
         json['_links'] == null
             ? null
             : new OfferResponseLinks.fromJson(
-            json['_links'] as Map<String, dynamic>))
+                json['_links'] as Map<String, dynamic>))
       ..rateLimitLimit = convertInt(json['rateLimitLimit'])
       ..rateLimitRemaining = convertInt(json['rateLimitRemaining'])
       ..rateLimitReset = convertInt(json['rateLimitReset']);
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'rateLimitLimit': rateLimitLimit,
-    'rateLimitRemaining': rateLimitRemaining,
-    'rateLimitReset': rateLimitReset,
-    'id': id,
-    'paging_token': pagingToken,
-    'seller': null,
-    'selling': null,
-    'buying': null,
-    'amount': amount,
-    'price': price,
-    '_links': links
-  };
+        'rateLimitLimit': rateLimitLimit,
+        'rateLimitRemaining': rateLimitRemaining,
+        'rateLimitReset': rateLimitReset,
+        'id': id,
+        'paging_token': pagingToken,
+        'seller': null,
+        'selling': null,
+        'buying': null,
+        'amount': amount,
+        'price': price,
+        '_links': links
+      };
 }
 
 ///Represents fee stats response.
@@ -712,9 +711,10 @@ class OperationFeeStatsResponse extends Response {
   int lastLedgerBaseFee;
   int lastLedger;
 
-  OperationFeeStatsResponse(int min, int mode, int lastLedgerBaseFee, int lastLedger);
+  OperationFeeStatsResponse(
+      int min, int mode, int lastLedgerBaseFee, int lastLedger);
 
-  factory OperationFeeStatsResponse.fromJson(Map<String, dynamic> json){
+  factory OperationFeeStatsResponse.fromJson(Map<String, dynamic> json) {
     return new OperationFeeStatsResponse(
         convertInt(json['min_accepted_fee']),
         convertInt(json['mode_accepted_fee']),
@@ -722,9 +722,12 @@ class OperationFeeStatsResponse extends Response {
         convertInt(json['last_ledger']));
   }
 
-  Map<String, dynamic> toJson() =>
-      <String, dynamic>{'min_accepted_fee': min, 'mode_accepted_fee': mode,
-        'last_ledger_base_fee': lastLedgerBaseFee, 'last_ledger': lastLedger};
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'min_accepted_fee': min,
+        'mode_accepted_fee': mode,
+        'last_ledger_base_fee': lastLedgerBaseFee,
+        'last_ledger': lastLedger
+      };
 }
 
 ///Represents order book row.
@@ -739,7 +742,7 @@ class Row {
     this.priceR = checkNotNull(priceR, "priceR cannot be null");
   }
 
-  factory Row.fromJson(Map<String, dynamic> json){
+  factory Row.fromJson(Map<String, dynamic> json) {
     return new Row(
         json['amount'] as String,
         json['price'] as String,
@@ -761,7 +764,7 @@ class OrderBookResponse extends Response {
 
   OrderBookResponse(this.base, this.counter, this.asks, this.bids);
 
-  factory OrderBookResponse.fromJson(Map<String, dynamic> json){
+  factory OrderBookResponse.fromJson(Map<String, dynamic> json) {
     return new OrderBookResponse(
         json['base'] == null
             ? null
@@ -771,11 +774,11 @@ class OrderBookResponse extends Response {
             : Asset.fromJson(json['counter'] as Map<String, dynamic>),
         (json['asks'] as List)
             ?.map((e) =>
-        e == null ? null : new Row.fromJson(e as Map<String, dynamic>))
+                e == null ? null : new Row.fromJson(e as Map<String, dynamic>))
             ?.toList(),
         (json['bids'] as List)
             ?.map((e) =>
-        e == null ? null : new Row.fromJson(e as Map<String, dynamic>))
+                e == null ? null : new Row.fromJson(e as Map<String, dynamic>))
             ?.toList())
       ..rateLimitLimit = convertInt(json['rateLimitLimit'])
       ..rateLimitRemaining = convertInt(json['rateLimitRemaining'])
@@ -783,14 +786,14 @@ class OrderBookResponse extends Response {
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'rateLimitLimit': rateLimitLimit,
-    'rateLimitRemaining': rateLimitRemaining,
-    'rateLimitReset': rateLimitReset,
-    'base': null,
-    'counter': null,
-    'asks': asks,
-    'bids': bids
-  };
+        'rateLimitLimit': rateLimitLimit,
+        'rateLimitRemaining': rateLimitRemaining,
+        'rateLimitReset': rateLimitReset,
+        'base': null,
+        'counter': null,
+        'asks': asks,
+        'bids': bids
+      };
 }
 
 ///Links connected to path.
@@ -799,7 +802,7 @@ class PathResponseLinks {
 
   PathResponseLinks(this.self);
 
-  factory PathResponseLinks.fromJson(Map<String, dynamic> json){
+  factory PathResponseLinks.fromJson(Map<String, dynamic> json) {
     return new PathResponseLinks(json['self'] == null
         ? null
         : new Link.fromJson(json['self'] as Map<String, dynamic>));
@@ -854,7 +857,7 @@ class PathResponse extends Response {
     }
   }
 
-  factory PathResponse.fromJson(Map<String, dynamic> json){
+  factory PathResponse.fromJson(Map<String, dynamic> json) {
     return new PathResponse(
         json['destination_amount'] as String,
         json['destination_asset_type'] as String,
@@ -864,34 +867,37 @@ class PathResponse extends Response {
         json['source_asset_type'] as String,
         json['source_asset_code'] as String,
         json['source_asset_issuer'] as String,
-        json['path'] == null ? null : (json['path'] as List)?.map((e) => e == null
+        json['path'] == null
             ? null
-            : Asset.fromJson(e as Map<String, dynamic>))
-            ?.toList(),
+            : (json['path'] as List)
+                ?.map((e) => e == null
+                    ? null
+                    : Asset.fromJson(e as Map<String, dynamic>))
+                ?.toList(),
         json['_links'] == null
             ? null
             : new PathResponseLinks.fromJson(
-            json['_links'] as Map<String, dynamic>))
+                json['_links'] as Map<String, dynamic>))
       ..rateLimitLimit = convertInt(json['rateLimitLimit'])
       ..rateLimitRemaining = convertInt(json['rateLimitRemaining'])
       ..rateLimitReset = convertInt(json['rateLimitReset']);
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'rateLimitLimit': rateLimitLimit,
-    'rateLimitRemaining': rateLimitRemaining,
-    'rateLimitReset': rateLimitReset,
-    'destination_amount': destinationAmount,
-    'destination_asset_type': destinationAssetType,
-    'destination_asset_code': destinationAssetCode,
-    'destination_asset_issuer': destinationAssetIssuer,
-    'source_amount': sourceAmount,
-    'source_asset_type': sourceAssetType,
-    'source_asset_code': sourceAssetCode,
-    'source_asset_issuer': sourceAssetIssuer,
-    'path': null,
-    '_links': links
-  };
+        'rateLimitLimit': rateLimitLimit,
+        'rateLimitRemaining': rateLimitRemaining,
+        'rateLimitReset': rateLimitReset,
+        'destination_amount': destinationAmount,
+        'destination_asset_type': destinationAssetType,
+        'destination_asset_code': destinationAssetCode,
+        'destination_asset_issuer': destinationAssetIssuer,
+        'source_amount': sourceAmount,
+        'source_asset_type': sourceAssetType,
+        'source_asset_code': sourceAssetCode,
+        'source_asset_issuer': sourceAssetIssuer,
+        'path': null,
+        '_links': links
+      };
 }
 
 ///Represents root endpoint response.
@@ -913,7 +919,7 @@ class RootResponse extends Response {
       this.networkPassphrase,
       this.protocolVersion);
 
-  factory RootResponse.fromJson(Map<String, dynamic> json){
+  factory RootResponse.fromJson(Map<String, dynamic> json) {
     return new RootResponse(
         json['horizon_version'] as String,
         json['core_version'] as String,
@@ -928,17 +934,17 @@ class RootResponse extends Response {
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'rateLimitLimit': rateLimitLimit,
-    'rateLimitRemaining': rateLimitRemaining,
-    'rateLimitReset': rateLimitReset,
-    'horizon_version': horizonVersion,
-    'core_version': stellarCoreVersion,
-    'history_latest_ledger': historyLatestLedger,
-    'history_elder_ledger': historyElderLedger,
-    'core_latest_ledger': coreLatestLedger,
-    'network_passphrase': networkPassphrase,
-    'protocol_version': protocolVersion
-  };
+        'rateLimitLimit': rateLimitLimit,
+        'rateLimitRemaining': rateLimitRemaining,
+        'rateLimitReset': rateLimitReset,
+        'horizon_version': horizonVersion,
+        'core_version': stellarCoreVersion,
+        'history_latest_ledger': historyLatestLedger,
+        'history_elder_ledger': historyElderLedger,
+        'core_latest_ledger': coreLatestLedger,
+        'network_passphrase': networkPassphrase,
+        'protocol_version': protocolVersion
+      };
 }
 
 ///Contains result codes for this transaction.
@@ -948,15 +954,15 @@ class ExtrasResultCodes {
 
   ExtrasResultCodes(this.transactionResultCode, this.operationsResultCodes);
 
-  factory ExtrasResultCodes.fromJson(Map<String, dynamic> json){
+  factory ExtrasResultCodes.fromJson(Map<String, dynamic> json) {
     return new ExtrasResultCodes(json['transaction'] as String,
         (json['operations'] as List)?.map((e) => e as String)?.toList());
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'transaction': transactionResultCode,
-    'operations': operationsResultCodes
-  };
+        'transaction': transactionResultCode,
+        'operations': operationsResultCodes
+      };
 }
 
 ///Additional information returned by a server.
@@ -968,21 +974,21 @@ class SubmitTransactionResponseExtras {
   SubmitTransactionResponseExtras(
       this.envelopeXdr, this.resultXdr, this.resultCodes);
 
-  factory SubmitTransactionResponseExtras.fromJson(Map<String, dynamic> json){
+  factory SubmitTransactionResponseExtras.fromJson(Map<String, dynamic> json) {
     return new SubmitTransactionResponseExtras(
         json['envelope_xdr'] as String,
         json['result_xdr'] as String,
         json['result_codes'] == null
             ? null
             : new ExtrasResultCodes.fromJson(
-            json['result_codes'] as Map<String, dynamic>));
+                json['result_codes'] as Map<String, dynamic>));
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'envelope_xdr': envelopeXdr,
-    'result_xdr': resultXdr,
-    'result_codes': resultCodes
-  };
+        'envelope_xdr': envelopeXdr,
+        'result_xdr': resultXdr,
+        'result_codes': resultCodes
+      };
 }
 
 ///Represents server response after submitting transaction.
@@ -1068,12 +1074,12 @@ class SubmitTransactionResponse extends Response {
         .uint64;
   }
 
-  factory SubmitTransactionResponse.fromJson(Map<String, dynamic> json){
+  factory SubmitTransactionResponse.fromJson(Map<String, dynamic> json) {
     return new SubmitTransactionResponse(
         json['extras'] == null
             ? null
             : new SubmitTransactionResponseExtras.fromJson(
-            json['extras'] as Map<String, dynamic>),
+                json['extras'] as Map<String, dynamic>),
         convertInt(json['ledger']),
         json['hash'] as String,
         json['envelope_xdr'] as String,
@@ -1083,17 +1089,16 @@ class SubmitTransactionResponse extends Response {
       ..rateLimitReset = convertInt(json['rateLimitReset']);
   }
 
-
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'rateLimitLimit': rateLimitLimit,
-    'rateLimitRemaining': rateLimitRemaining,
-    'rateLimitReset': rateLimitReset,
-    'hash': hash,
-    'ledger': ledger,
-    'envelope_xdr': envelopeXdr_,
-    'result_xdr': resultXdr_,
-    'extras': extras
-  };
+        'rateLimitLimit': rateLimitLimit,
+        'rateLimitRemaining': rateLimitRemaining,
+        'rateLimitReset': rateLimitReset,
+        'hash': hash,
+        'ledger': ledger,
+        'envelope_xdr': envelopeXdr_,
+        'result_xdr': resultXdr_,
+        'extras': extras
+      };
 }
 
 class SubmitTransactionTimeoutResponseException implements Exception {
@@ -1135,7 +1140,7 @@ class TradeAggregationResponse extends Response {
     return DateTime.fromMillisecondsSinceEpoch(this.timestamp);
   }
 
-  factory TradeAggregationResponse.fromJson(Map<String, dynamic> json){
+  factory TradeAggregationResponse.fromJson(Map<String, dynamic> json) {
     return new TradeAggregationResponse(
         convertInt(json['timestamp']),
         convertInt(json['trade_count']),
@@ -1152,19 +1157,19 @@ class TradeAggregationResponse extends Response {
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'rateLimitLimit': rateLimitLimit,
-    'rateLimitRemaining': rateLimitRemaining,
-    'rateLimitReset': rateLimitReset,
-    'timestamp': timestamp,
-    'trade_count': tradeCount,
-    'base_volume': baseVolume,
-    'counter_volume': counterVolume,
-    'avg': avg,
-    'high': high,
-    'low': low,
-    'open': open,
-    'close': close
-  };
+        'rateLimitLimit': rateLimitLimit,
+        'rateLimitRemaining': rateLimitRemaining,
+        'rateLimitReset': rateLimitReset,
+        'timestamp': timestamp,
+        'trade_count': tradeCount,
+        'base_volume': baseVolume,
+        'counter_volume': counterVolume,
+        'avg': avg,
+        'high': high,
+        'low': low,
+        'open': open,
+        'close': close
+      };
 }
 
 ///Links connected to a trade.
@@ -1175,7 +1180,7 @@ class TradeResponseLinks {
 
   TradeResponseLinks(this.base, this.counter, this.operation);
 
-  factory TradeResponseLinks.fromJson(Map<String, dynamic> json){
+  factory TradeResponseLinks.fromJson(Map<String, dynamic> json) {
     return new TradeResponseLinks(
         json['base'] == null
             ? null
@@ -1189,10 +1194,10 @@ class TradeResponseLinks {
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'base': base,
-    'counter': counter,
-    'operation': operation
-  };
+        'base': base,
+        'counter': counter,
+        'operation': operation
+      };
 }
 
 ///Represents trades response.
@@ -1251,7 +1256,7 @@ class TradeResponse extends Response {
         this.counterAssetType, this.counterAssetCode, this.counterAssetIssuer);
   }
 
-  factory TradeResponse.fromJson(Map<String, dynamic> json){
+  factory TradeResponse.fromJson(Map<String, dynamic> json) {
     return new TradeResponse(
         json['id'] as String,
         json['paging_token'] as String,
@@ -1283,33 +1288,33 @@ class TradeResponse extends Response {
       ..links = json['_links'] == null
           ? null
           : new TradeResponseLinks.fromJson(
-          json['_links'] as Map<String, dynamic>);
+              json['_links'] as Map<String, dynamic>);
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'rateLimitLimit': rateLimitLimit,
-    'rateLimitRemaining': rateLimitRemaining,
-    'rateLimitReset': rateLimitReset,
-    'id': id,
-    'paging_token': pagingToken,
-    'ledger_close_time': ledgerCloseTime,
-    'offer_id': offerId,
-    'base_is_seller': baseIsSeller,
-    'base_account': null,
-    'base_offer_id': baseOfferId,
-    'base_amount': baseAmount,
-    'base_asset_type': baseAssetType,
-    'base_asset_code': baseAssetCode,
-    'base_asset_issuer': baseAssetIssuer,
-    'counter_account': null,
-    'counter_offer_id': counterOfferId,
-    'counter_amount': counterAmount,
-    'counter_asset_type': counterAssetType,
-    'counter_asset_code': counterAssetCode,
-    'counter_asset_issuer': counterAssetIssuer,
-    'price': price,
-    '_links': links
-  };
+        'rateLimitLimit': rateLimitLimit,
+        'rateLimitRemaining': rateLimitRemaining,
+        'rateLimitReset': rateLimitReset,
+        'id': id,
+        'paging_token': pagingToken,
+        'ledger_close_time': ledgerCloseTime,
+        'offer_id': offerId,
+        'base_is_seller': baseIsSeller,
+        'base_account': null,
+        'base_offer_id': baseOfferId,
+        'base_amount': baseAmount,
+        'base_asset_type': baseAssetType,
+        'base_asset_code': baseAssetCode,
+        'base_asset_issuer': baseAssetIssuer,
+        'counter_account': null,
+        'counter_offer_id': counterOfferId,
+        'counter_amount': counterAmount,
+        'counter_asset_type': counterAssetType,
+        'counter_asset_code': counterAssetCode,
+        'counter_asset_issuer': counterAssetIssuer,
+        'price': price,
+        '_links': links
+      };
 }
 
 ///Links connected to page response.
@@ -1320,7 +1325,7 @@ class PageLinks {
 
   PageLinks(this.next, this.prev, this.self);
 
-  factory PageLinks.fromJson(Map<String, dynamic> json)  {
+  factory PageLinks.fromJson(Map<String, dynamic> json) {
     return new PageLinks(
         json['next'] == null
             ? null
@@ -1337,12 +1342,11 @@ class PageLinks {
       <String, dynamic>{'next': next, 'prev': prev, 'self': self};
 }
 
-
 class TypeToken<T> {
   Type type;
   int hashCode;
 
-  TypeToken(){
+  TypeToken() {
     type = T;
     hashCode = T.hashCode;
   }
@@ -1365,10 +1369,15 @@ class Page<T> extends Response implements TypedResponse<Page<T>> {
   ///The next page of results or null when there is no link for the next page of results
   Future<Page<T>> getNextPage(http.Client httpClient) async {
     if (this.links.next == null) {
-     return null;
+      return null;
     }
-    checkNotNull(this.type, "type cannot be null, is it being correctly set after the creation of this " + this.runtimeType.toString() + "?");
-    ResponseHandler<Page<T>> responseHandler = new ResponseHandler<Page<T>>(this.type);
+    checkNotNull(
+        this.type,
+        "type cannot be null, is it being correctly set after the creation of this " +
+            this.runtimeType.toString() +
+            "?");
+    ResponseHandler<Page<T>> responseHandler =
+        new ResponseHandler<Page<T>>(this.type);
     String url = this.links.next.href;
 
     return await httpClient.get(url).then((response) {
@@ -1387,7 +1396,9 @@ class Page<T> extends Response implements TypedResponse<Page<T>> {
       ..rateLimitLimit = convertInt(json['rateLimitLimit'])
       ..rateLimitRemaining = convertInt(json['rateLimitRemaining'])
       ..rateLimitReset = convertInt(json['rateLimitReset'])
-      ..records = (json["_embedded"]['records'] as List)?.map((e) => classMirror.newInstance(#fromJson, [e]).reflectee as T)?.toList()
+      ..records = (json["_embedded"]['records'] as List)
+          ?.map((e) => classMirror.newInstance(#fromJson, [e]).reflectee as T)
+          ?.toList()
       ..links = json['_links'] == null
           ? null
           : new PageLinks.fromJson(json['_links'] as Map<String, dynamic>)
@@ -1395,11 +1406,10 @@ class Page<T> extends Response implements TypedResponse<Page<T>> {
   }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-    'rateLimitLimit': rateLimitLimit,
-    'rateLimitRemaining': rateLimitRemaining,
-    'rateLimitReset': rateLimitReset,
-    'records': records,
-    'links': links
-  };
-
+        'rateLimitLimit': rateLimitLimit,
+        'rateLimitRemaining': rateLimitRemaining,
+        'rateLimitReset': rateLimitReset,
+        'records': records,
+        'links': links
+      };
 }

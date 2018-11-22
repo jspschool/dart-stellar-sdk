@@ -222,16 +222,14 @@ void testNextPage() {
   Server server = new Server("https://horizon-testnet.stellar.org");
   server.httpClient = client;
 
-   server.operations.execute().then<Page<OperationResponse>>((page){
-     assert(1 == page.records.length);
-     assert("dd9d10c80a344f4464df3ecaa63705a5ef4a0533ff2f2099d5ef371ab5e1c046" ==
-         page.records[0].transactionHash);
-     page.getNextPage(client2).then((page){
-       assert(1 == page.records.length);
-     });
-
-   });
-
+  server.operations.execute().then<Page<OperationResponse>>((page) {
+    assert(1 == page.records.length);
+    assert("dd9d10c80a344f4464df3ecaa63705a5ef4a0533ff2f2099d5ef371ab5e1c046" ==
+        page.records[0].transactionHash);
+    page.getNextPage(client2).then((page) {
+      assert(1 == page.records.length);
+    });
+  });
 }
 
 void main() {

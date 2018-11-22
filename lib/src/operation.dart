@@ -943,7 +943,6 @@ class ChangeTrustOperation extends Operation {
   }
 }
 
-
 class ChangeTrustOperationBuilder {
   Asset _asset;
   String _limit;

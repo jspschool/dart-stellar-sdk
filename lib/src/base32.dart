@@ -1,7 +1,6 @@
 import "dart:typed_data";
 
 class base32 {
-
   ///Takes in a [byteList] converts it to a Uint8List so that I can run
   ///bit operations on it, then outputs a [String] representation of the base32.
   static String encode(Uint8List bytes) {

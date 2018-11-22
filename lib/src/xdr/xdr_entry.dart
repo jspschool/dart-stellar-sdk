@@ -162,8 +162,8 @@ class XdrAccountEntryV1Ext {
   int get discriminant => this._v;
   set discriminant(int value) => this._v = value;
 
-  static void encode(
-      XdrDataOutputStream stream, XdrAccountEntryV1Ext encodedAccountEntryV1Ext) {
+  static void encode(XdrDataOutputStream stream,
+      XdrAccountEntryV1Ext encodedAccountEntryV1Ext) {
     stream.writeInt(encodedAccountEntryV1Ext.discriminant);
     switch (encodedAccountEntryV1Ext.discriminant) {
       case 0:
@@ -244,7 +244,8 @@ class XdrDataEntry {
   XdrDataEntryExt get ext => this._ext;
   set ext(XdrDataEntryExt value) => this._ext = value;
 
-  static void encode(XdrDataOutputStream stream, XdrDataEntry encodedDataEntry) {
+  static void encode(
+      XdrDataOutputStream stream, XdrDataEntry encodedDataEntry) {
     XdrAccountID.encode(stream, encodedDataEntry.accountID);
     XdrString64.encode(stream, encodedDataEntry.dataName);
     XdrDataValue.encode(stream, encodedDataEntry.dataValue);
@@ -431,8 +432,8 @@ class XdrLedgerEntryChange {
   XdrLedgerEntry get state => this._state;
   set state(XdrLedgerEntry value) => this._state = value;
 
-  static void encode(
-      XdrDataOutputStream stream, XdrLedgerEntryChange encodedLedgerEntryChange) {
+  static void encode(XdrDataOutputStream stream,
+      XdrLedgerEntryChange encodedLedgerEntryChange) {
     stream.writeInt(encodedLedgerEntryChange.discriminant.value);
     switch (encodedLedgerEntryChange.discriminant) {
       case XdrLedgerEntryChangeType.LEDGER_ENTRY_CREATED:
@@ -452,7 +453,8 @@ class XdrLedgerEntryChange {
 
   static XdrLedgerEntryChange decode(XdrDataInputStream stream) {
     XdrLedgerEntryChange decodedLedgerEntryChange = XdrLedgerEntryChange();
-    XdrLedgerEntryChangeType discriminant = XdrLedgerEntryChangeType.decode(stream);
+    XdrLedgerEntryChangeType discriminant =
+        XdrLedgerEntryChangeType.decode(stream);
     decodedLedgerEntryChange.discriminant = discriminant;
     switch (decodedLedgerEntryChange.discriminant) {
       case XdrLedgerEntryChangeType.LEDGER_ENTRY_CREATED:
@@ -597,7 +599,8 @@ class XdrOfferEntry {
   XdrOfferEntryExt get ext => this._ext;
   set ext(XdrOfferEntryExt value) => this._ext = value;
 
-  static void encode(XdrDataOutputStream stream, XdrOfferEntry encodedOfferEntry) {
+  static void encode(
+      XdrDataOutputStream stream, XdrOfferEntry encodedOfferEntry) {
     XdrAccountID.encode(stream, encodedOfferEntry.sellerID);
     XdrUint64.encode(stream, encodedOfferEntry.offerID);
     XdrAsset.encode(stream, encodedOfferEntry.selling);
@@ -690,16 +693,18 @@ class XdrSCPHistoryEntryV0 {
 
   XdrLedgerSCPMessages _ledgerMessages;
   XdrLedgerSCPMessages get ledgerMessages => this._ledgerMessages;
-  set ledgerMessages(XdrLedgerSCPMessages value) => this._ledgerMessages = value;
+  set ledgerMessages(XdrLedgerSCPMessages value) =>
+      this._ledgerMessages = value;
 
-  static void encode(
-      XdrDataOutputStream stream, XdrSCPHistoryEntryV0 encodedSCPHistoryEntryV0) {
+  static void encode(XdrDataOutputStream stream,
+      XdrSCPHistoryEntryV0 encodedSCPHistoryEntryV0) {
     int quorumSetssize = encodedSCPHistoryEntryV0.quorumSets.length;
     stream.writeInt(quorumSetssize);
     for (int i = 0; i < quorumSetssize; i++) {
       XdrSCPQuorumSet.encode(stream, encodedSCPHistoryEntryV0.quorumSets[i]);
     }
-    XdrLedgerSCPMessages.encode(stream, encodedSCPHistoryEntryV0.ledgerMessages);
+    XdrLedgerSCPMessages.encode(
+        stream, encodedSCPHistoryEntryV0.ledgerMessages);
   }
 
   static XdrSCPHistoryEntryV0 decode(XdrDataInputStream stream) {
@@ -709,7 +714,8 @@ class XdrSCPHistoryEntryV0 {
     for (int i = 0; i < quorumSetssize; i++) {
       decodedSCPHistoryEntryV0.quorumSets[i] = XdrSCPQuorumSet.decode(stream);
     }
-    decodedSCPHistoryEntryV0.ledgerMessages = XdrLedgerSCPMessages.decode(stream);
+    decodedSCPHistoryEntryV0.ledgerMessages =
+        XdrLedgerSCPMessages.decode(stream);
     return decodedSCPHistoryEntryV0;
   }
 }
@@ -828,7 +834,8 @@ class XdrTransactionHistoryResultEntryExt {
   }
 
   static XdrTransactionHistoryResultEntryExt decode(XdrDataInputStream stream) {
-    XdrTransactionHistoryResultEntryExt decodedTransactionHistoryResultEntryExt =
+    XdrTransactionHistoryResultEntryExt
+        decodedTransactionHistoryResultEntryExt =
         XdrTransactionHistoryResultEntryExt();
     int discriminant = stream.readInt();
     decodedTransactionHistoryResultEntryExt.discriminant = discriminant;
@@ -898,8 +905,8 @@ class XdrTrustLineEntryExt {
   XdrTrustLineEntryV1 get v1 => this._v1;
   set v1(XdrTrustLineEntryV1 value) => this._v1 = value;
 
-  static void encode(
-      XdrDataOutputStream stream, XdrTrustLineEntryExt encodedTrustLineEntryExt) {
+  static void encode(XdrDataOutputStream stream,
+      XdrTrustLineEntryExt encodedTrustLineEntryExt) {
     stream.writeInt(encodedTrustLineEntryExt.discriminant);
     switch (encodedTrustLineEntryExt.discriminant) {
       case 0:
@@ -965,7 +972,8 @@ class XdrTrustLineEntryV1Ext {
   }
 
   static XdrTrustLineEntryV1Ext decode(XdrDataInputStream stream) {
-    XdrTrustLineEntryV1Ext decodedTrustLineEntryV1Ext = XdrTrustLineEntryV1Ext();
+    XdrTrustLineEntryV1Ext decodedTrustLineEntryV1Ext =
+        XdrTrustLineEntryV1Ext();
     int discriminant = stream.readInt();
     decodedTrustLineEntryV1Ext.discriminant = discriminant;
     switch (decodedTrustLineEntryV1Ext.discriminant) {

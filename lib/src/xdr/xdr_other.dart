@@ -12,7 +12,8 @@ class XdrAccountID {
   XdrPublicKey get accountID => this._accountID;
   set accountID(XdrPublicKey value) => this._accountID = value;
 
-  static void encode(XdrDataOutputStream stream, XdrAccountID encodedAccountID) {
+  static void encode(
+      XdrDataOutputStream stream, XdrAccountID encodedAccountID) {
     XdrPublicKey.encode(stream, encodedAccountID.accountID);
   }
 
@@ -31,14 +32,16 @@ class XdrAccountMergeResult {
 
   XdrInt64 _sourceAccountBalance;
   XdrInt64 get sourceAccountBalance => this._sourceAccountBalance;
-  set sourceAccountBalance(XdrInt64 value) => this._sourceAccountBalance = value;
+  set sourceAccountBalance(XdrInt64 value) =>
+      this._sourceAccountBalance = value;
 
   static void encode(XdrDataOutputStream stream,
       XdrAccountMergeResult encodedAccountMergeResult) {
     stream.writeInt(encodedAccountMergeResult.discriminant.value);
     switch (encodedAccountMergeResult.discriminant) {
       case XdrAccountMergeResultCode.ACCOUNT_MERGE_SUCCESS:
-        XdrInt64.encode(stream, encodedAccountMergeResult._sourceAccountBalance);
+        XdrInt64.encode(
+            stream, encodedAccountMergeResult._sourceAccountBalance);
         break;
       default:
         break;
@@ -47,11 +50,13 @@ class XdrAccountMergeResult {
 
   static XdrAccountMergeResult decode(XdrDataInputStream stream) {
     XdrAccountMergeResult decodedAccountMergeResult = XdrAccountMergeResult();
-    XdrAccountMergeResultCode discriminant = XdrAccountMergeResultCode.decode(stream);
+    XdrAccountMergeResultCode discriminant =
+        XdrAccountMergeResultCode.decode(stream);
     decodedAccountMergeResult.discriminant = discriminant;
     switch (decodedAccountMergeResult.discriminant) {
       case XdrAccountMergeResultCode.ACCOUNT_MERGE_SUCCESS:
-        decodedAccountMergeResult._sourceAccountBalance = XdrInt64.decode(stream);
+        decodedAccountMergeResult._sourceAccountBalance =
+            XdrInt64.decode(stream);
         break;
       default:
         break;
@@ -356,7 +361,6 @@ class XdrPrice {
   }
 }
 
-
 class XdrStellarMessage {
   XdrStellarMessage() {}
   XdrMessageType _type;
@@ -443,7 +447,8 @@ class XdrStellarMessage {
         XdrTransactionSet.encode(stream, encodedStellarMessage.txSet);
         break;
       case XdrMessageType.TRANSACTION:
-        XdrTransactionEnvelope.encode(stream, encodedStellarMessage.transaction);
+        XdrTransactionEnvelope.encode(
+            stream, encodedStellarMessage.transaction);
         break;
       case XdrMessageType.GET_SCP_QUORUMSET:
         XdrUint256.encode(stream, encodedStellarMessage.qSetHash);
@@ -493,7 +498,8 @@ class XdrStellarMessage {
         decodedStellarMessage.txSet = XdrTransactionSet.decode(stream);
         break;
       case XdrMessageType.TRANSACTION:
-        decodedStellarMessage.transaction = XdrTransactionEnvelope.decode(stream);
+        decodedStellarMessage.transaction =
+            XdrTransactionEnvelope.decode(stream);
         break;
       case XdrMessageType.GET_SCP_QUORUMSET:
         decodedStellarMessage.qSetHash = XdrUint256.decode(stream);
@@ -593,7 +599,8 @@ class XdrTimeBounds {
   XdrUint64 get maxTime => this._maxTime;
   set maxTime(XdrUint64 value) => this._maxTime = value;
 
-  static void encode(XdrDataOutputStream stream, XdrTimeBounds encodedTimeBounds) {
+  static void encode(
+      XdrDataOutputStream stream, XdrTimeBounds encodedTimeBounds) {
     XdrUint64.encode(stream, encodedTimeBounds.minTime);
     XdrUint64.encode(stream, encodedTimeBounds.maxTime);
   }

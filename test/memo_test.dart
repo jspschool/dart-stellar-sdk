@@ -2,6 +2,7 @@ import 'package:stellar/stellar.dart';
 import "dart:typed_data";
 import 'dart:convert';
 import 'package:fixnum/fixnum.dart' as fixnum;
+
 void testMemoNone() {
   MemoNone memo = Memo.none();
   assert(XdrMemoType.MEMO_NONE == memo.toXdr().discriminant);
@@ -44,11 +45,12 @@ void testMemoId() {
   assert(9223372036854775807 == memo.toXdr().id.uint64);
 }
 
- void testParseMemoId() {
+void testParseMemoId() {
   String longId = "10048071741004807174";
   var element = "{ \"memo_type\": \"id\", \"memo\": \"$longId\" }";
 
-  TransactionResponse transactionResponse = TransactionResponse.fromJson(json.decode(element));
+  TransactionResponse transactionResponse =
+      TransactionResponse.fromJson(json.decode(element));
   MemoId memoId = transactionResponse.memo;
   assert(longId == fixnum.Int64(memoId.id).toRadixStringUnsigned(10));
 }
@@ -97,8 +99,7 @@ void testMemoHashInvalidHex() {
   try {
     Memo.hashString("test");
     throw Exception("fail");
-  } catch (e) {
-  }
+  } catch (e) {}
 }
 
 void testMemoReturnHashSuccess() {

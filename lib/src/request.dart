@@ -205,14 +205,16 @@ class AccountsRequestBuilder extends RequestBuilder {
   ///Certain endpoints in Horizon can be called in streaming mode using Server-Sent Events.
   ///This mode will keep the connection to horizon open and horizon will continue to return
   ///responses as ledgers close.
-  Stream<AccountResponse> stream(){
-    StreamController<AccountResponse> listener = new StreamController.broadcast();
-    EventSource.connect(this.buildUri()).then((eventSource){
+  Stream<AccountResponse> stream() {
+    StreamController<AccountResponse> listener =
+        new StreamController.broadcast();
+    EventSource.connect(this.buildUri()).then((eventSource) {
       eventSource.listen((Event event) {
-        if (event.data == "\"hello\"" || event.event =="close") {
+        if (event.data == "\"hello\"" || event.event == "close") {
           return null;
         }
-        AccountResponse accountResponse =  AccountResponse.fromJson(json.decode(event.data));
+        AccountResponse accountResponse =
+            AccountResponse.fromJson(json.decode(event.data));
         listener.add(accountResponse);
       });
     });
@@ -323,14 +325,16 @@ class EffectsRequestBuilder extends RequestBuilder {
   ///Certain endpoints in Horizon can be called in streaming mode using Server-Sent Events.
   ///This mode will keep the connection to horizon open and horizon will continue to return
   ///responses as ledgers close.
-  Stream<EffectResponse> stream(){
-    StreamController<EffectResponse> listener = new StreamController.broadcast();
-    EventSource.connect(this.buildUri()).then((eventSource){
+  Stream<EffectResponse> stream() {
+    StreamController<EffectResponse> listener =
+        new StreamController.broadcast();
+    EventSource.connect(this.buildUri()).then((eventSource) {
       eventSource.listen((Event event) {
-        if (event.data == "\"hello\"" || event.event =="close") {
+        if (event.data == "\"hello\"" || event.event == "close") {
           return null;
         }
-        EffectResponse effectResponse =  EffectResponse.fromJson(json.decode(event.data));
+        EffectResponse effectResponse =
+            EffectResponse.fromJson(json.decode(event.data));
         listener.add(effectResponse);
       });
     });
@@ -402,14 +406,16 @@ class LedgersRequestBuilder extends RequestBuilder {
   ///Certain endpoints in Horizon can be called in streaming mode using Server-Sent Events.
   ///This mode will keep the connection to horizon open and horizon will continue to return
   ///responses as ledgers close.
-  Stream<LedgerResponse> stream(){
-    StreamController<LedgerResponse> listener = new StreamController.broadcast();
-    EventSource.connect(this.buildUri()).then((eventSource){
+  Stream<LedgerResponse> stream() {
+    StreamController<LedgerResponse> listener =
+        new StreamController.broadcast();
+    EventSource.connect(this.buildUri()).then((eventSource) {
       eventSource.listen((Event event) {
-        if (event.data == "\"hello\"" || event.event =="close") {
+        if (event.data == "\"hello\"" || event.event == "close") {
           return null;
         }
-        LedgerResponse ledgerResponse =  LedgerResponse.fromJson(json.decode(event.data));
+        LedgerResponse ledgerResponse =
+            LedgerResponse.fromJson(json.decode(event.data));
         listener.add(ledgerResponse);
       });
     });
@@ -567,14 +573,16 @@ class OperationsRequestBuilder extends RequestBuilder {
   ///Certain endpoints in Horizon can be called in streaming mode using Server-Sent Events.
   ///This mode will keep the connection to horizon open and horizon will continue to return
   ///responses as ledgers close.
-  Stream<OperationResponse> stream(){
-    StreamController<OperationResponse> listener = new StreamController.broadcast();
-    EventSource.connect(this.buildUri()).then((eventSource){
+  Stream<OperationResponse> stream() {
+    StreamController<OperationResponse> listener =
+        new StreamController.broadcast();
+    EventSource.connect(this.buildUri()).then((eventSource) {
       eventSource.listen((Event event) {
-        if (event.data == "\"hello\"" || event.event =="close") {
+        if (event.data == "\"hello\"" || event.event == "close") {
           return null;
         }
-        OperationResponse operationResponse =  OperationResponse.fromJson(json.decode(event.data));
+        OperationResponse operationResponse =
+            OperationResponse.fromJson(json.decode(event.data));
         listener.add(operationResponse);
       });
     });
@@ -646,19 +654,20 @@ class OrderBookRequestBuilder extends RequestBuilder {
     });
   }
 
-
   ///Allows to stream SSE events from horizon.
   ///Certain endpoints in Horizon can be called in streaming mode using Server-Sent Events.
   ///This mode will keep the connection to horizon open and horizon will continue to return
   ///responses as ledgers close.
-  Stream<OrderBookResponse> stream(){
-    StreamController<OrderBookResponse> listener = new StreamController.broadcast();
-    EventSource.connect(this.buildUri()).then((eventSource){
+  Stream<OrderBookResponse> stream() {
+    StreamController<OrderBookResponse> listener =
+        new StreamController.broadcast();
+    EventSource.connect(this.buildUri()).then((eventSource) {
       eventSource.listen((Event event) {
-        if (event.data == "\"hello\"" || event.event =="close") {
+        if (event.data == "\"hello\"" || event.event == "close") {
           return null;
         }
-        OrderBookResponse orderBookResponse =  OrderBookResponse.fromJson(json.decode(event.data));
+        OrderBookResponse orderBookResponse =
+            OrderBookResponse.fromJson(json.decode(event.data));
         listener.add(orderBookResponse);
       });
     });
@@ -768,24 +777,25 @@ class PaymentsRequestBuilder extends RequestBuilder {
     });
   }
 
-
   ///Allows to stream SSE events from horizon.
   ///Certain endpoints in Horizon can be called in streaming mode using Server-Sent Events.
   ///This mode will keep the connection to horizon open and horizon will continue to return
   ///responses as ledgers close.
-  Stream<OperationResponse> stream(){
-    StreamController<OperationResponse> listener = new StreamController.broadcast();
-    EventSource.connect(this.buildUri()).then((eventSource){
+  Stream<OperationResponse> stream() {
+    StreamController<OperationResponse> listener =
+        new StreamController.broadcast();
+    EventSource.connect(this.buildUri()).then((eventSource) {
       eventSource.listen((Event event) {
-        if (event.data == "\"hello\"" || event.event =="close") {
+        if (event.data == "\"hello\"" || event.event == "close") {
           return null;
         }
-        OperationResponse payment =  OperationResponse.fromJson(json.decode(event.data));
+        OperationResponse payment =
+            OperationResponse.fromJson(json.decode(event.data));
         listener.add(payment);
       });
     });
     return listener.stream;
-}
+  }
 
   ///Build and execute request.
   Future<Page<OperationResponse>> execute() {
@@ -982,14 +992,16 @@ class TransactionsRequestBuilder extends RequestBuilder {
   ///Certain endpoints in Horizon can be called in streaming mode using Server-Sent Events.
   ///This mode will keep the connection to horizon open and horizon will continue to return
   ///responses as ledgers close.
-  Stream<TransactionResponse> stream(){
-    StreamController<TransactionResponse> listener = new StreamController.broadcast();
-    EventSource.connect(this.buildUri()).then((eventSource){
+  Stream<TransactionResponse> stream() {
+    StreamController<TransactionResponse> listener =
+        new StreamController.broadcast();
+    EventSource.connect(this.buildUri()).then((eventSource) {
       eventSource.listen((Event event) {
-        if (event.data == "\"hello\"" || event.event =="close") {
+        if (event.data == "\"hello\"" || event.event == "close") {
           return null;
         }
-        TransactionResponse transactionResponse =  TransactionResponse.fromJson(json.decode(event.data));
+        TransactionResponse transactionResponse =
+            TransactionResponse.fromJson(json.decode(event.data));
         listener.add(transactionResponse);
       });
     });

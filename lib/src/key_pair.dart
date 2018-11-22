@@ -249,7 +249,6 @@ class KeyPair {
 
 ///Signer is a helper class that creates XdrSignerKey objects.
 class SignerKey {
-
   ///Create <code>ed25519PublicKey</code> XdrSignerKey from KeyPair
   static XdrSignerKey ed25519PublicKey(KeyPair keyPair) {
     checkNotNull(keyPair, "keyPair cannot be null");

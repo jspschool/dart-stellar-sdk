@@ -13,7 +13,8 @@ class XdrSCPBallot {
   XdrValue get value => this._value;
   set value(XdrValue value) => this._value = value;
 
-  static void encode(XdrDataOutputStream stream, XdrSCPBallot encodedSCPBallot) {
+  static void encode(
+      XdrDataOutputStream stream, XdrSCPBallot encodedSCPBallot) {
     XdrUint32.encode(stream, encodedSCPBallot.counter);
     XdrValue.encode(stream, encodedSCPBallot.value);
   }
@@ -200,10 +201,12 @@ class XdrSCPStatementPledges {
     stream.writeInt(encodedSCPStatementPledges.discriminant.value);
     switch (encodedSCPStatementPledges.discriminant) {
       case XdrSCPStatementType.SCP_ST_PREPARE:
-        XdrSCPStatementPrepare.encode(stream, encodedSCPStatementPledges.prepare);
+        XdrSCPStatementPrepare.encode(
+            stream, encodedSCPStatementPledges.prepare);
         break;
       case XdrSCPStatementType.SCP_ST_CONFIRM:
-        XdrSCPStatementConfirm.encode(stream, encodedSCPStatementPledges.confirm);
+        XdrSCPStatementConfirm.encode(
+            stream, encodedSCPStatementPledges.confirm);
         break;
       case XdrSCPStatementType.SCP_ST_EXTERNALIZE:
         XdrSCPStatementExternalize.encode(
@@ -216,7 +219,8 @@ class XdrSCPStatementPledges {
   }
 
   static XdrSCPStatementPledges decode(XdrDataInputStream stream) {
-    XdrSCPStatementPledges decodedSCPStatementPledges = XdrSCPStatementPledges();
+    XdrSCPStatementPledges decodedSCPStatementPledges =
+        XdrSCPStatementPledges();
     XdrSCPStatementType discriminant = XdrSCPStatementType.decode(stream);
     decodedSCPStatementPledges.discriminant = discriminant;
     switch (decodedSCPStatementPledges.discriminant) {
@@ -287,7 +291,8 @@ class XdrSCPStatementPrepare {
   }
 
   static XdrSCPStatementPrepare decode(XdrDataInputStream stream) {
-    XdrSCPStatementPrepare decodedSCPStatementPrepare = XdrSCPStatementPrepare();
+    XdrSCPStatementPrepare decodedSCPStatementPrepare =
+        XdrSCPStatementPrepare();
     decodedSCPStatementPrepare.quorumSetHash = XdrHash.decode(stream);
     decodedSCPStatementPrepare.ballot = XdrSCPBallot.decode(stream);
     int preparedPresent = stream.readInt();
@@ -336,7 +341,8 @@ class XdrSCPStatementConfirm {
   }
 
   static XdrSCPStatementConfirm decode(XdrDataInputStream stream) {
-    XdrSCPStatementConfirm decodedSCPStatementConfirm = XdrSCPStatementConfirm();
+    XdrSCPStatementConfirm decodedSCPStatementConfirm =
+        XdrSCPStatementConfirm();
     decodedSCPStatementConfirm.ballot = XdrSCPBallot.decode(stream);
     decodedSCPStatementConfirm.nPrepared = XdrUint32.decode(stream);
     decodedSCPStatementConfirm.nCommit = XdrUint32.decode(stream);

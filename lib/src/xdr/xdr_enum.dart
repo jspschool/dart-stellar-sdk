@@ -11,7 +11,6 @@ class XdrAccountFlags {
   static const AUTH_REVOCABLE_FLAG = const XdrAccountFlags._internal(2);
   static const AUTH_IMMUTABLE_FLAG = const XdrAccountFlags._internal(4);
 
-
   static XdrAccountFlags decode(XdrDataInputStream stream) {
     int value = stream.readInt();
     switch (value) {
@@ -29,23 +28,29 @@ class XdrAccountFlags {
   static void encode(XdrDataOutputStream stream, XdrAccountFlags value) {
     stream.writeInt(value.value);
   }
-
 }
 
-class XdrAccountMergeResultCode  {
+class XdrAccountMergeResultCode {
   final _value;
   const XdrAccountMergeResultCode._internal(this._value);
   toString() => 'AccountMergeResultCode.$_value';
   XdrAccountMergeResultCode(this._value);
   get value => this._value;
 
-  static const ACCOUNT_MERGE_SUCCESS = const XdrAccountMergeResultCode._internal(0);
-  static const ACCOUNT_MERGE_MALFORMED = const XdrAccountMergeResultCode._internal(-1);
-  static const ACCOUNT_MERGE_NO_ACCOUNT = const XdrAccountMergeResultCode._internal(-2);
-  static const ACCOUNT_MERGE_IMMUTABLE_SET = const XdrAccountMergeResultCode._internal(-3);
-  static const ACCOUNT_MERGE_HAS_SUB_ENTRIES = const XdrAccountMergeResultCode._internal(-4);
-  static const ACCOUNT_MERGE_SEQNUM_TOO_FAR = const XdrAccountMergeResultCode._internal(-5);
-  static const ACCOUNT_MERGE_DEST_FULL = const XdrAccountMergeResultCode._internal(-6);
+  static const ACCOUNT_MERGE_SUCCESS =
+      const XdrAccountMergeResultCode._internal(0);
+  static const ACCOUNT_MERGE_MALFORMED =
+      const XdrAccountMergeResultCode._internal(-1);
+  static const ACCOUNT_MERGE_NO_ACCOUNT =
+      const XdrAccountMergeResultCode._internal(-2);
+  static const ACCOUNT_MERGE_IMMUTABLE_SET =
+      const XdrAccountMergeResultCode._internal(-3);
+  static const ACCOUNT_MERGE_HAS_SUB_ENTRIES =
+      const XdrAccountMergeResultCode._internal(-4);
+  static const ACCOUNT_MERGE_SEQNUM_TOO_FAR =
+      const XdrAccountMergeResultCode._internal(-5);
+  static const ACCOUNT_MERGE_DEST_FULL =
+      const XdrAccountMergeResultCode._internal(-6);
 
   static XdrAccountMergeResultCode decode(XdrDataInputStream stream) {
     int value = stream.readInt();
@@ -69,14 +74,13 @@ class XdrAccountMergeResultCode  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrAccountMergeResultCode value){
+  static void encode(
+      XdrDataOutputStream stream, XdrAccountMergeResultCode value) {
     stream.writeInt(value.value);
   }
 }
 
-
-
-class XdrAllowTrustResultCode  {
+class XdrAllowTrustResultCode {
   final _value;
   const XdrAllowTrustResultCode._internal(this._value);
   toString() => 'AllowTrustResultCode.$_value';
@@ -84,11 +88,16 @@ class XdrAllowTrustResultCode  {
   get value => this._value;
 
   static const ALLOW_TRUST_SUCCESS = const XdrAllowTrustResultCode._internal(0);
-  static const ALLOW_TRUST_MALFORMED = const XdrAllowTrustResultCode._internal(-1);
-  static const ALLOW_TRUST_NO_TRUST_LINE = const XdrAllowTrustResultCode._internal(-2);
-  static const ALLOW_TRUST_TRUST_NOT_REQUIRED = const XdrAllowTrustResultCode._internal(-3);
-  static const ALLOW_TRUST_CANT_REVOKE = const XdrAllowTrustResultCode._internal(-4);
-  static const ALLOW_TRUST_SELF_NOT_ALLOWED = const XdrAllowTrustResultCode._internal(-5);
+  static const ALLOW_TRUST_MALFORMED =
+      const XdrAllowTrustResultCode._internal(-1);
+  static const ALLOW_TRUST_NO_TRUST_LINE =
+      const XdrAllowTrustResultCode._internal(-2);
+  static const ALLOW_TRUST_TRUST_NOT_REQUIRED =
+      const XdrAllowTrustResultCode._internal(-3);
+  static const ALLOW_TRUST_CANT_REVOKE =
+      const XdrAllowTrustResultCode._internal(-4);
+  static const ALLOW_TRUST_SELF_NOT_ALLOWED =
+      const XdrAllowTrustResultCode._internal(-5);
 
   static XdrAllowTrustResultCode decode(XdrDataInputStream stream) {
     int value = stream.readInt();
@@ -110,12 +119,11 @@ class XdrAllowTrustResultCode  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrAccountMergeResultCode value){
+  static void encode(
+      XdrDataOutputStream stream, XdrAccountMergeResultCode value) {
     stream.writeInt(value.value);
   }
 }
-
-
 
 class XdrAssetType {
   final _value;
@@ -142,11 +150,10 @@ class XdrAssetType {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrAssetType value){
+  static void encode(XdrDataOutputStream stream, XdrAssetType value) {
     stream.writeInt(value.value);
   }
 }
-
 
 class XdrBucketEntryType {
   final _value;
@@ -170,21 +177,22 @@ class XdrBucketEntryType {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrBucketEntryType value){
+  static void encode(XdrDataOutputStream stream, XdrBucketEntryType value) {
     stream.writeInt(value.value);
   }
 }
 
-
-class XdrBumpSequenceResultCode  {
+class XdrBumpSequenceResultCode {
   final _value;
   const XdrBumpSequenceResultCode._internal(this._value);
   toString() => 'BumpSequenceResultCode.$_value';
   XdrBumpSequenceResultCode(this._value);
   get value => this._value;
 
-  static const BUMP_SEQUENCE_SUCCESS = const XdrBumpSequenceResultCode._internal(0);
-  static const BUMP_SEQUENCE_BAD_SEQ = const XdrBumpSequenceResultCode._internal(-1);
+  static const BUMP_SEQUENCE_SUCCESS =
+      const XdrBumpSequenceResultCode._internal(0);
+  static const BUMP_SEQUENCE_BAD_SEQ =
+      const XdrBumpSequenceResultCode._internal(-1);
 
   static XdrBumpSequenceResultCode decode(XdrDataInputStream stream) {
     int value = stream.readInt();
@@ -198,25 +206,31 @@ class XdrBumpSequenceResultCode  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrBumpSequenceResultCode value){
+  static void encode(
+      XdrDataOutputStream stream, XdrBumpSequenceResultCode value) {
     stream.writeInt(value.value);
   }
 }
 
-
-class XdrChangeTrustResultCode  {
+class XdrChangeTrustResultCode {
   final _value;
   const XdrChangeTrustResultCode._internal(this._value);
   toString() => 'ChangeTrustResultCode.$_value';
   XdrChangeTrustResultCode(this._value);
   get value => this._value;
 
-  static const CHANGE_TRUST_SUCCESS = const XdrChangeTrustResultCode._internal(0);
-  static const CHANGE_TRUST_MALFORMED = const XdrChangeTrustResultCode._internal(-1);
-  static const CHANGE_TRUST_NO_ISSUER = const XdrChangeTrustResultCode._internal(-2);
-  static const CHANGE_TRUST_INVALID_LIMIT = const XdrChangeTrustResultCode._internal(-3);
-  static const CHANGE_TRUST_LOW_RESERVE = const XdrChangeTrustResultCode._internal(-4);
-  static const CHANGE_TRUST_SELF_NOT_ALLOWED = const XdrChangeTrustResultCode._internal(-5);
+  static const CHANGE_TRUST_SUCCESS =
+      const XdrChangeTrustResultCode._internal(0);
+  static const CHANGE_TRUST_MALFORMED =
+      const XdrChangeTrustResultCode._internal(-1);
+  static const CHANGE_TRUST_NO_ISSUER =
+      const XdrChangeTrustResultCode._internal(-2);
+  static const CHANGE_TRUST_INVALID_LIMIT =
+      const XdrChangeTrustResultCode._internal(-3);
+  static const CHANGE_TRUST_LOW_RESERVE =
+      const XdrChangeTrustResultCode._internal(-4);
+  static const CHANGE_TRUST_SELF_NOT_ALLOWED =
+      const XdrChangeTrustResultCode._internal(-5);
 
   static XdrChangeTrustResultCode decode(XdrDataInputStream stream) {
     int value = stream.readInt();
@@ -238,24 +252,29 @@ class XdrChangeTrustResultCode  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrChangeTrustResultCode value){
+  static void encode(
+      XdrDataOutputStream stream, XdrChangeTrustResultCode value) {
     stream.writeInt(value.value);
   }
 }
 
-
-class XdrCreateAccountResultCode  {
+class XdrCreateAccountResultCode {
   final _value;
   const XdrCreateAccountResultCode._internal(this._value);
   toString() => 'CreateAccountResultCode.$_value';
   XdrCreateAccountResultCode(this._value);
   get value => this._value;
 
-  static const CREATE_ACCOUNT_SUCCESS = const XdrCreateAccountResultCode._internal(0);
-  static const CREATE_ACCOUNT_MALFORMED = const XdrCreateAccountResultCode._internal(-1);
-  static const CREATE_ACCOUNT_UNDERFUNDED = const XdrCreateAccountResultCode._internal(-2);
-  static const CREATE_ACCOUNT_LOW_RESERVE = const XdrCreateAccountResultCode._internal(-3);
-  static const CREATE_ACCOUNT_ALREADY_EXIST = const XdrCreateAccountResultCode._internal(-4);
+  static const CREATE_ACCOUNT_SUCCESS =
+      const XdrCreateAccountResultCode._internal(0);
+  static const CREATE_ACCOUNT_MALFORMED =
+      const XdrCreateAccountResultCode._internal(-1);
+  static const CREATE_ACCOUNT_UNDERFUNDED =
+      const XdrCreateAccountResultCode._internal(-2);
+  static const CREATE_ACCOUNT_LOW_RESERVE =
+      const XdrCreateAccountResultCode._internal(-3);
+  static const CREATE_ACCOUNT_ALREADY_EXIST =
+      const XdrCreateAccountResultCode._internal(-4);
 
   static XdrCreateAccountResultCode decode(XdrDataInputStream stream) {
     int value = stream.readInt();
@@ -275,14 +294,13 @@ class XdrCreateAccountResultCode  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrCreateAccountResultCode value){
+  static void encode(
+      XdrDataOutputStream stream, XdrCreateAccountResultCode value) {
     stream.writeInt(value.value);
   }
 }
 
-
-
-class XdrCryptoKeyType  {
+class XdrCryptoKeyType {
   final _value;
   const XdrCryptoKeyType._internal(this._value);
   toString() => 'CryptoKeyType.$_value';
@@ -307,12 +325,12 @@ class XdrCryptoKeyType  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrCryptoKeyType value){
+  static void encode(XdrDataOutputStream stream, XdrCryptoKeyType value) {
     stream.writeInt(value.value);
   }
 }
 
-class XdrEnvelopeType  {
+class XdrEnvelopeType {
   final _value;
   const XdrEnvelopeType._internal(this._value);
   toString() => 'EnvelopeType.$_value';
@@ -337,11 +355,10 @@ class XdrEnvelopeType  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrEnvelopeType value){
+  static void encode(XdrDataOutputStream stream, XdrEnvelopeType value) {
     stream.writeInt(value.value);
   }
 }
-
 
 class XdrErrorCode {
   final _value;
@@ -374,13 +391,12 @@ class XdrErrorCode {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrErrorCode value){
+  static void encode(XdrDataOutputStream stream, XdrErrorCode value) {
     stream.writeInt(value.value);
   }
 }
 
-
-class XdrInflationResultCode  {
+class XdrInflationResultCode {
   final _value;
   const XdrInflationResultCode._internal(this._value);
   toString() => 'InflationResultCode.$_value';
@@ -402,14 +418,12 @@ class XdrInflationResultCode  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrInflationResultCode value){
+  static void encode(XdrDataOutputStream stream, XdrInflationResultCode value) {
     stream.writeInt(value.value);
   }
 }
 
-
-
-class XdrIPAddrType  {
+class XdrIPAddrType {
   final _value;
   const XdrIPAddrType._internal(this._value);
   toString() => 'IPAddrType.$_value';
@@ -431,12 +445,10 @@ class XdrIPAddrType  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrIPAddrType value){
+  static void encode(XdrDataOutputStream stream, XdrIPAddrType value) {
     stream.writeInt(value.value);
   }
 }
-
-
 
 class XdrLedgerEntryChangeType {
   final _value;
@@ -445,9 +457,12 @@ class XdrLedgerEntryChangeType {
   XdrLedgerEntryChangeType(this._value);
   get value => this._value;
 
-  static const LEDGER_ENTRY_CREATED = const XdrLedgerEntryChangeType._internal(0);
-  static const LEDGER_ENTRY_UPDATED = const XdrLedgerEntryChangeType._internal(1);
-  static const LEDGER_ENTRY_REMOVED = const XdrLedgerEntryChangeType._internal(2);
+  static const LEDGER_ENTRY_CREATED =
+      const XdrLedgerEntryChangeType._internal(0);
+  static const LEDGER_ENTRY_UPDATED =
+      const XdrLedgerEntryChangeType._internal(1);
+  static const LEDGER_ENTRY_REMOVED =
+      const XdrLedgerEntryChangeType._internal(2);
   static const LEDGER_ENTRY_STATE = const XdrLedgerEntryChangeType._internal(3);
 
   static XdrLedgerEntryChangeType decode(XdrDataInputStream stream) {
@@ -466,12 +481,11 @@ class XdrLedgerEntryChangeType {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrLedgerEntryChangeType value){
+  static void encode(
+      XdrDataOutputStream stream, XdrLedgerEntryChangeType value) {
     stream.writeInt(value.value);
   }
 }
-
-
 
 class XdrLedgerEntryType {
   final _value;
@@ -501,12 +515,10 @@ class XdrLedgerEntryType {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrLedgerEntryType value){
+  static void encode(XdrDataOutputStream stream, XdrLedgerEntryType value) {
     stream.writeInt(value.value);
   }
 }
-
-
 
 class XdrLedgerUpgradeType {
   final _value;
@@ -516,9 +528,12 @@ class XdrLedgerUpgradeType {
   get value => this._value;
 
   static const LEDGER_UPGRADE_VERSION = const XdrLedgerUpgradeType._internal(1);
-  static const LEDGER_UPGRADE_BASE_FEE = const XdrLedgerUpgradeType._internal(2);
-  static const LEDGER_UPGRADE_MAX_TX_SET_SIZE = const XdrLedgerUpgradeType._internal(3);
-  static const LEDGER_UPGRADE_BASE_RESERVE = const XdrLedgerUpgradeType._internal(4);
+  static const LEDGER_UPGRADE_BASE_FEE =
+      const XdrLedgerUpgradeType._internal(2);
+  static const LEDGER_UPGRADE_MAX_TX_SET_SIZE =
+      const XdrLedgerUpgradeType._internal(3);
+  static const LEDGER_UPGRADE_BASE_RESERVE =
+      const XdrLedgerUpgradeType._internal(4);
 
   static XdrLedgerUpgradeType decode(XdrDataInputStream stream) {
     int value = stream.readInt();
@@ -536,13 +551,12 @@ class XdrLedgerUpgradeType {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrLedgerUpgradeType value){
+  static void encode(XdrDataOutputStream stream, XdrLedgerUpgradeType value) {
     stream.writeInt(value.value);
   }
 }
 
-
-class XdrManageDataResultCode  {
+class XdrManageDataResultCode {
   final _value;
   const XdrManageDataResultCode._internal(this._value);
   toString() => 'ManageDataResultCode.$_value';
@@ -550,10 +564,14 @@ class XdrManageDataResultCode  {
   get value => this._value;
 
   static const MANAGE_DATA_SUCCESS = const XdrManageDataResultCode._internal(0);
-  static const MANAGE_DATA_NOT_SUPPORTED_YET = const XdrManageDataResultCode._internal(-1);
-  static const MANAGE_DATA_NAME_NOT_FOUND = const XdrManageDataResultCode._internal(-2);
-  static const MANAGE_DATA_LOW_RESERVE = const XdrManageDataResultCode._internal(-3);
-  static const MANAGE_DATA_INVALID_NAME = const XdrManageDataResultCode._internal(-4);
+  static const MANAGE_DATA_NOT_SUPPORTED_YET =
+      const XdrManageDataResultCode._internal(-1);
+  static const MANAGE_DATA_NAME_NOT_FOUND =
+      const XdrManageDataResultCode._internal(-2);
+  static const MANAGE_DATA_LOW_RESERVE =
+      const XdrManageDataResultCode._internal(-3);
+  static const MANAGE_DATA_INVALID_NAME =
+      const XdrManageDataResultCode._internal(-4);
 
   static XdrManageDataResultCode decode(XdrDataInputStream stream) {
     int value = stream.readInt();
@@ -573,12 +591,11 @@ class XdrManageDataResultCode  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrManageDataResultCode value){
+  static void encode(
+      XdrDataOutputStream stream, XdrManageDataResultCode value) {
     stream.writeInt(value.value);
   }
 }
-
-
 
 class XdrManageOfferEffect {
   final _value;
@@ -605,33 +622,44 @@ class XdrManageOfferEffect {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrManageOfferEffect value){
+  static void encode(XdrDataOutputStream stream, XdrManageOfferEffect value) {
     stream.writeInt(value.value);
   }
 }
 
-
-
-class XdrManageOfferResultCode  {
+class XdrManageOfferResultCode {
   final _value;
   const XdrManageOfferResultCode._internal(this._value);
   toString() => 'ManageOfferResultCode.$_value';
   XdrManageOfferResultCode(this._value);
   get value => this._value;
 
-  static const MANAGE_OFFER_SUCCESS = const XdrManageOfferResultCode._internal(0);
-  static const MANAGE_OFFER_MALFORMED = const XdrManageOfferResultCode._internal(-1);
-  static const MANAGE_OFFER_SELL_NO_TRUST = const XdrManageOfferResultCode._internal(-2);
-  static const MANAGE_OFFER_BUY_NO_TRUST = const XdrManageOfferResultCode._internal(-3);
-  static const MANAGE_OFFER_SELL_NOT_AUTHORIZED = const XdrManageOfferResultCode._internal(-4);
-  static const MANAGE_OFFER_BUY_NOT_AUTHORIZED = const XdrManageOfferResultCode._internal(-5);
-  static const MANAGE_OFFER_LINE_FULL = const XdrManageOfferResultCode._internal(-6);
-  static const MANAGE_OFFER_UNDERFUNDED = const XdrManageOfferResultCode._internal(-7);
-  static const MANAGE_OFFER_CROSS_SELF = const XdrManageOfferResultCode._internal(-8);
-  static const MANAGE_OFFER_SELL_NO_ISSUER = const XdrManageOfferResultCode._internal(-9);
-  static const MANAGE_OFFER_BUY_NO_ISSUER = const XdrManageOfferResultCode._internal(-10);
-  static const MANAGE_OFFER_NOT_FOUND = const XdrManageOfferResultCode._internal(-11);
-  static const MANAGE_OFFER_LOW_RESERVE = const XdrManageOfferResultCode._internal(-12);
+  static const MANAGE_OFFER_SUCCESS =
+      const XdrManageOfferResultCode._internal(0);
+  static const MANAGE_OFFER_MALFORMED =
+      const XdrManageOfferResultCode._internal(-1);
+  static const MANAGE_OFFER_SELL_NO_TRUST =
+      const XdrManageOfferResultCode._internal(-2);
+  static const MANAGE_OFFER_BUY_NO_TRUST =
+      const XdrManageOfferResultCode._internal(-3);
+  static const MANAGE_OFFER_SELL_NOT_AUTHORIZED =
+      const XdrManageOfferResultCode._internal(-4);
+  static const MANAGE_OFFER_BUY_NOT_AUTHORIZED =
+      const XdrManageOfferResultCode._internal(-5);
+  static const MANAGE_OFFER_LINE_FULL =
+      const XdrManageOfferResultCode._internal(-6);
+  static const MANAGE_OFFER_UNDERFUNDED =
+      const XdrManageOfferResultCode._internal(-7);
+  static const MANAGE_OFFER_CROSS_SELF =
+      const XdrManageOfferResultCode._internal(-8);
+  static const MANAGE_OFFER_SELL_NO_ISSUER =
+      const XdrManageOfferResultCode._internal(-9);
+  static const MANAGE_OFFER_BUY_NO_ISSUER =
+      const XdrManageOfferResultCode._internal(-10);
+  static const MANAGE_OFFER_NOT_FOUND =
+      const XdrManageOfferResultCode._internal(-11);
+  static const MANAGE_OFFER_LOW_RESERVE =
+      const XdrManageOfferResultCode._internal(-12);
 
   static XdrManageOfferResultCode decode(XdrDataInputStream stream) {
     int value = stream.readInt();
@@ -667,11 +695,11 @@ class XdrManageOfferResultCode  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrManageOfferResultCode value){
+  static void encode(
+      XdrDataOutputStream stream, XdrManageOfferResultCode value) {
     stream.writeInt(value.value);
   }
 }
-
 
 class XdrMemoType {
   final _value;
@@ -704,12 +732,10 @@ class XdrMemoType {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrMemoType value){
+  static void encode(XdrDataOutputStream stream, XdrMemoType value) {
     stream.writeInt(value.value);
   }
 }
-
-
 
 class XdrMessageType {
   final _value;
@@ -766,11 +792,10 @@ class XdrMessageType {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrMessageType value){
+  static void encode(XdrDataOutputStream stream, XdrMessageType value) {
     stream.writeInt(value.value);
   }
 }
-
 
 class XdrOfferEntryFlags {
   final _value;
@@ -792,13 +817,12 @@ class XdrOfferEntryFlags {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrOfferEntryFlags value){
+  static void encode(XdrDataOutputStream stream, XdrOfferEntryFlags value) {
     stream.writeInt(value.value);
   }
 }
 
-
-class XdrOperationResultCode  {
+class XdrOperationResultCode {
   final _value;
   const XdrOperationResultCode._internal(this._value);
   toString() => 'OperationResultCode.$_value';
@@ -826,12 +850,10 @@ class XdrOperationResultCode  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrOperationResultCode value){
+  static void encode(XdrDataOutputStream stream, XdrOperationResultCode value) {
     stream.writeInt(value.value);
   }
 }
-
-
 
 class XdrOperationType {
   final _value;
@@ -885,33 +907,44 @@ class XdrOperationType {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrOperationType value){
+  static void encode(XdrDataOutputStream stream, XdrOperationType value) {
     stream.writeInt(value.value);
   }
 }
 
-
-
-class XdrPathPaymentResultCode  {
+class XdrPathPaymentResultCode {
   final _value;
   const XdrPathPaymentResultCode._internal(this._value);
   toString() => 'PathPaymentResultCode.$_value';
   XdrPathPaymentResultCode(this._value);
   get value => this._value;
 
-  static const PATH_PAYMENT_SUCCESS = const XdrPathPaymentResultCode._internal(0);
-  static const PATH_PAYMENT_MALFORMED = const XdrPathPaymentResultCode._internal(-1);
-  static const PATH_PAYMENT_UNDERFUNDED = const XdrPathPaymentResultCode._internal(-2);
-  static const PATH_PAYMENT_SRC_NO_TRUST = const XdrPathPaymentResultCode._internal(-3);
-  static const PATH_PAYMENT_SRC_NOT_AUTHORIZED = const XdrPathPaymentResultCode._internal(-4);
-  static const PATH_PAYMENT_NO_DESTINATION = const XdrPathPaymentResultCode._internal(-5);
-  static const PATH_PAYMENT_NO_TRUST = const XdrPathPaymentResultCode._internal(-6);
-  static const PATH_PAYMENT_NOT_AUTHORIZED = const XdrPathPaymentResultCode._internal(-7);
-  static const PATH_PAYMENT_LINE_FULL = const XdrPathPaymentResultCode._internal(-8);
-  static const PATH_PAYMENT_NO_ISSUER = const XdrPathPaymentResultCode._internal(-9);
-  static const PATH_PAYMENT_TOO_FEW_OFFERS = const XdrPathPaymentResultCode._internal(-10);
-  static const PATH_PAYMENT_OFFER_CROSS_SELF = const XdrPathPaymentResultCode._internal(-11);
-  static const PATH_PAYMENT_OVER_SENDMAX = const XdrPathPaymentResultCode._internal(-12);
+  static const PATH_PAYMENT_SUCCESS =
+      const XdrPathPaymentResultCode._internal(0);
+  static const PATH_PAYMENT_MALFORMED =
+      const XdrPathPaymentResultCode._internal(-1);
+  static const PATH_PAYMENT_UNDERFUNDED =
+      const XdrPathPaymentResultCode._internal(-2);
+  static const PATH_PAYMENT_SRC_NO_TRUST =
+      const XdrPathPaymentResultCode._internal(-3);
+  static const PATH_PAYMENT_SRC_NOT_AUTHORIZED =
+      const XdrPathPaymentResultCode._internal(-4);
+  static const PATH_PAYMENT_NO_DESTINATION =
+      const XdrPathPaymentResultCode._internal(-5);
+  static const PATH_PAYMENT_NO_TRUST =
+      const XdrPathPaymentResultCode._internal(-6);
+  static const PATH_PAYMENT_NOT_AUTHORIZED =
+      const XdrPathPaymentResultCode._internal(-7);
+  static const PATH_PAYMENT_LINE_FULL =
+      const XdrPathPaymentResultCode._internal(-8);
+  static const PATH_PAYMENT_NO_ISSUER =
+      const XdrPathPaymentResultCode._internal(-9);
+  static const PATH_PAYMENT_TOO_FEW_OFFERS =
+      const XdrPathPaymentResultCode._internal(-10);
+  static const PATH_PAYMENT_OFFER_CROSS_SELF =
+      const XdrPathPaymentResultCode._internal(-11);
+  static const PATH_PAYMENT_OVER_SENDMAX =
+      const XdrPathPaymentResultCode._internal(-12);
 
   static XdrPathPaymentResultCode decode(XdrDataInputStream stream) {
     int value = stream.readInt();
@@ -947,13 +980,13 @@ class XdrPathPaymentResultCode  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrPathPaymentResultCode value){
+  static void encode(
+      XdrDataOutputStream stream, XdrPathPaymentResultCode value) {
     stream.writeInt(value.value);
   }
 }
 
-
-class XdrPaymentResultCode  {
+class XdrPaymentResultCode {
   final _value;
   const XdrPaymentResultCode._internal(this._value);
   toString() => 'PaymentResultCode.$_value';
@@ -964,10 +997,13 @@ class XdrPaymentResultCode  {
   static const PAYMENT_MALFORMED = const XdrPaymentResultCode._internal(-1);
   static const PAYMENT_UNDERFUNDED = const XdrPaymentResultCode._internal(-2);
   static const PAYMENT_SRC_NO_TRUST = const XdrPaymentResultCode._internal(-3);
-  static const PAYMENT_SRC_NOT_AUTHORIZED = const XdrPaymentResultCode._internal(-4);
-  static const PAYMENT_NO_DESTINATION = const XdrPaymentResultCode._internal(-5);
+  static const PAYMENT_SRC_NOT_AUTHORIZED =
+      const XdrPaymentResultCode._internal(-4);
+  static const PAYMENT_NO_DESTINATION =
+      const XdrPaymentResultCode._internal(-5);
   static const PAYMENT_NO_TRUST = const XdrPaymentResultCode._internal(-6);
-  static const PAYMENT_NOT_AUTHORIZED = const XdrPaymentResultCode._internal(-7);
+  static const PAYMENT_NOT_AUTHORIZED =
+      const XdrPaymentResultCode._internal(-7);
   static const PAYMENT_LINE_FULL = const XdrPaymentResultCode._internal(-8);
   static const PAYMENT_NO_ISSUER = const XdrPaymentResultCode._internal(-9);
 
@@ -999,14 +1035,12 @@ class XdrPaymentResultCode  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrPaymentResultCode value){
+  static void encode(XdrDataOutputStream stream, XdrPaymentResultCode value) {
     stream.writeInt(value.value);
   }
 }
 
-
-
-class XdrPublicKeyType  {
+class XdrPublicKeyType {
   final _value;
   const XdrPublicKeyType._internal(this._value);
   toString() => 'PublicKeyType.$_value';
@@ -1025,12 +1059,10 @@ class XdrPublicKeyType  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrPublicKeyType value){
+  static void encode(XdrDataOutputStream stream, XdrPublicKeyType value) {
     stream.writeInt(value.value);
   }
 }
-
-
 
 class XdrSCPStatementType {
   final _value;
@@ -1060,13 +1092,12 @@ class XdrSCPStatementType {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrSCPStatementType value){
+  static void encode(XdrDataOutputStream stream, XdrSCPStatementType value) {
     stream.writeInt(value.value);
   }
 }
 
-
-class XdrSetOptionsResultCode  {
+class XdrSetOptionsResultCode {
   final _value;
   const XdrSetOptionsResultCode._internal(this._value);
   toString() => 'SetOptionsResultCode.$_value';
@@ -1074,15 +1105,24 @@ class XdrSetOptionsResultCode  {
   get value => this._value;
 
   static const SET_OPTIONS_SUCCESS = const XdrSetOptionsResultCode._internal(0);
-  static const SET_OPTIONS_LOW_RESERVE = const XdrSetOptionsResultCode._internal(-1);
-  static const SET_OPTIONS_TOO_MANY_SIGNERS = const XdrSetOptionsResultCode._internal(-2);
-  static const SET_OPTIONS_BAD_FLAGS = const XdrSetOptionsResultCode._internal(-3);
-  static const SET_OPTIONS_INVALID_INFLATION = const XdrSetOptionsResultCode._internal(-4);
-  static const SET_OPTIONS_CANT_CHANGE = const XdrSetOptionsResultCode._internal(-5);
-  static const SET_OPTIONS_UNKNOWN_FLAG = const XdrSetOptionsResultCode._internal(-6);
-  static const SET_OPTIONS_THRESHOLD_OUT_OF_RANGE = const XdrSetOptionsResultCode._internal(-7);
-  static const SET_OPTIONS_BAD_SIGNER = const XdrSetOptionsResultCode._internal(-8);
-  static const SET_OPTIONS_INVALID_HOME_DOMAIN = const XdrSetOptionsResultCode._internal(-9);
+  static const SET_OPTIONS_LOW_RESERVE =
+      const XdrSetOptionsResultCode._internal(-1);
+  static const SET_OPTIONS_TOO_MANY_SIGNERS =
+      const XdrSetOptionsResultCode._internal(-2);
+  static const SET_OPTIONS_BAD_FLAGS =
+      const XdrSetOptionsResultCode._internal(-3);
+  static const SET_OPTIONS_INVALID_INFLATION =
+      const XdrSetOptionsResultCode._internal(-4);
+  static const SET_OPTIONS_CANT_CHANGE =
+      const XdrSetOptionsResultCode._internal(-5);
+  static const SET_OPTIONS_UNKNOWN_FLAG =
+      const XdrSetOptionsResultCode._internal(-6);
+  static const SET_OPTIONS_THRESHOLD_OUT_OF_RANGE =
+      const XdrSetOptionsResultCode._internal(-7);
+  static const SET_OPTIONS_BAD_SIGNER =
+      const XdrSetOptionsResultCode._internal(-8);
+  static const SET_OPTIONS_INVALID_HOME_DOMAIN =
+      const XdrSetOptionsResultCode._internal(-9);
 
   static XdrSetOptionsResultCode decode(XdrDataInputStream stream) {
     int value = stream.readInt();
@@ -1112,12 +1152,11 @@ class XdrSetOptionsResultCode  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrSetOptionsResultCode value){
+  static void encode(
+      XdrDataOutputStream stream, XdrSetOptionsResultCode value) {
     stream.writeInt(value.value);
   }
 }
-
-
 
 class XdrSignerKeyType {
   final _value;
@@ -1127,7 +1166,8 @@ class XdrSignerKeyType {
   get value => this._value;
 
   static const SIGNER_KEY_TYPE_ED25519 = const XdrSignerKeyType._internal(0);
-  static const SIGNER_KEY_TYPE_PRE_AUTH_TX = const XdrSignerKeyType._internal(1);
+  static const SIGNER_KEY_TYPE_PRE_AUTH_TX =
+      const XdrSignerKeyType._internal(1);
   static const SIGNER_KEY_TYPE_HASH_X = const XdrSignerKeyType._internal(2);
 
   static XdrSignerKeyType decode(XdrDataInputStream stream) {
@@ -1144,12 +1184,10 @@ class XdrSignerKeyType {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrSignerKeyType value){
+  static void encode(XdrDataOutputStream stream, XdrSignerKeyType value) {
     stream.writeInt(value.value);
   }
 }
-
-
 
 class XdrThresholdIndexes {
   final _value;
@@ -1179,11 +1217,10 @@ class XdrThresholdIndexes {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrThresholdIndexes value){
+  static void encode(XdrDataOutputStream stream, XdrThresholdIndexes value) {
     stream.writeInt(value.value);
   }
 }
-
 
 class XdrThresholdIndices {
   final _value;
@@ -1213,15 +1250,12 @@ class XdrThresholdIndices {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrThresholdIndices value){
+  static void encode(XdrDataOutputStream stream, XdrThresholdIndices value) {
     stream.writeInt(value.value);
   }
 }
 
-
-
-
-class XdrTransactionResultCode  {
+class XdrTransactionResultCode {
   final _value;
   const XdrTransactionResultCode._internal(this._value);
   toString() => 'TransactionResultCode.$_value';
@@ -1232,12 +1266,15 @@ class XdrTransactionResultCode  {
   static const txFAILED = const XdrTransactionResultCode._internal(-1);
   static const txTOO_EARLY = const XdrTransactionResultCode._internal(-2);
   static const txTOO_LATE = const XdrTransactionResultCode._internal(-3);
-  static const txMISSING_OPERATION = const XdrTransactionResultCode._internal(-4);
+  static const txMISSING_OPERATION =
+      const XdrTransactionResultCode._internal(-4);
   static const txBAD_SEQ = const XdrTransactionResultCode._internal(-5);
   static const txBAD_AUTH = const XdrTransactionResultCode._internal(-6);
-  static const txINSUFFICIENT_BALANCE = const XdrTransactionResultCode._internal(-7);
+  static const txINSUFFICIENT_BALANCE =
+      const XdrTransactionResultCode._internal(-7);
   static const txNO_ACCOUNT = const XdrTransactionResultCode._internal(-8);
-  static const txINSUFFICIENT_FEE = const XdrTransactionResultCode._internal(-9);
+  static const txINSUFFICIENT_FEE =
+      const XdrTransactionResultCode._internal(-9);
   static const txBAD_AUTH_EXTRA = const XdrTransactionResultCode._internal(-10);
   static const txINTERNAL_ERROR = const XdrTransactionResultCode._internal(-11);
 
@@ -1273,12 +1310,13 @@ class XdrTransactionResultCode  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrTransactionResultCode value){
+  static void encode(
+      XdrDataOutputStream stream, XdrTransactionResultCode value) {
     stream.writeInt(value.value);
   }
 }
 
-class XdrTrustLineFlags  {
+class XdrTrustLineFlags {
   final _value;
   const XdrTrustLineFlags._internal(this._value);
   toString() => 'TrustLineFlags.$_value';
@@ -1297,8 +1335,7 @@ class XdrTrustLineFlags  {
     }
   }
 
-  static void encode(XdrDataOutputStream stream, XdrTrustLineFlags value){
+  static void encode(XdrDataOutputStream stream, XdrTrustLineFlags value) {
     stream.writeInt(value.value);
   }
 }
-

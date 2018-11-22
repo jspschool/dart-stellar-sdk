@@ -5,8 +5,6 @@ import 'dart:convert';
 Function eq = const ListEquality().equals;
 
 void testAccountDeserialize() {
-
-
   String jsonData = "{\n" +
       "  \"_links\": {\n" +
       "    \"effects\": {\n" +
@@ -28,7 +26,7 @@ void testAccountDeserialize() {
       "      \"href\": \"/accounts/GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7/transactions{?cursor,limit,order}\",\n" +
       "      \"templated\": true\n" +
       "    }\n" +
-      "  },"+
+      "  }," +
       "  \"id\": \"GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7\",\n" +
       "  \"paging_token\": \"1\",\n" +
       "  \"account_id\": \"GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7\",\n" +
@@ -55,7 +53,7 @@ void testAccountDeserialize() {
       "      \"asset_type\": \"credit_alphanum4\",\n" +
       "      \"asset_code\": \"ABC\",\n" +
       "      \"asset_issuer\": \"GCRA6COW27CY5MTKIA7POQ2326C5ABYCXODBN4TFF5VL4FMBRHOT3YHU\"\n" +
-      "    },"+
+      "    }," +
       "    {\n" +
       "      \"asset_type\": \"native\",\n" +
       "      \"balance\": \"20.0000300\",\n" +
@@ -84,11 +82,13 @@ void testAccountDeserialize() {
       "}";
 
   AccountResponse account = AccountResponse.fromJson(json.decode(jsonData));
-  assert(account.keypair.accountId == "GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7");
-  assert(account.pagingToken ==  "1");
+  assert(account.keypair.accountId ==
+      "GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7");
+  assert(account.pagingToken == "1");
   assert(account.sequenceNumber == 2319149195853854);
   assert(account.subentryCount == 0);
-  assert(account.inflationDestination == "GAGRSA6QNQJN2OQYCBNQGMFLO4QLZFNEHIFXOMTQVSUTWVTWT66TOFSC");
+  assert(account.inflationDestination ==
+      "GAGRSA6QNQJN2OQYCBNQGMFLO4QLZFNEHIFXOMTQVSUTWVTWT66TOFSC");
   assert(account.homeDomain == "stellar.org");
 
   assert(account.thresholds.lowThreshold == 10);
@@ -101,7 +101,8 @@ void testAccountDeserialize() {
 
   assert(account.balances[0].assetType == "credit_alphanum4");
   assert(account.balances[0].assetCode == "ABC");
-  assert(account.balances[0].assetIssuer.accountId == "GCRA6COW27CY5MTKIA7POQ2326C5ABYCXODBN4TFF5VL4FMBRHOT3YHU");
+  assert(account.balances[0].assetIssuer.accountId ==
+      "GCRA6COW27CY5MTKIA7POQ2326C5ABYCXODBN4TFF5VL4FMBRHOT3YHU");
   assert(account.balances[0].balance == "1001.0000000");
   assert(account.balances[0].limit == "12000.4775807");
   assert(account.balances[0].buyingLiabilities == "100.1234567");
@@ -113,10 +114,12 @@ void testAccountDeserialize() {
   assert(account.balances[1].sellingLiabilities == "1.7654321");
   assert(account.balances[1].limit == null);
 
-  assert(account.signers[0].accountId == "GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7");
+  assert(account.signers[0].accountId ==
+      "GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7");
   assert(account.signers[0].weight == 0);
   assert(account.signers[0].type == "ed25519_public_key");
-  assert(account.signers[1].key =="GCR2KBCIU6KQXSQY5F5GZYC4WLNHCHCKW4NEGXNEZRYWLTNZIRJJY7D2");
+  assert(account.signers[1].key ==
+      "GCR2KBCIU6KQXSQY5F5GZYC4WLNHCHCKW4NEGXNEZRYWLTNZIRJJY7D2");
   assert(account.signers[1].weight == 1);
   assert(account.signers[1].type == "ed25519_public_key");
 
@@ -126,16 +129,19 @@ void testAccountDeserialize() {
   assert(account.data["entry2"] == "dGVzdDI=");
   assert(eq(account.data.getDecoded("entry2"), utf8.encode("test2")));
 
-  assert(account.links.effects.href == "/accounts/GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7/effects{?cursor,limit,order}");
-  assert(account.links.offers.href == "/accounts/GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7/offers{?cursor,limit,order}");
-  assert(account.links.operations.href == "/accounts/GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7/operations{?cursor,limit,order}");
-  assert(account.links.self.href == "/accounts/GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7");
-  assert(account.links.transactions.href == "/accounts/GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7/transactions{?cursor,limit,order}");
+  assert(account.links.effects.href ==
+      "/accounts/GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7/effects{?cursor,limit,order}");
+  assert(account.links.offers.href ==
+      "/accounts/GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7/offers{?cursor,limit,order}");
+  assert(account.links.operations.href ==
+      "/accounts/GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7/operations{?cursor,limit,order}");
+  assert(account.links.self.href ==
+      "/accounts/GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7");
+  assert(account.links.transactions.href ==
+      "/accounts/GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7/transactions{?cursor,limit,order}");
 }
 
 void testAccountDeserializeV9() {
-
-
   String jsonData = "{\n" +
       "  \"_links\": {\n" +
       "    \"effects\": {\n" +
@@ -157,7 +163,7 @@ void testAccountDeserializeV9() {
       "      \"href\": \"/accounts/GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7/transactions{?cursor,limit,order}\",\n" +
       "      \"templated\": true\n" +
       "    }\n" +
-      "  },"+
+      "  }," +
       "  \"id\": \"GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7\",\n" +
       "  \"paging_token\": \"1\",\n" +
       "  \"account_id\": \"GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7\",\n" +
@@ -181,7 +187,7 @@ void testAccountDeserializeV9() {
       "      \"asset_type\": \"credit_alphanum4\",\n" +
       "      \"asset_code\": \"ABC\",\n" +
       "      \"asset_issuer\": \"GCRA6COW27CY5MTKIA7POQ2326C5ABYCXODBN4TFF5VL4FMBRHOT3YHU\"\n" +
-      "    },"+
+      "    }," +
       "    {\n" +
       "      \"asset_type\": \"native\",\n" +
       "      \"balance\": \"20.0000300\"\n" +
@@ -203,7 +209,8 @@ void testAccountDeserializeV9() {
 
   assert(account.balances[0].assetType == "credit_alphanum4");
   assert(account.balances[0].assetCode == "ABC");
-  assert(account.balances[0].assetIssuer.accountId == "GCRA6COW27CY5MTKIA7POQ2326C5ABYCXODBN4TFF5VL4FMBRHOT3YHU");
+  assert(account.balances[0].assetIssuer.accountId ==
+      "GCRA6COW27CY5MTKIA7POQ2326C5ABYCXODBN4TFF5VL4FMBRHOT3YHU");
   assert(account.balances[0].balance == "1001.0000000");
   assert(account.balances[0].limit == "12000.4775807");
   assert(account.balances[0].buyingLiabilities == null);
@@ -217,7 +224,6 @@ void testAccountDeserializeV9() {
 }
 
 void testAccountsPageDeserialize() {
-
   String jsonData = "{\n" +
       "  \"_embedded\": {\n" +
       "    \"records\": [\n" +
@@ -286,14 +292,20 @@ void testAccountsPageDeserialize() {
       "  }\n" +
       "}";
 
-  Page<AccountResponse> accountsPage = Page<AccountResponse>.fromJson(json.decode(jsonData));
+  Page<AccountResponse> accountsPage =
+      Page<AccountResponse>.fromJson(json.decode(jsonData));
 
-  assert(accountsPage.records[0].keypair.accountId == "GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7");
+  assert(accountsPage.records[0].keypair.accountId ==
+      "GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7");
   assert(accountsPage.records[0].pagingToken == "1");
-  assert(accountsPage.records[9].keypair.accountId == "GACFGMEV7A5H44O3K4EN6GRQ4SA543YJBZTKGNKPEMEQEAJFO4Q7ENG6");
-  assert(accountsPage.links.next.href == "/accounts?order=asc&limit=10&cursor=86861418598401");
-  assert(accountsPage.links.prev.href == "/accounts?order=desc&limit=10&cursor=1");
-  assert(accountsPage.links.self.href == "/accounts?order=asc&limit=10&cursor=");
+  assert(accountsPage.records[9].keypair.accountId ==
+      "GACFGMEV7A5H44O3K4EN6GRQ4SA543YJBZTKGNKPEMEQEAJFO4Q7ENG6");
+  assert(accountsPage.links.next.href ==
+      "/accounts?order=asc&limit=10&cursor=86861418598401");
+  assert(
+      accountsPage.links.prev.href == "/accounts?order=desc&limit=10&cursor=1");
+  assert(
+      accountsPage.links.self.href == "/accounts?order=asc&limit=10&cursor=");
 }
 
 void testAssetDeserializeNative() {
@@ -312,11 +324,11 @@ void testAssetDeserializeCredit() {
   assert(asset.type == "credit_alphanum4");
   AssetTypeCreditAlphaNum creditAsset = asset as AssetTypeCreditAlphaNum;
   assert(creditAsset.code == "CNY");
-  assert(creditAsset.issuer.accountId == "GAREELUB43IRHWEASCFBLKHURCGMHE5IF6XSE7EXDLACYHGRHM43RFOX");
+  assert(creditAsset.issuer.accountId ==
+      "GAREELUB43IRHWEASCFBLKHURCGMHE5IF6XSE7EXDLACYHGRHM43RFOX");
 }
 
 void testAssetsPageDeserialize() {
-
   String jsonData = "{\n" +
       "  \"_links\": {\n" +
       "    \"self\": {\n" +
@@ -505,24 +517,29 @@ void testAssetsPageDeserialize() {
       "  }\n" +
       "}";
 
-  Page<AssetResponse> page = Page<AssetResponse>.fromJson(json.decode(jsonData));
+  Page<AssetResponse> page =
+      Page<AssetResponse>.fromJson(json.decode(jsonData));
 
-  assert(page.links.self.href == "https://horizon.stellar.org/assets?order=asc&limit=10&cursor=");
-  assert(page.links.next.href == "https://horizon.stellar.org/assets?order=asc&limit=10&cursor=AsrtoDollar_GDJWXY5XUASXNL4ABCONR6T5MOXJ2S4HD6WDNAJDSDKQ4VS3TVUQJEDJ_credit_alphanum12");
+  assert(page.links.self.href ==
+      "https://horizon.stellar.org/assets?order=asc&limit=10&cursor=");
+  assert(page.links.next.href ==
+      "https://horizon.stellar.org/assets?order=asc&limit=10&cursor=AsrtoDollar_GDJWXY5XUASXNL4ABCONR6T5MOXJ2S4HD6WDNAJDSDKQ4VS3TVUQJEDJ_credit_alphanum12");
 
   assert(page.records[0].assetType == "credit_alphanum12");
   assert(page.records[0].assetCode == "6497847");
-  assert(page.records[0].assetIssuer == "GCGNWKCJ3KHRLPM3TM6N7D3W5YKDJFL6A2YCXFXNMRTZ4Q66MEMZ6FI2");
-  assert(page.records[0].pagingToken == "6497847_GCGNWKCJ3KHRLPM3TM6N7D3W5YKDJFL6A2YCXFXNMRTZ4Q66MEMZ6FI2_credit_alphanum12");
+  assert(page.records[0].assetIssuer ==
+      "GCGNWKCJ3KHRLPM3TM6N7D3W5YKDJFL6A2YCXFXNMRTZ4Q66MEMZ6FI2");
+  assert(page.records[0].pagingToken ==
+      "6497847_GCGNWKCJ3KHRLPM3TM6N7D3W5YKDJFL6A2YCXFXNMRTZ4Q66MEMZ6FI2_credit_alphanum12");
   assert(page.records[0].amount == "0.0000000");
   assert(page.records[0].numAccounts == 1);
-  assert(page.records[0].links.toml.href == "https://www.stellar.org/.well-known/stellar.toml");
+  assert(page.records[0].links.toml.href ==
+      "https://www.stellar.org/.well-known/stellar.toml");
   assert(page.records[0].flags.authRequired == true);
   assert(page.records[0].flags.authRevocable == false);
 }
 
 void testEffectsPageDeserialize() {
-
   String jsonData = "{\n" +
       "  \"_links\": {\n" +
       "    \"self\": {\n" +
@@ -738,17 +755,23 @@ void testEffectsPageDeserialize() {
       "  }\n" +
       "}";
 
-  Page<EffectResponse> effectsPage = Page<EffectResponse>.fromJson(json.decode(jsonData));
+  Page<EffectResponse> effectsPage =
+      Page<EffectResponse>.fromJson(json.decode(jsonData));
 
-  SignerCreatedEffectResponse signerCreatedEffect = effectsPage.records[0] as SignerCreatedEffectResponse;
-  assert(signerCreatedEffect.publicKey == "GAZHVTAM3NRJ6W643LOVA76T2W3TUKPF34ED5VNE4ZKJ2B5T2EUQHIQI");
+  SignerCreatedEffectResponse signerCreatedEffect =
+      effectsPage.records[0] as SignerCreatedEffectResponse;
+  assert(signerCreatedEffect.publicKey ==
+      "GAZHVTAM3NRJ6W643LOVA76T2W3TUKPF34ED5VNE4ZKJ2B5T2EUQHIQI");
   assert(signerCreatedEffect.pagingToken == "3964757325385729-3");
 
-  AccountCreatedEffectResponse accountCreatedEffect = effectsPage.records[8] as AccountCreatedEffectResponse;
+  AccountCreatedEffectResponse accountCreatedEffect =
+      effectsPage.records[8] as AccountCreatedEffectResponse;
   assert(accountCreatedEffect.startingBalance == "10000.0");
-  assert(accountCreatedEffect.account.accountId == "GDIQJ6G5AWSBRMHIZYWVWCFN64Q4BZ4TYEAQRO5GVR4EWR23RKBJ2A4R");
+  assert(accountCreatedEffect.account.accountId ==
+      "GDIQJ6G5AWSBRMHIZYWVWCFN64Q4BZ4TYEAQRO5GVR4EWR23RKBJ2A4R");
 
-  assert(effectsPage.links.next.href == "http://horizon-testnet.stellar.org/effects?order=desc&limit=10&cursor=3962163165138945-3");
+  assert(effectsPage.links.next.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&limit=10&cursor=3962163165138945-3");
 }
 
 void testLedgerDeserialize() {
@@ -791,31 +814,36 @@ void testLedgerDeserialize() {
       "}";
 
   LedgerResponse ledger = LedgerResponse.fromJson(json.decode(jsonData));
-  assert(ledger.hash == "686bb246db89b099cd3963a4633eb5e4315d89dfd3c00594c80b41a483847bfa");
+  assert(ledger.hash ==
+      "686bb246db89b099cd3963a4633eb5e4315d89dfd3c00594c80b41a483847bfa");
   assert(ledger.pagingToken == "3860428274794496");
-  assert(ledger.prevHash == "50c8695eb32171a19858413e397cc50b504ceacc819010bdf8ff873aff7858d7");
+  assert(ledger.prevHash ==
+      "50c8695eb32171a19858413e397cc50b504ceacc819010bdf8ff873aff7858d7");
   assert(ledger.sequence == 898826);
-  assert(ledger.transactionCount ==1);
-  assert(ledger.operationCount ==2);
+  assert(ledger.transactionCount == 1);
+  assert(ledger.operationCount == 2);
   assert(ledger.closedAt == "2015-11-19T21:35:59Z");
   assert(ledger.totalCoins == "101343867604.8975480");
   assert(ledger.feePool == "1908.2248818");
   assert(ledger.baseFee == 100);
   assert(ledger.baseReserve == "10.0000000");
-  assert(ledger.maxTxSetSize ==50);
-  assert(ledger.protocolVersion ==10);
-  assert(ledger.headerXdr == "AAAACvkxR60p1bwRO3PdsRy48pkWVtuyF08xyvB3jU7u437r9tK/G7DoXa+J8N5ptWhpHGrc/" +
-      "a+5k9Ak3kHnZSAaiPgAAAAAW4aHyQAAAAAAAAAAyz4xx/YIt7Z9PLeCHj/ZrFGcDaNSJpQX+jpL1IX3uqSCiFrU4CFidqxjmmJzXNWN1rY4cBwliHN21hicu/" +
-      "JyawCkgzIOdhy8pVTcbQA+gekx1NpNAAAA2QAAAAAACsLiAAAAZABMS0AAAAAykmy96ckoDVk3UDBm7B4n8oC6+cdCxGDnWu7tO6aU34xipth5GRNy+I5Y8m+E/" +
-      "bHlElCDX2J8y6kuKr7yU6xvyjMb9nwaii7EHN74adNyyUuselmxQcKfEVf/tj3j5l9yOMqgE05NDyU0+LycHY47062IWxvG0o2yDaaxp2Z72pwAAAAA");
-  assert(ledger.links.effects.href == "/ledgers/898826/effects{?cursor,limit,order}");
-  assert(ledger.links.operations.href== "/ledgers/898826/operations{?cursor,limit,order}");
-  assert(ledger.links.self.href== "/ledgers/898826");
-  assert(ledger.links.transactions.href == "/ledgers/898826/transactions{?cursor,limit,order}");
+  assert(ledger.maxTxSetSize == 50);
+  assert(ledger.protocolVersion == 10);
+  assert(ledger.headerXdr ==
+      "AAAACvkxR60p1bwRO3PdsRy48pkWVtuyF08xyvB3jU7u437r9tK/G7DoXa+J8N5ptWhpHGrc/" +
+          "a+5k9Ak3kHnZSAaiPgAAAAAW4aHyQAAAAAAAAAAyz4xx/YIt7Z9PLeCHj/ZrFGcDaNSJpQX+jpL1IX3uqSCiFrU4CFidqxjmmJzXNWN1rY4cBwliHN21hicu/" +
+          "JyawCkgzIOdhy8pVTcbQA+gekx1NpNAAAA2QAAAAAACsLiAAAAZABMS0AAAAAykmy96ckoDVk3UDBm7B4n8oC6+cdCxGDnWu7tO6aU34xipth5GRNy+I5Y8m+E/" +
+          "bHlElCDX2J8y6kuKr7yU6xvyjMb9nwaii7EHN74adNyyUuselmxQcKfEVf/tj3j5l9yOMqgE05NDyU0+LycHY47062IWxvG0o2yDaaxp2Z72pwAAAAA");
+  assert(ledger.links.effects.href ==
+      "/ledgers/898826/effects{?cursor,limit,order}");
+  assert(ledger.links.operations.href ==
+      "/ledgers/898826/operations{?cursor,limit,order}");
+  assert(ledger.links.self.href == "/ledgers/898826");
+  assert(ledger.links.transactions.href ==
+      "/ledgers/898826/transactions{?cursor,limit,order}");
 }
 
 void testLedgerPageDeserialize() {
-
   String jsonData = "{\n" +
       "  \"_embedded\": {\n" +
       "    \"records\": [\n" +
@@ -1154,18 +1182,22 @@ void testLedgerPageDeserialize() {
       "  }\n" +
       "}";
 
-  Page<LedgerResponse> ledgersPage = Page<LedgerResponse>.fromJson(json.decode(jsonData));
+  Page<LedgerResponse> ledgersPage =
+      Page<LedgerResponse>.fromJson(json.decode(jsonData));
 
-  assert(ledgersPage.records[0].hash == "f6fc9a29b5ecec90348e17a10a60e019c5cb8ea24f66a1063e92c13391b09b8d");
+  assert(ledgersPage.records[0].hash ==
+      "f6fc9a29b5ecec90348e17a10a60e019c5cb8ea24f66a1063e92c13391b09b8d");
   assert(ledgersPage.records[0].pagingToken == "3862202096287744");
-  assert(ledgersPage.records[9].hash == "8552b7d130e602ed068bcfec729b3056d0c8b94d77f06d91cd1ec8323c2d6177");
-  assert(ledgersPage.links.next.href== "/ledgers?order=desc&limit=10&cursor=3862163441582080");
-  assert(ledgersPage.links.prev.href == "/ledgers?order=asc&limit=10&cursor=3862202096287744");
+  assert(ledgersPage.records[9].hash ==
+      "8552b7d130e602ed068bcfec729b3056d0c8b94d77f06d91cd1ec8323c2d6177");
+  assert(ledgersPage.links.next.href ==
+      "/ledgers?order=desc&limit=10&cursor=3862163441582080");
+  assert(ledgersPage.links.prev.href ==
+      "/ledgers?order=asc&limit=10&cursor=3862202096287744");
   assert(ledgersPage.links.self.href == "/ledgers?order=desc&limit=10&cursor=");
 }
 
 void testOfferPageDeserialize() {
-
   String jsonData = "{\n" +
       "  \"_links\": {\n" +
       "    \"self\": {\n" +
@@ -1213,23 +1245,35 @@ void testOfferPageDeserialize() {
       "  }\n" +
       "}";
 
-  Page<OfferResponse> transactionsPage = Page<OfferResponse>.fromJson(json.decode(jsonData));
+  Page<OfferResponse> transactionsPage =
+      Page<OfferResponse>.fromJson(json.decode(jsonData));
 
   assert(transactionsPage.records[0].id == 241);
-  assert(transactionsPage.records[0].seller.accountId == "GA2IYMIZSAMDD6QQTTSIEL73H2BKDJQTA7ENDEEAHJ3LMVF7OYIZPXQD");
+  assert(transactionsPage.records[0].seller.accountId ==
+      "GA2IYMIZSAMDD6QQTTSIEL73H2BKDJQTA7ENDEEAHJ3LMVF7OYIZPXQD");
   assert(transactionsPage.records[0].pagingToken == "241");
-  assert(transactionsPage.records[0].selling== Asset.createNonNativeAsset("INR", KeyPair.fromAccountId("GA2IYMIZSAMDD6QQTTSIEL73H2BKDJQTA7ENDEEAHJ3LMVF7OYIZPXQD")));
-  assert(transactionsPage.records[0].buying == Asset.createNonNativeAsset("USD", KeyPair.fromAccountId("GA2IYMIZSAMDD6QQTTSIEL73H2BKDJQTA7ENDEEAHJ3LMVF7OYIZPXQD")));
+  assert(transactionsPage.records[0].selling ==
+      Asset.createNonNativeAsset(
+          "INR",
+          KeyPair.fromAccountId(
+              "GA2IYMIZSAMDD6QQTTSIEL73H2BKDJQTA7ENDEEAHJ3LMVF7OYIZPXQD")));
+  assert(transactionsPage.records[0].buying ==
+      Asset.createNonNativeAsset(
+          "USD",
+          KeyPair.fromAccountId(
+              "GA2IYMIZSAMDD6QQTTSIEL73H2BKDJQTA7ENDEEAHJ3LMVF7OYIZPXQD")));
   assert(transactionsPage.records[0].amount == "10.0000000");
   assert(transactionsPage.records[0].price == "11.0000000");
 
-  assert(transactionsPage.links.next.href == "https://horizon-testnet.stellar.org/accounts/GA2IYMIZSAMDD6QQTTSIEL73H2BKDJQTA7ENDEEAHJ3LMVF7OYIZPXQD/offers?order=asc&limit=10&cursor=241");
-  assert(transactionsPage.links.prev.href == "https://horizon-testnet.stellar.org/accounts/GA2IYMIZSAMDD6QQTTSIEL73H2BKDJQTA7ENDEEAHJ3LMVF7OYIZPXQD/offers?order=desc&limit=10&cursor=241");
-  assert(transactionsPage.links.self.href == "https://horizon-testnet.stellar.org/accounts/GA2IYMIZSAMDD6QQTTSIEL73H2BKDJQTA7ENDEEAHJ3LMVF7OYIZPXQD/offers?order=asc&limit=10&cursor=");
+  assert(transactionsPage.links.next.href ==
+      "https://horizon-testnet.stellar.org/accounts/GA2IYMIZSAMDD6QQTTSIEL73H2BKDJQTA7ENDEEAHJ3LMVF7OYIZPXQD/offers?order=asc&limit=10&cursor=241");
+  assert(transactionsPage.links.prev.href ==
+      "https://horizon-testnet.stellar.org/accounts/GA2IYMIZSAMDD6QQTTSIEL73H2BKDJQTA7ENDEEAHJ3LMVF7OYIZPXQD/offers?order=desc&limit=10&cursor=241");
+  assert(transactionsPage.links.self.href ==
+      "https://horizon-testnet.stellar.org/accounts/GA2IYMIZSAMDD6QQTTSIEL73H2BKDJQTA7ENDEEAHJ3LMVF7OYIZPXQD/offers?order=asc&limit=10&cursor=");
 }
 
 void testOperationsPageDeserialize() {
-
   String jsonData = "{\n" +
       "  \"_links\": {\n" +
       "    \"self\": {\n" +
@@ -1268,7 +1312,7 @@ void testOperationsPageDeserialize() {
       "        \"type\": \"create_account\",\n" +
       "        \"type_i\": 0,\n" +
       "        \"created_at\": \"2018-01-22T21:30:53Z\",\n" +
-      "        \"transaction_hash\": \"dd9d10c80a344f4464df3ecaa63705a5ef4a0533ff2f2099d5ef371ab5e1c046\","+
+      "        \"transaction_hash\": \"dd9d10c80a344f4464df3ecaa63705a5ef4a0533ff2f2099d5ef371ab5e1c046\"," +
       "        \"starting_balance\": \"10000.0\",\n" +
       "        \"funder\": \"GBS43BF24ENNS3KPACUZVKK2VYPOZVBQO2CISGZ777RYGOPYC2FT6S3K\",\n" +
       "        \"account\": \"GDFH4NIYMIIAKRVEJJZOIGWKXGQUF3XHJG6ZM6CEA64AMTVDN44LHOQE\"\n" +
@@ -1522,25 +1566,32 @@ void testOperationsPageDeserialize() {
       "  }\n" +
       "}";
 
-  Page<OperationResponse> operationsPage = Page<OperationResponse>.fromJson(json.decode(jsonData));
+  Page<OperationResponse> operationsPage =
+      Page<OperationResponse>.fromJson(json.decode(jsonData));
 
-  CreateAccountOperationResponse createAccountOperation = operationsPage.records[0] as CreateAccountOperationResponse;
+  CreateAccountOperationResponse createAccountOperation =
+      operationsPage.records[0] as CreateAccountOperationResponse;
   assert(createAccountOperation.startingBalance == "10000.0");
   assert(createAccountOperation.pagingToken == "3717508943056897");
-  assert(createAccountOperation.account.accountId == "GDFH4NIYMIIAKRVEJJZOIGWKXGQUF3XHJG6ZM6CEA64AMTVDN44LHOQE");
-  assert(createAccountOperation.funder.accountId == "GBS43BF24ENNS3KPACUZVKK2VYPOZVBQO2CISGZ777RYGOPYC2FT6S3K");
+  assert(createAccountOperation.account.accountId ==
+      "GDFH4NIYMIIAKRVEJJZOIGWKXGQUF3XHJG6ZM6CEA64AMTVDN44LHOQE");
+  assert(createAccountOperation.funder.accountId ==
+      "GBS43BF24ENNS3KPACUZVKK2VYPOZVBQO2CISGZ777RYGOPYC2FT6S3K");
   assert(createAccountOperation.createdAt == "2018-01-22T21:30:53Z");
-  assert(createAccountOperation.transactionHash == "dd9d10c80a344f4464df3ecaa63705a5ef4a0533ff2f2099d5ef371ab5e1c046");
+  assert(createAccountOperation.transactionHash ==
+      "dd9d10c80a344f4464df3ecaa63705a5ef4a0533ff2f2099d5ef371ab5e1c046");
 
-  PaymentOperationResponse paymentOperation = operationsPage.records[4] as PaymentOperationResponse;
+  PaymentOperationResponse paymentOperation =
+      operationsPage.records[4] as PaymentOperationResponse;
   assert(paymentOperation.amount == "10.123");
   assert(paymentOperation.asset == new AssetTypeNative());
-  assert(paymentOperation.from.accountId == "GCYK67DDGBOANS6UODJ62QWGLEB2A7JQ3XUV25HCMLT7CI23PMMK3W6R");
-  assert(paymentOperation.to.accountId == "GBRPYHIL2CI3FNQ4BXLFMNDLFJUNPU2HY3ZMFSHONUCEOASW7QC7OX2H");
+  assert(paymentOperation.from.accountId ==
+      "GCYK67DDGBOANS6UODJ62QWGLEB2A7JQ3XUV25HCMLT7CI23PMMK3W6R");
+  assert(paymentOperation.to.accountId ==
+      "GBRPYHIL2CI3FNQ4BXLFMNDLFJUNPU2HY3ZMFSHONUCEOASW7QC7OX2H");
 }
 
 void testOrderBookDeserialize() {
-
   String jsonData = "{\n" +
       "  \"bids\": [\n" +
       "    {\n" +
@@ -1868,10 +1919,15 @@ void testOrderBookDeserialize() {
       "  }\n" +
       "}";
 
-  OrderBookResponse orderBook = OrderBookResponse.fromJson(json.decode(jsonData));
+  OrderBookResponse orderBook =
+      OrderBookResponse.fromJson(json.decode(jsonData));
 
   assert(orderBook.base == new AssetTypeNative());
-  assert(orderBook.counter == Asset.createNonNativeAsset("DEMO", KeyPair.fromAccountId("GBAMBOOZDWZPVV52RCLJQYMQNXOBLOXWNQAY2IF2FREV2WL46DBCH3BE")));
+  assert(orderBook.counter ==
+      Asset.createNonNativeAsset(
+          "DEMO",
+          KeyPair.fromAccountId(
+              "GBAMBOOZDWZPVV52RCLJQYMQNXOBLOXWNQAY2IF2FREV2WL46DBCH3BE")));
 
   assert(orderBook.bids[0].amount == "31.4007644");
   assert(orderBook.bids[0].price == "0.0024224");
@@ -1888,8 +1944,7 @@ void testOrderBookDeserialize() {
   assert(orderBook.asks[1].price == "0.0025093");
 }
 
-void testPathsPageDeserialize()  {
-
+void testPathsPageDeserialize() {
   String jsonData = "{\n" +
       "    \"_embedded\": {\n" +
       "        \"records\": [\n" +
@@ -1951,32 +2006,68 @@ void testPathsPageDeserialize()  {
       "    }\n" +
       "}";
 
-  Page<PathResponse> pathsPage = Page<PathResponse>.fromJson(json.decode(jsonData));
+  Page<PathResponse> pathsPage =
+      Page<PathResponse>.fromJson(json.decode(jsonData));
 
   assert(pathsPage.records[0].destinationAmount == "20.0000000");
-  assert(pathsPage.records[0].destinationAsset== Asset.createNonNativeAsset("EUR", KeyPair.fromAccountId("GDSBCQO34HWPGUGQSP3QBFEXVTSR2PW46UIGTHVWGWJGQKH3AFNHXHXN")));
+  assert(pathsPage.records[0].destinationAsset ==
+      Asset.createNonNativeAsset(
+          "EUR",
+          KeyPair.fromAccountId(
+              "GDSBCQO34HWPGUGQSP3QBFEXVTSR2PW46UIGTHVWGWJGQKH3AFNHXHXN")));
   assert(pathsPage.records[0].path.length == 0);
   assert(pathsPage.records[0].sourceAmount == "30.0000000");
-  assert(pathsPage.records[0].sourceAsset == Asset.createNonNativeAsset("USD", KeyPair.fromAccountId("GDSBCQO34HWPGUGQSP3QBFEXVTSR2PW46UIGTHVWGWJGQKH3AFNHXHXN")));
-  
+  assert(pathsPage.records[0].sourceAsset ==
+      Asset.createNonNativeAsset(
+          "USD",
+          KeyPair.fromAccountId(
+              "GDSBCQO34HWPGUGQSP3QBFEXVTSR2PW46UIGTHVWGWJGQKH3AFNHXHXN")));
+
   assert(pathsPage.records[1].destinationAmount == "50.0000000");
-  assert(pathsPage.records[1].destinationAsset == Asset.createNonNativeAsset("EUR", KeyPair.fromAccountId("GBFMFKDUFYYITWRQXL4775CVUV3A3WGGXNJUAP4KTXNEQ2HG7JRBITGH")));
+  assert(pathsPage.records[1].destinationAsset ==
+      Asset.createNonNativeAsset(
+          "EUR",
+          KeyPair.fromAccountId(
+              "GBFMFKDUFYYITWRQXL4775CVUV3A3WGGXNJUAP4KTXNEQ2HG7JRBITGH")));
   assert(pathsPage.records[1].path.length == 1);
-  assert(pathsPage.records[1].path[0] == Asset.createNonNativeAsset("GBP", KeyPair.fromAccountId("GDSBCQO34HWPGUGQSP3QBFEXVTSR2PW46UIGTHVWGWJGQKH3AFNHXHXN")));
+  assert(pathsPage.records[1].path[0] ==
+      Asset.createNonNativeAsset(
+          "GBP",
+          KeyPair.fromAccountId(
+              "GDSBCQO34HWPGUGQSP3QBFEXVTSR2PW46UIGTHVWGWJGQKH3AFNHXHXN")));
   assert(pathsPage.records[1].sourceAmount == "60.0000000");
-  assert(pathsPage.records[1].sourceAsset == Asset.createNonNativeAsset("USD", KeyPair.fromAccountId("GBRAOXQDNQZRDIOK64HZI4YRDTBFWNUYH3OIHQLY4VEK5AIGMQHCLGXI")));
-  
+  assert(pathsPage.records[1].sourceAsset ==
+      Asset.createNonNativeAsset(
+          "USD",
+          KeyPair.fromAccountId(
+              "GBRAOXQDNQZRDIOK64HZI4YRDTBFWNUYH3OIHQLY4VEK5AIGMQHCLGXI")));
+
   assert(pathsPage.records[2].destinationAmount == "200.0000000");
-  assert(pathsPage.records[2].destinationAsset == Asset.createNonNativeAsset("EUR", KeyPair.fromAccountId("GBRCOBK7C7UE72PB5JCPQU3ZI45ZCEM7HKQ3KYV3YD3XB7EBOPBEDN2G")));
+  assert(pathsPage.records[2].destinationAsset ==
+      Asset.createNonNativeAsset(
+          "EUR",
+          KeyPair.fromAccountId(
+              "GBRCOBK7C7UE72PB5JCPQU3ZI45ZCEM7HKQ3KYV3YD3XB7EBOPBEDN2G")));
   assert(pathsPage.records[2].path.length == 2);
-  assert(pathsPage.records[2].path[0] == Asset.createNonNativeAsset("GBP", KeyPair.fromAccountId("GAX7B3ZT3EOZW5POAMV4NGPPKCYUOYW2QQDIAF23JAXF72NMGRYPYOPM")));
-  assert(pathsPage.records[2].path[1] == Asset.createNonNativeAsset("PLN", KeyPair.fromAccountId("GACWIA2XGDFWWN3WKPX63JTK4S2J5NDPNOIVYMZY6RVTS7LWF2VHZLV3")));
+  assert(pathsPage.records[2].path[0] ==
+      Asset.createNonNativeAsset(
+          "GBP",
+          KeyPair.fromAccountId(
+              "GAX7B3ZT3EOZW5POAMV4NGPPKCYUOYW2QQDIAF23JAXF72NMGRYPYOPM")));
+  assert(pathsPage.records[2].path[1] ==
+      Asset.createNonNativeAsset(
+          "PLN",
+          KeyPair.fromAccountId(
+              "GACWIA2XGDFWWN3WKPX63JTK4S2J5NDPNOIVYMZY6RVTS7LWF2VHZLV3")));
   assert(pathsPage.records[2].sourceAmount == "300.0000000");
-  assert(pathsPage.records[2].sourceAsset == Asset.createNonNativeAsset("USD", KeyPair.fromAccountId("GC7J5IHS3GABSX7AZLRINXWLHFTL3WWXLU4QX2UGSDEAIAQW2Q72U3KH")));
+  assert(pathsPage.records[2].sourceAsset ==
+      Asset.createNonNativeAsset(
+          "USD",
+          KeyPair.fromAccountId(
+              "GC7J5IHS3GABSX7AZLRINXWLHFTL3WWXLU4QX2UGSDEAIAQW2Q72U3KH")));
 }
 
 void testRootDeserialize() {
-
   String jsonData = "{\n" +
       "  \"_links\": {\n" +
       "    \"account\": {\n" +
@@ -2026,11 +2117,13 @@ void testRootDeserialize() {
   RootResponse root = RootResponse.fromJson(json.decode(jsonData));
 
   assert(root.horizonVersion == "snapshot-c5fe0ff");
-  assert(root.stellarCoreVersion == "stellar-core 9.2.0 (7561c1d53366ec79b908de533726269e08474f77)");
+  assert(root.stellarCoreVersion ==
+      "stellar-core 9.2.0 (7561c1d53366ec79b908de533726269e08474f77)");
   assert(root.historyLatestLedger == 18369116);
   assert(root.historyElderLedger == 1);
   assert(root.coreLatestLedger == 18369117);
-  assert(root.networkPassphrase == "Public Global Stellar Network ; September 2015");
+  assert(root.networkPassphrase ==
+      "Public Global Stellar Network ; September 2015");
   assert(root.protocolVersion == 9);
 }
 
@@ -2050,11 +2143,14 @@ void testSubmitTransactionResponseDeserializeTransactionFailureResponse() {
       "  }\n" +
       "}";
 
-  SubmitTransactionResponse submitTransactionResponse = SubmitTransactionResponse.fromJson(json.decode(jsonData));
+  SubmitTransactionResponse submitTransactionResponse =
+      SubmitTransactionResponse.fromJson(json.decode(jsonData));
   assert(submitTransactionResponse.success == false);
-  assert(submitTransactionResponse.envelopeXdr == "AAAAAKpmDL6Z4hvZmkTBkYpHftan4ogzTaO4XTB7joLgQnYYAAAAZAAAAAAABeoyAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAD3sEVVGZGi/NoC3ta/8f/YZKMzyi9ZJpOi0H47x7IqYAAAAAAAAAAAF9eEAAAAAAAAAAAA=");
+  assert(submitTransactionResponse.envelopeXdr ==
+      "AAAAAKpmDL6Z4hvZmkTBkYpHftan4ogzTaO4XTB7joLgQnYYAAAAZAAAAAAABeoyAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAD3sEVVGZGi/NoC3ta/8f/YZKMzyi9ZJpOi0H47x7IqYAAAAAAAAAAAF9eEAAAAAAAAAAAA=");
   assert(submitTransactionResponse.resultXdr == "AAAAAAAAAAD////4AAAAAA==");
-  assert(submitTransactionResponse.extras.resultCodes.transactionResultCode == "tx_no_source_account");
+  assert(submitTransactionResponse.extras.resultCodes.transactionResultCode ==
+      "tx_no_source_account");
 }
 
 void testSubmitTransactionResponseDeserializeOperationFailureResponse() {
@@ -2076,12 +2172,18 @@ void testSubmitTransactionResponseDeserializeOperationFailureResponse() {
       "  }\n" +
       "}";
 
-  SubmitTransactionResponse submitTransactionResponse = SubmitTransactionResponse.fromJson(json.decode(jsonData));
+  SubmitTransactionResponse submitTransactionResponse =
+      SubmitTransactionResponse.fromJson(json.decode(jsonData));
   assert(submitTransactionResponse.success == false);
-  assert(submitTransactionResponse.envelopeXdr == "AAAAAF2O0axA67+p2jMunG6G188kDSHIvqQ13d9l29YCSA/uAAAAZAAvvc0AAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAD3sEVVGZGi/NoC3ta/8f/YZKMzyi9ZJpOi0H47x7IqYAAAAAAAAAAAF9eEAAAAAAAAAAAECSA/uAAAAQFuZVAjftHa+JZes1VxSk8naOfjjAz9V86mY1AZf8Ik6PtTsBpDsCfG57EYsq4jWyZcT+vhXyWsw5evF1ELqMw4=");
-  assert(submitTransactionResponse.resultXdr == "AAAAAAAAAGT/////AAAAAQAAAAAAAAAB////+wAAAAA=");
-  assert(submitTransactionResponse.extras.resultCodes.transactionResultCode == "tx_failed");
-  assert(submitTransactionResponse.extras.resultCodes.operationsResultCodes[0] == "op_no_destination");
+  assert(submitTransactionResponse.envelopeXdr ==
+      "AAAAAF2O0axA67+p2jMunG6G188kDSHIvqQ13d9l29YCSA/uAAAAZAAvvc0AAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAD3sEVVGZGi/NoC3ta/8f/YZKMzyi9ZJpOi0H47x7IqYAAAAAAAAAAAF9eEAAAAAAAAAAAECSA/uAAAAQFuZVAjftHa+JZes1VxSk8naOfjjAz9V86mY1AZf8Ik6PtTsBpDsCfG57EYsq4jWyZcT+vhXyWsw5evF1ELqMw4=");
+  assert(submitTransactionResponse.resultXdr ==
+      "AAAAAAAAAGT/////AAAAAQAAAAAAAAAB////+wAAAAA=");
+  assert(submitTransactionResponse.extras.resultCodes.transactionResultCode ==
+      "tx_failed");
+  assert(
+      submitTransactionResponse.extras.resultCodes.operationsResultCodes[0] ==
+          "op_no_destination");
 }
 
 void testSubmitTransactionResponseDeserializeSuccessResponse() {
@@ -2098,12 +2200,16 @@ void testSubmitTransactionResponseDeserializeSuccessResponse() {
       "  \"result_meta_xdr\": \"AAAAAAAAAAEAAAACAAAAAAAvoHwAAAACAAAAADSMMRmQGDH6EJzkgi/7PoKhphMHyNGQgDp2tlS/dhGXAAAAAAAAAPEAAAABSU5SAAAAAAA0jDEZkBgx+hCc5IIv+z6CoaYTB8jRkIA6drZUv3YRlwAAAAFVU0QAAAAAADSMMRmQGDH6EJzkgi/7PoKhphMHyNGQgDp2tlS/dhGXAAAAAAX14QAAAAAKAAAAAQAAAAAAAAAAAAAAAAAAAAEAL6B8AAAAAAAAAAA0jDEZkBgx+hCc5IIv+z6CoaYTB8jRkIA6drZUv3YRlwAAABZ9zvNAABPdNQAAADAAAAAEAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA==\"\n" +
       "}";
 
-  SubmitTransactionResponse submitTransactionResponse = SubmitTransactionResponse.fromJson(json.decode(jsonData));
+  SubmitTransactionResponse submitTransactionResponse =
+      SubmitTransactionResponse.fromJson(json.decode(jsonData));
   assert(submitTransactionResponse.success == true);
-  assert(submitTransactionResponse.hash == "ee14b93fcd31d4cfe835b941a0a8744e23a6677097db1fafe0552d8657bed940");
+  assert(submitTransactionResponse.hash ==
+      "ee14b93fcd31d4cfe835b941a0a8744e23a6677097db1fafe0552d8657bed940");
   assert(submitTransactionResponse.ledger == 3128812);
-  assert(submitTransactionResponse.envelopeXdr == "AAAAADSMMRmQGDH6EJzkgi/7PoKhphMHyNGQgDp2tlS/dhGXAAAAZAAT3TUAAAAwAAAAAAAAAAAAAAABAAAAAAAAAAMAAAABSU5SAAAAAAA0jDEZkBgx+hCc5IIv+z6CoaYTB8jRkIA6drZUv3YRlwAAAAFVU0QAAAAAADSMMRmQGDH6EJzkgi/7PoKhphMHyNGQgDp2tlS/dhGXAAAAAAX14QAAAAAKAAAAAQAAAAAAAAAAAAAAAAAAAAG/dhGXAAAAQLuStfImg0OeeGAQmvLkJSZ1MPSkCzCYNbGqX5oYNuuOqZ5SmWhEsC7uOD9ha4V7KengiwNlc0oMNqBVo22S7gk=");
-  assert(submitTransactionResponse.resultXdr == "AAAAAAAAAGQAAAAAAAAAAQAAAAAAAAADAAAAAAAAAAAAAAAAAAAAADSMMRmQGDH6EJzkgi/7PoKhphMHyNGQgDp2tlS/dhGXAAAAAAAAAPEAAAABSU5SAAAAAAA0jDEZkBgx+hCc5IIv+z6CoaYTB8jRkIA6drZUv3YRlwAAAAFVU0QAAAAAADSMMRmQGDH6EJzkgi/7PoKhphMHyNGQgDp2tlS/dhGXAAAAAAX14QAAAAAKAAAAAQAAAAAAAAAAAAAAAA==");
+  assert(submitTransactionResponse.envelopeXdr ==
+      "AAAAADSMMRmQGDH6EJzkgi/7PoKhphMHyNGQgDp2tlS/dhGXAAAAZAAT3TUAAAAwAAAAAAAAAAAAAAABAAAAAAAAAAMAAAABSU5SAAAAAAA0jDEZkBgx+hCc5IIv+z6CoaYTB8jRkIA6drZUv3YRlwAAAAFVU0QAAAAAADSMMRmQGDH6EJzkgi/7PoKhphMHyNGQgDp2tlS/dhGXAAAAAAX14QAAAAAKAAAAAQAAAAAAAAAAAAAAAAAAAAG/dhGXAAAAQLuStfImg0OeeGAQmvLkJSZ1MPSkCzCYNbGqX5oYNuuOqZ5SmWhEsC7uOD9ha4V7KengiwNlc0oMNqBVo22S7gk=");
+  assert(submitTransactionResponse.resultXdr ==
+      "AAAAAAAAAGQAAAAAAAAAAQAAAAAAAAADAAAAAAAAAAAAAAAAAAAAADSMMRmQGDH6EJzkgi/7PoKhphMHyNGQgDp2tlS/dhGXAAAAAAAAAPEAAAABSU5SAAAAAAA0jDEZkBgx+hCc5IIv+z6CoaYTB8jRkIA6drZUv3YRlwAAAAFVU0QAAAAAADSMMRmQGDH6EJzkgi/7PoKhphMHyNGQgDp2tlS/dhGXAAAAAAX14QAAAAAKAAAAAQAAAAAAAAAAAAAAAA==");
   assert(submitTransactionResponse.getOfferIdFromResult(0) == 241);
 }
 
@@ -2121,13 +2227,13 @@ void testSubmitTransactionResponseDeserializeNoOfferID() {
       "  \"result_meta_xdr\": \"AAAAAAAAAAEAAAACAAAAAAAvoHwAAAACAAAAADSMMRmQGDH6EJzkgi/7PoKhphMHyNGQgDp2tlS/dhGXAAAAAAAAAPEAAAABSU5SAAAAAAA0jDEZkBgx+hCc5IIv+z6CoaYTB8jRkIA6drZUv3YRlwAAAAFVU0QAAAAAADSMMRmQGDH6EJzkgi/7PoKhphMHyNGQgDp2tlS/dhGXAAAAAAX14QAAAAAKAAAAAQAAAAAAAAAAAAAAAAAAAAEAL6B8AAAAAAAAAAA0jDEZkBgx+hCc5IIv+z6CoaYTB8jRkIA6drZUv3YRlwAAABZ9zvNAABPdNQAAADAAAAAEAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA==\"\n" +
       "}";
 
-  SubmitTransactionResponse submitTransactionResponse = SubmitTransactionResponse.fromJson(json.decode(jsonData));
+  SubmitTransactionResponse submitTransactionResponse =
+      SubmitTransactionResponse.fromJson(json.decode(jsonData));
   assert(submitTransactionResponse.success == true);
   assert(submitTransactionResponse.getOfferIdFromResult(0) == null);
 }
 
 void testTradeAggregationsPageDeserialize() {
-
   String jsonData = "{\n" +
       "  \"_links\": {\n" +
       "    \"self\": {\n" +
@@ -2176,10 +2282,13 @@ void testTradeAggregationsPageDeserialize() {
       "  }\n" +
       "}";
 
-  Page<TradeAggregationResponse> page = Page<TradeAggregationResponse>.fromJson(json.decode(jsonData));
+  Page<TradeAggregationResponse> page =
+      Page<TradeAggregationResponse>.fromJson(json.decode(jsonData));
 
-  assert(page.links.self.href == "https://horizon.stellar.org/trade_aggregations?base_asset_type=native&start_time=1512689100000&counter_asset_issuer=GATEMHCCKCY67ZUCKTROYN24ZYT5GK4EQZ65JJLDHKHRUZI3EUEKMTCH&limit=200&end_time=1512775500000&counter_asset_type=credit_alphanum4&resolution=300000&order=asc&counter_asset_code=BTC");
-  assert(page.links.next.href == "https://horizon.stellar.org/trade_aggregations?base_asset_type=native&counter_asset_code=BTC&counter_asset_issuer=GATEMHCCKCY67ZUCKTROYN24ZYT5GK4EQZ65JJLDHKHRUZI3EUEKMTCH&counter_asset_type=credit_alphanum4&end_time=1512775500000&limit=200&order=asc&resolution=300000&start_time=1512765000000");
+  assert(page.links.self.href ==
+      "https://horizon.stellar.org/trade_aggregations?base_asset_type=native&start_time=1512689100000&counter_asset_issuer=GATEMHCCKCY67ZUCKTROYN24ZYT5GK4EQZ65JJLDHKHRUZI3EUEKMTCH&limit=200&end_time=1512775500000&counter_asset_type=credit_alphanum4&resolution=300000&order=asc&counter_asset_code=BTC");
+  assert(page.links.next.href ==
+      "https://horizon.stellar.org/trade_aggregations?base_asset_type=native&counter_asset_code=BTC&counter_asset_issuer=GATEMHCCKCY67ZUCKTROYN24ZYT5GK4EQZ65JJLDHKHRUZI3EUEKMTCH&counter_asset_type=credit_alphanum4&end_time=1512775500000&limit=200&order=asc&resolution=300000&start_time=1512765000000");
 
   assert(page.records[0].timestamp == 1512731100000);
   assert(page.records[0].tradeCount == 2);
@@ -2193,7 +2302,6 @@ void testTradeAggregationsPageDeserialize() {
 }
 
 void testTradesPageDeserialize() {
-
   String jsonData = "{\n" +
       "  \"_links\": {\n" +
       "    \"self\": {\n" +
@@ -2543,31 +2651,38 @@ void testTradesPageDeserialize() {
       "    ]\n" +
       "  }\n" +
       "}";
-  
-  Page<TradeResponse> tradesPage = Page<TradeResponse>.fromJson(json.decode(jsonData));
 
-  assert(tradesPage.links.next.href == "https://horizon.stellar.org/trades?cursor=3748308153536513-0&limit=10&order=asc");
-  assert(tradesPage.links.prev.href == "https://horizon.stellar.org/trades?cursor=3697472920621057-0&limit=10&order=desc");
-  assert(tradesPage.links.self.href == "https://horizon.stellar.org/trades?cursor=&limit=10&order=asc");
+  Page<TradeResponse> tradesPage =
+      Page<TradeResponse>.fromJson(json.decode(jsonData));
+
+  assert(tradesPage.links.next.href ==
+      "https://horizon.stellar.org/trades?cursor=3748308153536513-0&limit=10&order=asc");
+  assert(tradesPage.links.prev.href ==
+      "https://horizon.stellar.org/trades?cursor=3697472920621057-0&limit=10&order=desc");
+  assert(tradesPage.links.self.href ==
+      "https://horizon.stellar.org/trades?cursor=&limit=10&order=asc");
 
   assert(tradesPage.records[0].id == "3697472920621057-0");
   assert(tradesPage.records[0].pagingToken == "3697472920621057-0");
   assert(tradesPage.records[0].ledgerCloseTime == "2015-11-18T03:47:47Z");
   assert(tradesPage.records[0].offerId == "9");
-  assert(tradesPage.records[0].baseOfferId ==  "10");
+  assert(tradesPage.records[0].baseOfferId == "10");
   assert(tradesPage.records[0].counterOfferId == "11");
 
   assert(tradesPage.records[0].baseAsset == new AssetTypeNative());
-  assert(tradesPage.records[0].counterAsset == Asset.createNonNativeAsset("JPY", KeyPair.fromAccountId("GBVAOIACNSB7OVUXJYC5UE2D4YK2F7A24T7EE5YOMN4CE6GCHUTOUQXM")));
+  assert(tradesPage.records[0].counterAsset ==
+      Asset.createNonNativeAsset(
+          "JPY",
+          KeyPair.fromAccountId(
+              "GBVAOIACNSB7OVUXJYC5UE2D4YK2F7A24T7EE5YOMN4CE6GCHUTOUQXM")));
   assert(tradesPage.records[0].price.numerator == 267);
   assert(tradesPage.records[0].price.denominator == 1000);
 
-  assert(tradesPage.records[1].baseAccount.accountId == "GAVH5JM5OKXGMQDS7YPRJ4MQCPXJUGH26LYQPQJ4SOMOJ4SXY472ZM7G");
+  assert(tradesPage.records[1].baseAccount.accountId ==
+      "GAVH5JM5OKXGMQDS7YPRJ4MQCPXJUGH26LYQPQJ4SOMOJ4SXY472ZM7G");
 }
 
-
 void testTransactionDeserialize() {
-
   String jsonData = "{\n" +
       "  \"_links\": {\n" +
       "    \"account\": {\n" +
@@ -2613,34 +2728,46 @@ void testTransactionDeserialize() {
       "  ]\n" +
       "}";
 
-  TransactionResponse transaction = TransactionResponse.fromJson(json.decode(jsonData));
-  assert(transaction.hash == "5c2e4dad596941ef944d72741c8f8f1a4282f8f2f141e81d827f44bf365d626b");
+  TransactionResponse transaction =
+      TransactionResponse.fromJson(json.decode(jsonData));
+  assert(transaction.hash ==
+      "5c2e4dad596941ef944d72741c8f8f1a4282f8f2f141e81d827f44bf365d626b");
   assert(transaction.ledger == 915744);
-  assert(transaction.createdAt =="2015-11-20T17:01:28Z");
+  assert(transaction.createdAt == "2015-11-20T17:01:28Z");
   assert(transaction.pagingToken == "3933090531512320");
-  assert(transaction.sourceAccount.accountId == "GCUB7JL4APK7LKJ6MZF7Q2JTLHAGNBIUA7XIXD5SQTG52GQ2DAT6XZMK");
-  assert(transaction.sourceAccountSequence ==  2373051035426646);
+  assert(transaction.sourceAccount.accountId ==
+      "GCUB7JL4APK7LKJ6MZF7Q2JTLHAGNBIUA7XIXD5SQTG52GQ2DAT6XZMK");
+  assert(transaction.sourceAccountSequence == 2373051035426646);
   assert(transaction.feePaid == 100);
   assert(transaction.operationCount == 1);
-  assert(transaction.envelopeXdr == "AAAAAKgfpXwD1fWpPmZL+GkzWcBmhRQH7ouPsoTN3RoaGCfrAAAAZAAIbkcAAB9WAAAAAAAAAANRBBZE6D1qyGjISUGLY5Ldvp31PwAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAP1qe44j+i4uIT+arbD4QDQBt8ryEeJd7a0jskQ3nwDeAAAAAAAAAADA7RnarSzCwj3OT+M2btCMFpVBdqxJS+Sr00qBjtFv7gAAAABLCs/QAAAAAAAAAAEaGCfrAAAAQG/56Cj2J8W/KCZr+oC4sWND1CTGWfaccHNtuibQH8kZIb+qBSDY94g7hiaAXrlIeg9b7oz/XuP3x9MWYw2jtwM=");
-  assert(transaction.resultXdr == "AAAAAAAAAGQAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=");
-  assert(transaction.resultMetaXdr == "AAAAAAAAAAEAAAACAAAAAAAN+SAAAAAAAAAAAMDtGdqtLMLCPc5P4zZu0IwWlUF2rElL5KvTSoGO0W/uAAAAAEsKz9AADfkgAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAQAN+SAAAAAAAAAAAP1qe44j+i4uIT+arbD4QDQBt8ryEeJd7a0jskQ3nwDeAAHp6WMr55YACD1BAAAAHgAAAAoAAAAAAAAAAAAAAAABAAAAAAAACgAAAAARC07BokpLTOF+/vVKBwiAlop7hHGJTNeGGlY4MoPykwAAAAEAAAAAK+Lzfd3yDD+Ov0GbYu1g7SaIBrKZeBUxoCunkLuI7aoAAAABAAAAAERmsKL73CyLV/HvjyQCERDXXpWE70Xhyb6MR5qPO3yQAAAAAQAAAABSORGwAdyuanN3sNOHqNSpACyYdkUM3L8VafUu69EvEgAAAAEAAAAAeCzqJNkMM/jLvyuMIfyFHljBlLCtDyj17RMycPuNtRMAAAABAAAAAIEi4R7juq15ymL00DNlAddunyFT4FyUD4muC4t3bobdAAAAAQAAAACaNpLL5YMfjOTdXVEqrAh99LM12sN6He6pHgCRAa1f1QAAAAEAAAAAqB+lfAPV9ak+Zkv4aTNZwGaFFAfui4+yhM3dGhoYJ+sAAAABAAAAAMNJrEvdMg6M+M+n4BDIdzsVSj/ZI9SvAp7mOOsvAD/WAAAAAQAAAADbHA6xiKB1+G79mVqpsHMOleOqKa5mxDpP5KEp/Xdz9wAAAAEAAAAAAAAAAA==");
+  assert(transaction.envelopeXdr ==
+      "AAAAAKgfpXwD1fWpPmZL+GkzWcBmhRQH7ouPsoTN3RoaGCfrAAAAZAAIbkcAAB9WAAAAAAAAAANRBBZE6D1qyGjISUGLY5Ldvp31PwAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAP1qe44j+i4uIT+arbD4QDQBt8ryEeJd7a0jskQ3nwDeAAAAAAAAAADA7RnarSzCwj3OT+M2btCMFpVBdqxJS+Sr00qBjtFv7gAAAABLCs/QAAAAAAAAAAEaGCfrAAAAQG/56Cj2J8W/KCZr+oC4sWND1CTGWfaccHNtuibQH8kZIb+qBSDY94g7hiaAXrlIeg9b7oz/XuP3x9MWYw2jtwM=");
+  assert(
+      transaction.resultXdr == "AAAAAAAAAGQAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=");
+  assert(transaction.resultMetaXdr ==
+      "AAAAAAAAAAEAAAACAAAAAAAN+SAAAAAAAAAAAMDtGdqtLMLCPc5P4zZu0IwWlUF2rElL5KvTSoGO0W/uAAAAAEsKz9AADfkgAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAQAN+SAAAAAAAAAAAP1qe44j+i4uIT+arbD4QDQBt8ryEeJd7a0jskQ3nwDeAAHp6WMr55YACD1BAAAAHgAAAAoAAAAAAAAAAAAAAAABAAAAAAAACgAAAAARC07BokpLTOF+/vVKBwiAlop7hHGJTNeGGlY4MoPykwAAAAEAAAAAK+Lzfd3yDD+Ov0GbYu1g7SaIBrKZeBUxoCunkLuI7aoAAAABAAAAAERmsKL73CyLV/HvjyQCERDXXpWE70Xhyb6MR5qPO3yQAAAAAQAAAABSORGwAdyuanN3sNOHqNSpACyYdkUM3L8VafUu69EvEgAAAAEAAAAAeCzqJNkMM/jLvyuMIfyFHljBlLCtDyj17RMycPuNtRMAAAABAAAAAIEi4R7juq15ymL00DNlAddunyFT4FyUD4muC4t3bobdAAAAAQAAAACaNpLL5YMfjOTdXVEqrAh99LM12sN6He6pHgCRAa1f1QAAAAEAAAAAqB+lfAPV9ak+Zkv4aTNZwGaFFAfui4+yhM3dGhoYJ+sAAAABAAAAAMNJrEvdMg6M+M+n4BDIdzsVSj/ZI9SvAp7mOOsvAD/WAAAAAQAAAADbHA6xiKB1+G79mVqpsHMOleOqKa5mxDpP5KEp/Xdz9wAAAAEAAAAAAAAAAA==");
 
   assert(transaction.memo is MemoHash == true);
   MemoHash memo = transaction.memo as MemoHash;
-  assert("51041644e83d6ac868c849418b6392ddbe9df53f000000000000000000000000" == memo.hexValue);
+  assert("51041644e83d6ac868c849418b6392ddbe9df53f000000000000000000000000" ==
+      memo.hexValue);
 
-  assert(transaction.links.account.href == "/accounts/GCUB7JL4APK7LKJ6MZF7Q2JTLHAGNBIUA7XIXD5SQTG52GQ2DAT6XZMK");
-  assert(transaction.links.effects.href == "/transactions/5c2e4dad596941ef944d72741c8f8f1a4282f8f2f141e81d827f44bf365d626b/effects{?cursor,limit,order}");
+  assert(transaction.links.account.href ==
+      "/accounts/GCUB7JL4APK7LKJ6MZF7Q2JTLHAGNBIUA7XIXD5SQTG52GQ2DAT6XZMK");
+  assert(transaction.links.effects.href ==
+      "/transactions/5c2e4dad596941ef944d72741c8f8f1a4282f8f2f141e81d827f44bf365d626b/effects{?cursor,limit,order}");
   assert(transaction.links.ledger.href == "/ledgers/915744");
-  assert(transaction.links.operations.href == "/transactions/5c2e4dad596941ef944d72741c8f8f1a4282f8f2f141e81d827f44bf365d626b/operations{?cursor,limit,order}");
-  assert(transaction.links.precedes.href == "/transactions?cursor=3933090531512320&order=asc");
-  assert(transaction.links.self.href == "/transactions/5c2e4dad596941ef944d72741c8f8f1a4282f8f2f141e81d827f44bf365d626b");
-  assert(transaction.links.succeeds.href == "/transactions?cursor=3933090531512320&order=desc");
+  assert(transaction.links.operations.href ==
+      "/transactions/5c2e4dad596941ef944d72741c8f8f1a4282f8f2f141e81d827f44bf365d626b/operations{?cursor,limit,order}");
+  assert(transaction.links.precedes.href ==
+      "/transactions?cursor=3933090531512320&order=asc");
+  assert(transaction.links.self.href ==
+      "/transactions/5c2e4dad596941ef944d72741c8f8f1a4282f8f2f141e81d827f44bf365d626b");
+  assert(transaction.links.succeeds.href ==
+      "/transactions?cursor=3933090531512320&order=desc");
 }
 
 void testTransactionDeserializeWithoutMemo() {
-
   String jsonData = "{\n" +
       "  \"_links\": {\n" +
       "    \"account\": {\n" +
@@ -2685,15 +2812,12 @@ void testTransactionDeserializeWithoutMemo() {
       "  ]\n" +
       "}";
 
-  TransactionResponse transaction = TransactionResponse.fromJson(json.decode(jsonData));
+  TransactionResponse transaction =
+      TransactionResponse.fromJson(json.decode(jsonData));
   assert(transaction.memo is MemoNone == true);
 }
 
-
-
 void testTransactionPageDeserialize() {
-
-
   String jsonData = "{\n" +
       "  \"_embedded\": {\n" +
       "    \"records\": [\n" +
@@ -3145,29 +3269,34 @@ void testTransactionPageDeserialize() {
       "  }\n" +
       "}";
 
-  Page<TransactionResponse> transactionsPage = Page<TransactionResponse>.fromJson(json.decode(jsonData));
+  Page<TransactionResponse> transactionsPage =
+      Page<TransactionResponse>.fromJson(json.decode(jsonData));
 
-  assert(transactionsPage.records[0].sourceAccount.accountId == "GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7");
+  assert(transactionsPage.records[0].sourceAccount.accountId ==
+      "GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7");
   assert(transactionsPage.records[0].pagingToken == "12884905984");
   assert(transactionsPage.records[0].memo is MemoText);
   MemoText memoText = transactionsPage.records[0].memo as MemoText;
   assert(memoText.text == "hello world");
-  assert(transactionsPage.records[0].links.account.href == "/accounts/GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7");
-  assert(transactionsPage.records[9].sourceAccount.accountId == "GAENIE5LBJIXLMJIAJ7225IUPA6CX7EGHUXRX5FLCZFFAQSG2ZUYSWFK");
+  assert(transactionsPage.records[0].links.account.href ==
+      "/accounts/GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN7");
+  assert(transactionsPage.records[9].sourceAccount.accountId ==
+      "GAENIE5LBJIXLMJIAJ7225IUPA6CX7EGHUXRX5FLCZFFAQSG2ZUYSWFK");
 
   // Empty memo_text
   assert(transactionsPage.records[2].memo is MemoText);
   memoText = transactionsPage.records[2].memo as MemoText;
   assert(memoText.text == "");
 
-  assert(transactionsPage.links.next.href == "/transactions?order=asc&limit=10&cursor=81058917781504");
-  assert(transactionsPage.links.prev.href == "/transactions?order=desc&limit=10&cursor=12884905984");
-  assert(transactionsPage.links.self.href == "/transactions?order=asc&limit=10&cursor=");
+  assert(transactionsPage.links.next.href ==
+      "/transactions?order=asc&limit=10&cursor=81058917781504");
+  assert(transactionsPage.links.prev.href ==
+      "/transactions?order=desc&limit=10&cursor=12884905984");
+  assert(transactionsPage.links.self.href ==
+      "/transactions?order=asc&limit=10&cursor=");
 }
 
-
 void main() {
-
   testAccountDeserialize();
   testAccountDeserializeV9();
   testAccountsPageDeserialize();

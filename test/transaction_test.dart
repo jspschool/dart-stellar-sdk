@@ -95,8 +95,8 @@ void testBuilderTimeBounds() {
   transaction.sign(source);
 
 // Convert transaction to binary XDR and back again to make sure timebounds are correctly de/serialized.
-  XdrDataInputStream xdris = new XdrDataInputStream(
-      base64Decode(transaction.toEnvelopeXdrBase64()));
+  XdrDataInputStream xdris =
+      new XdrDataInputStream(base64Decode(transaction.toEnvelopeXdrBase64()));
 
   XdrTransaction decodedTransaction = XdrTransaction.decode(xdris);
 
@@ -135,8 +135,8 @@ void testBuilderTimeBoundsNoMaxTime() {
   transaction.sign(source);
 
 // Convert transaction to binary XDR and back again to make sure timebounds are correctly de/serialized.
-  XdrDataInputStream xdris = new XdrDataInputStream(
-      base64Decode(transaction.toEnvelopeXdrBase64()));
+  XdrDataInputStream xdris =
+      new XdrDataInputStream(base64Decode(transaction.toEnvelopeXdrBase64()));
   XdrTransaction decodedTransaction = XdrTransaction.decode(xdris);
 
   assert(decodedTransaction.timeBounds.minTime.uint64 == 42);

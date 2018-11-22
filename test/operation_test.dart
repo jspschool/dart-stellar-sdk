@@ -586,13 +586,17 @@ void testToXdrAmount() {
   try {
     Operation.toXdrAmount("0.00000001");
   } catch (exception) {
-    assert(exception.toString().contains("The decimal point cannot exceed seven digits."));
+    assert(exception
+        .toString()
+        .contains("The decimal point cannot exceed seven digits."));
   }
 
   try {
     Operation.toXdrAmount("72991284.30073811");
   } catch (exception) {
-    assert(exception.toString().contains("The decimal point cannot exceed seven digits."));
+    assert(exception
+        .toString()
+        .contains("The decimal point cannot exceed seven digits."));
   }
 }
 

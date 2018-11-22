@@ -32,7 +32,8 @@ class DataInput {
       int old_offset = _offset;
       _offset += numBytes;
       pad();
-      return Uint8List.fromList(data.getRange(old_offset, old_offset + numBytes).toList());
+      return Uint8List.fromList(
+          data.getRange(old_offset, old_offset + numBytes).toList());
     } else
       throw RangeError("Reached end of file");
   }

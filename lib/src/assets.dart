@@ -33,16 +33,16 @@ abstract class Asset {
       case XdrAssetType.ASSET_TYPE_NATIVE:
         return new AssetTypeNative();
       case XdrAssetType.ASSET_TYPE_CREDIT_ALPHANUM4:
-        String assetCode4 = Util.paddedByteArrayToString(
-            xdr_asset.alphaNum4.assetCode);
-        KeyPair issuer4 = KeyPair.fromXdrPublicKey(
-            xdr_asset.alphaNum4.issuer.accountID);
+        String assetCode4 =
+            Util.paddedByteArrayToString(xdr_asset.alphaNum4.assetCode);
+        KeyPair issuer4 =
+            KeyPair.fromXdrPublicKey(xdr_asset.alphaNum4.issuer.accountID);
         return AssetTypeCreditAlphaNum4(assetCode4, issuer4);
       case XdrAssetType.ASSET_TYPE_CREDIT_ALPHANUM12:
-        String assetCode12 = Util.paddedByteArrayToString(
-            xdr_asset.alphaNum12.assetCode);
-        KeyPair issuer12 = KeyPair.fromXdrPublicKey(
-            xdr_asset.alphaNum12.issuer.accountID);
+        String assetCode12 =
+            Util.paddedByteArrayToString(xdr_asset.alphaNum12.assetCode);
+        KeyPair issuer12 =
+            KeyPair.fromXdrPublicKey(xdr_asset.alphaNum12.issuer.accountID);
         return AssetTypeCreditAlphaNum12(assetCode12, issuer12);
       default:
         throw Exception(
@@ -60,7 +60,6 @@ abstract class Asset {
 
   @override
   bool operator ==(Object object);
-
 
   ///Generates XDR object from a given Asset object
   XdrAsset toXdr();
@@ -103,7 +102,7 @@ abstract class AssetTypeCreditAlphaNum extends Asset {
   String get code => String.fromCharCodes(_mCode.codeUnits);
 
   ///Returns asset issuer
-  KeyPair get issuer =>KeyPair.fromAccountId(_mIssuer.accountId);
+  KeyPair get issuer => KeyPair.fromAccountId(_mIssuer.accountId);
 
   @override
   int get hashCode {
@@ -150,7 +149,6 @@ class AssetTypeCreditAlphaNum4 extends AssetTypeCreditAlphaNum {
 
 ///Represents all assets with codes 5-12 characters long.
 class AssetTypeCreditAlphaNum12 extends AssetTypeCreditAlphaNum {
-
   AssetTypeCreditAlphaNum12(String code, KeyPair issuer) : super(code, issuer) {
     if (code.length < 5 || code.length > 12) {
       throw new AssetCodeLengthInvalidException();

@@ -22,7 +22,6 @@ checkArgument(bool expression, String errorMessage) {
 }
 
 class Util {
-
   static String bytesToHex(Uint8List raw) {
     return hex.encode(raw).toUpperCase();
   }
@@ -33,9 +32,7 @@ class Util {
 
   ///Returns SHA-256 hash of <code>data</code>.
   static Uint8List hash(Uint8List data) {
-    return sha256
-        .convert(data)
-        .bytes;
+    return sha256.convert(data).bytes;
   }
 
   ///Pads <code>bytes</code> array to <code>length</code> with zeros.

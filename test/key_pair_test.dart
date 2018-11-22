@@ -13,8 +13,7 @@ final String SEED =
 void testSign() {
   String expectedSig =
       "587d4b472eeef7d07aafcd0b049640b0bb3f39784118c2e2b73a04fa2f64c9c538b4b2d0f5335e968a480021fdc23e98c0ddf424cb15d8131df8cb6c4bb58309";
-  KeyPair keypair =
-      KeyPair.fromSecretSeedList(Util.hexToBytes(SEED));
+  KeyPair keypair = KeyPair.fromSecretSeedList(Util.hexToBytes(SEED));
   String data = "hello world";
   Uint8List sig = keypair.sign(utf8.encode(data));
   assert(eq(Util.hexToBytes(expectedSig), sig.toList()));
@@ -24,11 +23,8 @@ void testVerifyTrue() {
   String sig =
       "587d4b472eeef7d07aafcd0b049640b0bb3f39784118c2e2b73a04fa2f64c9c538b4b2d0f5335e968a480021fdc23e98c0ddf424cb15d8131df8cb6c4bb58309";
   String data = "hello world";
-  KeyPair keypair =
-      KeyPair.fromSecretSeedList(Util.hexToBytes(SEED));
-  assert(
-      keypair.verify(utf8.encode(data), Util.hexToBytes(sig)) ==
-          true);
+  KeyPair keypair = KeyPair.fromSecretSeedList(Util.hexToBytes(SEED));
+  assert(keypair.verify(utf8.encode(data), Util.hexToBytes(sig)) == true);
 }
 
 void testVerifyFalse() {
@@ -36,11 +32,8 @@ void testVerifyFalse() {
       "687d4b472eeef7d07aafcd0b049640b0bb3f39784118c2e2b73a04fa2f64c9c538b4b2d0f5335e968a480021fdc23e98c0ddf424cb15d8131df8cb6c4bb58309";
   Uint8List corrupt = Uint8List.fromList([0x00]);
   String data = "hello world";
-  KeyPair keypair =
-      KeyPair.fromSecretSeedList(Util.hexToBytes(SEED));
-  assert(keypair.verify(
-          utf8.encode(data), Util.hexToBytes(badSig)) ==
-      false);
+  KeyPair keypair = KeyPair.fromSecretSeedList(Util.hexToBytes(SEED));
+  assert(keypair.verify(utf8.encode(data), Util.hexToBytes(badSig)) == false);
   assert(keypair.verify(utf8.encode(data), corrupt) == false);
 }
 

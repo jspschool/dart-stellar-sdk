@@ -50,8 +50,8 @@ class XdrAllowTrustOpAsset {
   Uint8List get assetCode12 => this._assetCode12;
   set assetCode12(Uint8List value) => this._assetCode12 = value;
 
-  static void encode(
-      XdrDataOutputStream stream, XdrAllowTrustOpAsset encodedAllowTrustOpAsset) {
+  static void encode(XdrDataOutputStream stream,
+      XdrAllowTrustOpAsset encodedAllowTrustOpAsset) {
     stream.writeInt(encodedAllowTrustOpAsset.discriminant.value);
     switch (encodedAllowTrustOpAsset.discriminant) {
       case XdrAssetType.ASSET_TYPE_CREDIT_ALPHANUM4:
@@ -70,13 +70,12 @@ class XdrAllowTrustOpAsset {
     switch (decodedAllowTrustOpAsset.discriminant) {
       case XdrAssetType.ASSET_TYPE_CREDIT_ALPHANUM4:
         int assetCode4size = 4;
-        decodedAllowTrustOpAsset
-            .assetCode4 = stream.readBytes(assetCode4size);
+        decodedAllowTrustOpAsset.assetCode4 = stream.readBytes(assetCode4size);
         break;
       case XdrAssetType.ASSET_TYPE_CREDIT_ALPHANUM12:
         int assetCode12size = 12;
-        decodedAllowTrustOpAsset
-            .assetCode12 = stream.readBytes(assetCode12size);
+        decodedAllowTrustOpAsset.assetCode12 =
+            stream.readBytes(assetCode12size);
         break;
     }
     return decodedAllowTrustOpAsset;
@@ -102,7 +101,8 @@ class XdrAllowTrustResult {
 
   static XdrAllowTrustResult decode(XdrDataInputStream stream) {
     XdrAllowTrustResult decodedAllowTrustResult = XdrAllowTrustResult();
-    XdrAllowTrustResultCode discriminant = XdrAllowTrustResultCode.decode(stream);
+    XdrAllowTrustResultCode discriminant =
+        XdrAllowTrustResultCode.decode(stream);
     decodedAllowTrustResult.discriminant = discriminant;
     switch (decodedAllowTrustResult.discriminant) {
       case XdrAllowTrustResultCode.ALLOW_TRUST_SUCCESS:
@@ -151,7 +151,8 @@ class XdrBumpSequenceResult {
 
   static XdrBumpSequenceResult decode(XdrDataInputStream stream) {
     XdrBumpSequenceResult decodedBumpSequenceResult = XdrBumpSequenceResult();
-    XdrBumpSequenceResultCode discriminant = XdrBumpSequenceResultCode.decode(stream);
+    XdrBumpSequenceResultCode discriminant =
+        XdrBumpSequenceResultCode.decode(stream);
     decodedBumpSequenceResult.discriminant = discriminant;
     switch (decodedBumpSequenceResult.discriminant) {
       case XdrBumpSequenceResultCode.BUMP_SEQUENCE_SUCCESS:
@@ -193,8 +194,8 @@ class XdrChangeTrustResult {
   XdrChangeTrustResultCode get discriminant => this._code;
   set discriminant(XdrChangeTrustResultCode value) => this._code = value;
 
-  static void encode(
-      XdrDataOutputStream stream, XdrChangeTrustResult encodedChangeTrustResult) {
+  static void encode(XdrDataOutputStream stream,
+      XdrChangeTrustResult encodedChangeTrustResult) {
     stream.writeInt(encodedChangeTrustResult.discriminant.value);
     switch (encodedChangeTrustResult.discriminant) {
       case XdrChangeTrustResultCode.CHANGE_TRUST_SUCCESS:
@@ -206,7 +207,8 @@ class XdrChangeTrustResult {
 
   static XdrChangeTrustResult decode(XdrDataInputStream stream) {
     XdrChangeTrustResult decodedChangeTrustResult = XdrChangeTrustResult();
-    XdrChangeTrustResultCode discriminant = XdrChangeTrustResultCode.decode(stream);
+    XdrChangeTrustResultCode discriminant =
+        XdrChangeTrustResultCode.decode(stream);
     decodedChangeTrustResult.discriminant = discriminant;
     switch (decodedChangeTrustResult.discriminant) {
       case XdrChangeTrustResultCode.CHANGE_TRUST_SUCCESS:
@@ -260,7 +262,8 @@ class XdrCreateAccountResult {
   }
 
   static XdrCreateAccountResult decode(XdrDataInputStream stream) {
-    XdrCreateAccountResult decodedCreateAccountResult = XdrCreateAccountResult();
+    XdrCreateAccountResult decodedCreateAccountResult =
+        XdrCreateAccountResult();
     XdrCreateAccountResultCode discriminant =
         XdrCreateAccountResultCode.decode(stream);
     decodedCreateAccountResult.discriminant = discriminant;
@@ -301,7 +304,8 @@ class XdrCreatePassiveOfferOp {
   }
 
   static XdrCreatePassiveOfferOp decode(XdrDataInputStream stream) {
-    XdrCreatePassiveOfferOp decodedCreatePassiveOfferOp = XdrCreatePassiveOfferOp();
+    XdrCreatePassiveOfferOp decodedCreatePassiveOfferOp =
+        XdrCreatePassiveOfferOp();
     decodedCreatePassiveOfferOp.selling = XdrAsset.decode(stream);
     decodedCreatePassiveOfferOp.buying = XdrAsset.decode(stream);
     decodedCreatePassiveOfferOp.amount = XdrInt64.decode(stream);
@@ -430,7 +434,8 @@ class XdrManageDataResult {
 
   static XdrManageDataResult decode(XdrDataInputStream stream) {
     XdrManageDataResult decodedManageDataResult = XdrManageDataResult();
-    XdrManageDataResultCode discriminant = XdrManageDataResultCode.decode(stream);
+    XdrManageDataResultCode discriminant =
+        XdrManageDataResultCode.decode(stream);
     decodedManageDataResult.discriminant = discriminant;
     switch (decodedManageDataResult.discriminant) {
       case XdrManageDataResultCode.MANAGE_DATA_SUCCESS:
@@ -494,8 +499,8 @@ class XdrManageOfferResult {
   XdrManageOfferSuccessResult get success => this._success;
   set success(XdrManageOfferSuccessResult value) => this._success = value;
 
-  static void encode(
-      XdrDataOutputStream stream, XdrManageOfferResult encodedManageOfferResult) {
+  static void encode(XdrDataOutputStream stream,
+      XdrManageOfferResult encodedManageOfferResult) {
     stream.writeInt(encodedManageOfferResult.discriminant.value);
     switch (encodedManageOfferResult.discriminant) {
       case XdrManageOfferResultCode.MANAGE_OFFER_SUCCESS:
@@ -509,7 +514,8 @@ class XdrManageOfferResult {
 
   static XdrManageOfferResult decode(XdrDataInputStream stream) {
     XdrManageOfferResult decodedManageOfferResult = XdrManageOfferResult();
-    XdrManageOfferResultCode discriminant = XdrManageOfferResultCode.decode(stream);
+    XdrManageOfferResultCode discriminant =
+        XdrManageOfferResultCode.decode(stream);
     decodedManageOfferResult.discriminant = discriminant;
     switch (decodedManageOfferResult.discriminant) {
       case XdrManageOfferResultCode.MANAGE_OFFER_SUCCESS:
@@ -575,12 +581,12 @@ class XdrManageOfferSuccessResultOffer {
 
   static void encode(XdrDataOutputStream stream,
       XdrManageOfferSuccessResultOffer encodedManageOfferSuccessResultOffer) {
-    stream.writeInt(
-        encodedManageOfferSuccessResultOffer.discriminant.value);
+    stream.writeInt(encodedManageOfferSuccessResultOffer.discriminant.value);
     switch (encodedManageOfferSuccessResultOffer.discriminant) {
       case XdrManageOfferEffect.MANAGE_OFFER_CREATED:
       case XdrManageOfferEffect.MANAGE_OFFER_UPDATED:
-        XdrOfferEntry.encode(stream, encodedManageOfferSuccessResultOffer.offer);
+        XdrOfferEntry.encode(
+            stream, encodedManageOfferSuccessResultOffer.offer);
         break;
       default:
         break;
@@ -595,7 +601,8 @@ class XdrManageOfferSuccessResultOffer {
     switch (decodedManageOfferSuccessResultOffer.discriminant) {
       case XdrManageOfferEffect.MANAGE_OFFER_CREATED:
       case XdrManageOfferEffect.MANAGE_OFFER_UPDATED:
-        decodedManageOfferSuccessResultOffer.offer = XdrOfferEntry.decode(stream);
+        decodedManageOfferSuccessResultOffer.offer =
+            XdrOfferEntry.decode(stream);
         break;
       default:
         break;
@@ -674,8 +681,8 @@ class XdrPathPaymentResult {
   XdrAsset get noIssuer => this._noIssuer;
   set noIssuer(XdrAsset value) => this._noIssuer = value;
 
-  static void encode(
-      XdrDataOutputStream stream, XdrPathPaymentResult encodedPathPaymentResult) {
+  static void encode(XdrDataOutputStream stream,
+      XdrPathPaymentResult encodedPathPaymentResult) {
     stream.writeInt(encodedPathPaymentResult.discriminant.value);
     switch (encodedPathPaymentResult.discriminant) {
       case XdrPathPaymentResultCode.PATH_PAYMENT_SUCCESS:
@@ -692,7 +699,8 @@ class XdrPathPaymentResult {
 
   static XdrPathPaymentResult decode(XdrDataInputStream stream) {
     XdrPathPaymentResult decodedPathPaymentResult = XdrPathPaymentResult();
-    XdrPathPaymentResultCode discriminant = XdrPathPaymentResultCode.decode(stream);
+    XdrPathPaymentResultCode discriminant =
+        XdrPathPaymentResultCode.decode(stream);
     decodedPathPaymentResult.discriminant = discriminant;
     switch (decodedPathPaymentResult.discriminant) {
       case XdrPathPaymentResultCode.PATH_PAYMENT_SUCCESS:
@@ -724,7 +732,8 @@ class XdrPathPaymentResultSuccess {
     int offerssize = encodedPathPaymentResultSuccess.offers.length;
     stream.writeInt(offerssize);
     for (int i = 0; i < offerssize; i++) {
-      XdrClaimOfferAtom.encode(stream, encodedPathPaymentResultSuccess.offers[i]);
+      XdrClaimOfferAtom.encode(
+          stream, encodedPathPaymentResultSuccess.offers[i]);
     }
     XdrSimplePaymentResult.encode(stream, encodedPathPaymentResultSuccess.last);
   }
@@ -733,12 +742,14 @@ class XdrPathPaymentResultSuccess {
     XdrPathPaymentResultSuccess decodedPathPaymentResultSuccess =
         XdrPathPaymentResultSuccess();
     int offerssize = stream.readInt();
-    decodedPathPaymentResultSuccess.offers = List<XdrClaimOfferAtom>(offerssize);
+    decodedPathPaymentResultSuccess.offers =
+        List<XdrClaimOfferAtom>(offerssize);
     for (int i = 0; i < offerssize; i++) {
       decodedPathPaymentResultSuccess.offers[i] =
           XdrClaimOfferAtom.decode(stream);
     }
-    decodedPathPaymentResultSuccess.last = XdrSimplePaymentResult.decode(stream);
+    decodedPathPaymentResultSuccess.last =
+        XdrSimplePaymentResult.decode(stream);
     return decodedPathPaymentResultSuccess;
   }
 }
@@ -765,7 +776,8 @@ class XdrSimplePaymentResult {
   }
 
   static XdrSimplePaymentResult decode(XdrDataInputStream stream) {
-    XdrSimplePaymentResult decodedSimplePaymentResult = XdrSimplePaymentResult();
+    XdrSimplePaymentResult decodedSimplePaymentResult =
+        XdrSimplePaymentResult();
     decodedSimplePaymentResult.destination = XdrAccountID.decode(stream);
     decodedSimplePaymentResult.asset = XdrAsset.decode(stream);
     decodedSimplePaymentResult.amount = XdrInt64.decode(stream);
@@ -787,7 +799,8 @@ class XdrPaymentOp {
   XdrInt64 get amount => this._amount;
   set amount(XdrInt64 value) => this._amount = value;
 
-  static void encode(XdrDataOutputStream stream, XdrPaymentOp encodedPaymentOp) {
+  static void encode(
+      XdrDataOutputStream stream, XdrPaymentOp encodedPaymentOp) {
     XdrAccountID.encode(stream, encodedPaymentOp.destination);
     XdrAsset.encode(stream, encodedPaymentOp.asset);
     XdrInt64.encode(stream, encodedPaymentOp.amount);
@@ -990,7 +1003,8 @@ class XdrSetOptionsResult {
 
   static XdrSetOptionsResult decode(XdrDataInputStream stream) {
     XdrSetOptionsResult decodedSetOptionsResult = XdrSetOptionsResult();
-    XdrSetOptionsResultCode discriminant = XdrSetOptionsResultCode.decode(stream);
+    XdrSetOptionsResultCode discriminant =
+        XdrSetOptionsResultCode.decode(stream);
     decodedSetOptionsResult.discriminant = discriminant;
     switch (decodedSetOptionsResult.discriminant) {
       case XdrSetOptionsResultCode.SET_OPTIONS_SUCCESS:
@@ -1012,7 +1026,8 @@ class XdrOperation {
   XdrOperationBody get body => this._body;
   set body(XdrOperationBody value) => this._body = value;
 
-  static void encode(XdrDataOutputStream stream, XdrOperation encodedOperation) {
+  static void encode(
+      XdrDataOutputStream stream, XdrOperation encodedOperation) {
     if (encodedOperation.sourceAccount != null) {
       stream.writeInt(1);
       XdrAccountID.encode(stream, encodedOperation.sourceAccount);
@@ -1057,7 +1072,8 @@ class XdrOperationBody {
   set manageOfferOp(XdrManageOfferOp value) => this._manageOfferOp = value;
 
   XdrCreatePassiveOfferOp _createPassiveOfferOp;
-  XdrCreatePassiveOfferOp get createPassiveOfferOp => this._createPassiveOfferOp;
+  XdrCreatePassiveOfferOp get createPassiveOfferOp =>
+      this._createPassiveOfferOp;
   set createPassiveOfferOp(XdrCreatePassiveOfferOp value) =>
       this._createPassiveOfferOp = value;
 
@@ -1134,7 +1150,8 @@ class XdrOperationBody {
     decodedOperationBody.discriminant = discriminant;
     switch (decodedOperationBody.discriminant) {
       case XdrOperationType.CREATE_ACCOUNT:
-        decodedOperationBody.createAccountOp = XdrCreateAccountOp.decode(stream);
+        decodedOperationBody.createAccountOp =
+            XdrCreateAccountOp.decode(stream);
         break;
       case XdrOperationType.PAYMENT:
         decodedOperationBody.paymentOp = XdrPaymentOp.decode(stream);
@@ -1237,7 +1254,8 @@ class XdrOperationResultTr {
 
   XdrCreateAccountResult _createAccountResult;
   XdrCreateAccountResult get createAccountResult => this._createAccountResult;
-  set createAccountResult(XdrCreateAccountResult value) => this._createAccountResult = value;
+  set createAccountResult(XdrCreateAccountResult value) =>
+      this._createAccountResult = value;
 
   XdrPaymentResult _paymentResult;
   XdrPaymentResult get paymentResult => this._paymentResult;
@@ -1245,46 +1263,56 @@ class XdrOperationResultTr {
 
   XdrPathPaymentResult _pathPaymentResult;
   XdrPathPaymentResult get pathPaymentResult => this._pathPaymentResult;
-  set pathPaymentResult(XdrPathPaymentResult value) => this._pathPaymentResult = value;
+  set pathPaymentResult(XdrPathPaymentResult value) =>
+      this._pathPaymentResult = value;
 
   XdrManageOfferResult _manageOfferResult;
   XdrManageOfferResult get manageOfferResult => this._manageOfferResult;
-  set manageOfferResult(XdrManageOfferResult value) => this._manageOfferResult = value;
+  set manageOfferResult(XdrManageOfferResult value) =>
+      this._manageOfferResult = value;
 
   XdrManageOfferResult _createPassiveOfferResult;
-  XdrManageOfferResult get createPassiveOfferResult => this._createPassiveOfferResult;
-  set createPassiveOfferResult(XdrManageOfferResult value) => this._createPassiveOfferResult = value;
+  XdrManageOfferResult get createPassiveOfferResult =>
+      this._createPassiveOfferResult;
+  set createPassiveOfferResult(XdrManageOfferResult value) =>
+      this._createPassiveOfferResult = value;
 
   XdrSetOptionsResult _setOptionsResult;
   XdrSetOptionsResult get setOptionsResult => this._setOptionsResult;
-  set setOptionsResult(XdrSetOptionsResult value) => this._setOptionsResult = value;
+  set setOptionsResult(XdrSetOptionsResult value) =>
+      this._setOptionsResult = value;
 
   XdrChangeTrustResult _changeTrustResult;
   XdrChangeTrustResult get changeTrustResult => this._changeTrustResult;
-  set changeTrustResult(XdrChangeTrustResult value) => this._changeTrustResult = value;
+  set changeTrustResult(XdrChangeTrustResult value) =>
+      this._changeTrustResult = value;
 
   XdrAllowTrustResult _allowTrustResult;
   XdrAllowTrustResult get allowTrustResult => this._allowTrustResult;
-  set allowTrustResult(XdrAllowTrustResult value) => this._allowTrustResult = value;
+  set allowTrustResult(XdrAllowTrustResult value) =>
+      this._allowTrustResult = value;
 
   XdrAccountMergeResult _accountMergeResult;
   XdrAccountMergeResult get accountMergeResult => this._accountMergeResult;
-  set accountMergeResult(XdrAccountMergeResult value) => this._accountMergeResult = value;
+  set accountMergeResult(XdrAccountMergeResult value) =>
+      this._accountMergeResult = value;
 
   XdrInflationResult _inflationResult;
   XdrInflationResult get inflationResult => this._inflationResult;
-  set inflationResult(XdrInflationResult value) => this._inflationResult = value;
+  set inflationResult(XdrInflationResult value) =>
+      this._inflationResult = value;
 
   XdrManageDataResult _manageDataResult;
   XdrManageDataResult get manageDataResult => this._manageDataResult;
-  set manageDataResult(XdrManageDataResult value) => this._manageDataResult = value;
+  set manageDataResult(XdrManageDataResult value) =>
+      this._manageDataResult = value;
 
   XdrBumpSequenceResult _bumpSeqResult;
   XdrBumpSequenceResult get bumpSeqResult => this._bumpSeqResult;
   set bumpSeqResult(XdrBumpSequenceResult value) => this._bumpSeqResult = value;
 
-  static void encode(
-      XdrDataOutputStream stream, XdrOperationResultTr encodedOperationResultTr) {
+  static void encode(XdrDataOutputStream stream,
+      XdrOperationResultTr encodedOperationResultTr) {
     stream.writeInt(encodedOperationResultTr.discriminant.value);
     switch (encodedOperationResultTr.discriminant) {
       case XdrOperationType.CREATE_ACCOUNT:
@@ -1347,7 +1375,8 @@ class XdrOperationResultTr {
             XdrCreateAccountResult.decode(stream);
         break;
       case XdrOperationType.PAYMENT:
-        decodedOperationResultTr.paymentResult = XdrPaymentResult.decode(stream);
+        decodedOperationResultTr.paymentResult =
+            XdrPaymentResult.decode(stream);
         break;
       case XdrOperationType.PATH_PAYMENT:
         decodedOperationResultTr.pathPaymentResult =

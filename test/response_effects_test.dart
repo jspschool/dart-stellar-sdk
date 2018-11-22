@@ -22,15 +22,20 @@ void testDeserializeAccountCreatedEffect() {
       "        \"starting_balance\": \"30.0\"\n" +
       "      }";
 
-  AccountCreatedEffectResponse effect = AccountCreatedEffectResponse.fromJson(json.decode(jsonData));
+  AccountCreatedEffectResponse effect =
+      AccountCreatedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId== "GCBQ6JRBPF3SXQBQ6SO5MRBE7WVV4UCHYOSHQGXSZNPZLFRYVYOWBZRQ");
+  assert(effect.account.accountId ==
+      "GCBQ6JRBPF3SXQBQ6SO5MRBE7WVV4UCHYOSHQGXSZNPZLFRYVYOWBZRQ");
   assert(effect.startingBalance == "30.0");
   assert(effect.pagingToken == "65571265847297-1");
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/65571265847297");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=65571265847297-1");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=65571265847297-1");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/65571265847297");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=65571265847297-1");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=65571265847297-1");
 }
 
 void testDeserializeAccountRemovedEffect() {
@@ -50,16 +55,21 @@ void testDeserializeAccountRemovedEffect() {
       "        \"paging_token\": \"65571265847297-1\",\n" +
       "        \"account\": \"GCBQ6JRBPF3SXQBQ6SO5MRBE7WVV4UCHYOSHQGXSZNPZLFRYVYOWBZRQ\",\n" +
       "        \"type\": \"account_removed\",\n" +
-      "        \"type_i\": 1\n"+
+      "        \"type_i\": 1\n" +
       "      }";
 
-  AccountRemovedEffectResponse effect = AccountRemovedEffectResponse.fromJson(json.decode(jsonData));
+  AccountRemovedEffectResponse effect =
+      AccountRemovedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GCBQ6JRBPF3SXQBQ6SO5MRBE7WVV4UCHYOSHQGXSZNPZLFRYVYOWBZRQ");
+  assert(effect.account.accountId ==
+      "GCBQ6JRBPF3SXQBQ6SO5MRBE7WVV4UCHYOSHQGXSZNPZLFRYVYOWBZRQ");
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/65571265847297");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=65571265847297-1");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=65571265847297-1");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/65571265847297");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=65571265847297-1");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=65571265847297-1");
 }
 
 void testDeserializeAccountCreditedEffect() {
@@ -84,15 +94,20 @@ void testDeserializeAccountCreditedEffect() {
       "        \"amount\": \"1000.0\"\n" +
       "      }";
 
-  AccountCreditedEffectResponse effect = AccountCreditedEffectResponse.fromJson(json.decode(jsonData));
+  AccountCreditedEffectResponse effect =
+      AccountCreditedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GDLGTRIBFH24364GPWPUS45GUFC2GU4ARPGWTXVCPLGTUHX3IOS3ON47");
+  assert(effect.account.accountId ==
+      "GDLGTRIBFH24364GPWPUS45GUFC2GU4ARPGWTXVCPLGTUHX3IOS3ON47");
   assert(effect.asset == new AssetTypeNative());
   assert(effect.amount == "1000.0");
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/13563506724865");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=13563506724865-1");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=13563506724865-1");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/13563506724865");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=13563506724865-1");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=13563506724865-1");
 }
 
 void testDeserializeAccountDebitedEffect() {
@@ -117,15 +132,20 @@ void testDeserializeAccountDebitedEffect() {
       "        \"amount\": \"30.0\"\n" +
       "      }";
 
-  AccountDebitedEffectResponse effect = AccountDebitedEffectResponse.fromJson(json.decode(jsonData));
+  AccountDebitedEffectResponse effect =
+      AccountDebitedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GBRPYHIL2CI3FNQ4BXLFMNDLFJUNPU2HY3ZMFSHONUCEOASW7QC7OX2H");
+  assert(effect.account.accountId ==
+      "GBRPYHIL2CI3FNQ4BXLFMNDLFJUNPU2HY3ZMFSHONUCEOASW7QC7OX2H");
   assert(effect.asset == new AssetTypeNative());
   assert(effect.amount == "30.0");
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/65571265843201");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=65571265843201-2");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=65571265843201-2");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/65571265843201");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=65571265843201-2");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=65571265843201-2");
 }
 
 void testDeserializeAccountThresholdsUpdatedEffect() {
@@ -151,16 +171,21 @@ void testDeserializeAccountThresholdsUpdatedEffect() {
       "        \"type_i\": 4\n" +
       "      }";
 
-  AccountThresholdsUpdatedEffectResponse effect = AccountThresholdsUpdatedEffectResponse.fromJson(json.decode(jsonData));
+  AccountThresholdsUpdatedEffectResponse effect =
+      AccountThresholdsUpdatedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
+  assert(effect.account.accountId ==
+      "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
   assert(effect.lowThreshold == 2);
   assert(effect.medThreshold == 3);
   assert(effect.highThreshold == 4);
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/18970870550529");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=18970870550529-1");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=18970870550529-1");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/18970870550529");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=18970870550529-1");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=18970870550529-1");
 }
 
 void testDeserializeAccountHomeDomainUpdatedEffect() {
@@ -184,16 +209,20 @@ void testDeserializeAccountHomeDomainUpdatedEffect() {
       "        \"home_domain\": \"stellar.org\"\n" +
       "      }";
 
-  AccountHomeDomainUpdatedEffectResponse effect = AccountHomeDomainUpdatedEffectResponse.fromJson(json.decode(jsonData));
+  AccountHomeDomainUpdatedEffectResponse effect =
+      AccountHomeDomainUpdatedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
+  assert(effect.account.accountId ==
+      "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
   assert(effect.homeDomain == "stellar.org");
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/18970870550529");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=18970870550529-1");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=18970870550529-1");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/18970870550529");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=18970870550529-1");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=18970870550529-1");
 }
-
 
 void testDeserializeAccountFlagsUpdatedEffect() {
   String jsonData = "{\n" +
@@ -217,15 +246,20 @@ void testDeserializeAccountFlagsUpdatedEffect() {
       "        \"auth_revokable_flag\": true\n" +
       "      }";
 
-  AccountFlagsUpdatedEffectResponse effect = AccountFlagsUpdatedEffectResponse.fromJson(json.decode(jsonData));
+  AccountFlagsUpdatedEffectResponse effect =
+      AccountFlagsUpdatedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
+  assert(effect.account.accountId ==
+      "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
   assert(effect.authRequiredFlag == false);
   assert(effect.authRevokableFlag == true);
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/18970870550529");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=18970870550529-1");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=18970870550529-1");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/18970870550529");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=18970870550529-1");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=18970870550529-1");
 }
 
 void testDeserializeAccountInflationDestinationUpdatedEffect() {
@@ -249,9 +283,12 @@ void testDeserializeAccountInflationDestinationUpdatedEffect() {
       "        \"created_at\": \"2018-06-06T10:20:50Z\"\n" +
       "      }";
 
-  AccountInflationDestinationUpdatedEffectResponse effect = AccountInflationDestinationUpdatedEffectResponse.fromJson(json.decode(jsonData));
+  AccountInflationDestinationUpdatedEffectResponse effect =
+      AccountInflationDestinationUpdatedEffectResponse.fromJson(
+          json.decode(jsonData));
 
-  assert(effect.account.accountId == "GDPFGP4IPE5DXG6XRXC4ZBUI43PAGRQ5VVNJ3LJTBXDBZ4ITO6HBHNSF");
+  assert(effect.account.accountId ==
+      "GDPFGP4IPE5DXG6XRXC4ZBUI43PAGRQ5VVNJ3LJTBXDBZ4ITO6HBHNSF");
   assert(effect.createdAt == "2018-06-06T10:20:50Z");
 }
 
@@ -277,15 +314,21 @@ void testDeserializeSignerCreatedEffect() {
       "        \"public_key\": \"GB24LPGAHYTWRYOXIDKXLI55SBRWW42T3TZKDAAW3BOJX4ADVIATFTLU\"\n" +
       "      }";
 
-  SignerCreatedEffectResponse effect = SignerCreatedEffectResponse.fromJson(json.decode(jsonData));
+  SignerCreatedEffectResponse effect =
+      SignerCreatedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GB24LPGAHYTWRYOXIDKXLI55SBRWW42T3TZKDAAW3BOJX4ADVIATFTLU");
+  assert(effect.account.accountId ==
+      "GB24LPGAHYTWRYOXIDKXLI55SBRWW42T3TZKDAAW3BOJX4ADVIATFTLU");
   assert(effect.weight == 1);
-  assert(effect.publicKey == "GB24LPGAHYTWRYOXIDKXLI55SBRWW42T3TZKDAAW3BOJX4ADVIATFTLU");
+  assert(effect.publicKey ==
+      "GB24LPGAHYTWRYOXIDKXLI55SBRWW42T3TZKDAAW3BOJX4ADVIATFTLU");
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/65571265859585");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=65571265859585-3");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=65571265859585-3");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/65571265859585");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=65571265859585-3");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=65571265859585-3");
 }
 
 void testDeserializeSignerRemovedEffect() {
@@ -310,15 +353,21 @@ void testDeserializeSignerRemovedEffect() {
       "        \"public_key\": \"GCFKT6BN2FEASCEVDNHEC4LLFT2KLUUPEMKM4OJPEJ65H2AEZ7IH4RV6\"\n" +
       "      }";
 
-  SignerRemovedEffectResponse effect = SignerRemovedEffectResponse.fromJson(json.decode(jsonData));
+  SignerRemovedEffectResponse effect =
+      SignerRemovedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GCFKT6BN2FEASCEVDNHEC4LLFT2KLUUPEMKM4OJPEJ65H2AEZ7IH4RV6");
+  assert(effect.account.accountId ==
+      "GCFKT6BN2FEASCEVDNHEC4LLFT2KLUUPEMKM4OJPEJ65H2AEZ7IH4RV6");
   assert(effect.weight == 0);
-  assert(effect.publicKey == "GCFKT6BN2FEASCEVDNHEC4LLFT2KLUUPEMKM4OJPEJ65H2AEZ7IH4RV6");
+  assert(effect.publicKey ==
+      "GCFKT6BN2FEASCEVDNHEC4LLFT2KLUUPEMKM4OJPEJ65H2AEZ7IH4RV6");
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/43658342567940");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=43658342567940-2");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=43658342567940-2");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/43658342567940");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=43658342567940-2");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=43658342567940-2");
 }
 
 void testDeserializeSignerUpdatedEffect() {
@@ -343,15 +392,21 @@ void testDeserializeSignerUpdatedEffect() {
       "        \"public_key\": \"GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO\"\n" +
       "      }";
 
-  SignerUpdatedEffectResponse effect = SignerUpdatedEffectResponse.fromJson(json.decode(jsonData));
+  SignerUpdatedEffectResponse effect =
+      SignerUpdatedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
+  assert(effect.account.accountId ==
+      "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
   assert(effect.weight == 2);
-  assert(effect.publicKey == "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
+  assert(effect.publicKey ==
+      "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/33788507721730");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=33788507721730-2");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=33788507721730-2");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/33788507721730");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=33788507721730-2");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=33788507721730-2");
 }
 
 void testDeserializeTrustlineCreatedEffect() {
@@ -378,17 +433,25 @@ void testDeserializeTrustlineCreatedEffect() {
       "        \"limit\": \"1000.0\"\n" +
       "      }";
 
-  TrustlineCreatedEffectResponse effect = TrustlineCreatedEffectResponse.fromJson(json.decode(jsonData));
+  TrustlineCreatedEffectResponse effect =
+      TrustlineCreatedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
-  assert(effect.asset == Asset.createNonNativeAsset("EUR", KeyPair.fromAccountId("GAZN3PPIDQCSP5JD4ETQQQ2IU2RMFYQTAL4NNQZUGLLO2XJJJ3RDSDGA")));
+  assert(effect.account.accountId ==
+      "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
+  assert(effect.asset ==
+      Asset.createNonNativeAsset(
+          "EUR",
+          KeyPair.fromAccountId(
+              "GAZN3PPIDQCSP5JD4ETQQQ2IU2RMFYQTAL4NNQZUGLLO2XJJJ3RDSDGA")));
   assert(effect.limit == "1000.0");
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/33788507721730");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=33788507721730-2");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=33788507721730-2");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/33788507721730");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=33788507721730-2");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=33788507721730-2");
 }
-
 
 void testDeserializeTrustlineRemovedEffect() {
   String jsonData = "{\n" +
@@ -414,15 +477,24 @@ void testDeserializeTrustlineRemovedEffect() {
       "        \"limit\": \"0.0\"\n" +
       "      }";
 
-  TrustlineRemovedEffectResponse effect = TrustlineRemovedEffectResponse.fromJson(json.decode(jsonData));
+  TrustlineRemovedEffectResponse effect =
+      TrustlineRemovedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
-  assert(effect.asset == Asset.createNonNativeAsset("EUR", KeyPair.fromAccountId("GAZN3PPIDQCSP5JD4ETQQQ2IU2RMFYQTAL4NNQZUGLLO2XJJJ3RDSDGA")));
+  assert(effect.account.accountId ==
+      "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
+  assert(effect.asset ==
+      Asset.createNonNativeAsset(
+          "EUR",
+          KeyPair.fromAccountId(
+              "GAZN3PPIDQCSP5JD4ETQQQ2IU2RMFYQTAL4NNQZUGLLO2XJJJ3RDSDGA")));
   assert(effect.limit == "0.0");
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/33788507721730");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=33788507721730-2");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=33788507721730-2");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/33788507721730");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=33788507721730-2");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=33788507721730-2");
 }
 
 void testDeserializeTrustlineUpdatedEffect() {
@@ -449,17 +521,25 @@ void testDeserializeTrustlineUpdatedEffect() {
       "        \"limit\": \"100.0\"\n" +
       "      }";
 
-  TrustlineUpdatedEffectResponse effect = TrustlineUpdatedEffectResponse.fromJson(json.decode(jsonData));
+  TrustlineUpdatedEffectResponse effect =
+      TrustlineUpdatedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
-  assert(effect.asset == Asset.createNonNativeAsset("TESTTEST", KeyPair.fromAccountId("GAZN3PPIDQCSP5JD4ETQQQ2IU2RMFYQTAL4NNQZUGLLO2XJJJ3RDSDGA")));
+  assert(effect.account.accountId ==
+      "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
+  assert(effect.asset ==
+      Asset.createNonNativeAsset(
+          "TESTTEST",
+          KeyPair.fromAccountId(
+              "GAZN3PPIDQCSP5JD4ETQQQ2IU2RMFYQTAL4NNQZUGLLO2XJJJ3RDSDGA")));
   assert(effect.limit == "100.0");
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/33788507721730");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=33788507721730-2");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=33788507721730-2");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/33788507721730");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=33788507721730-2");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=33788507721730-2");
 }
-
 
 void testDeserializeTrustlineAuthorizedEffect() {
   String jsonData = "{\n" +
@@ -484,16 +564,22 @@ void testDeserializeTrustlineAuthorizedEffect() {
       "        \"trustor\": \"GB3E4AB4VWXJDUVN4Z3CPBU5HTMWVEQXONZYVDFMHQD6333KHCOL3UBR\"\n" +
       "      }";
 
-  TrustlineAuthorizedEffectResponse effect = TrustlineAuthorizedEffectResponse.fromJson(json.decode(jsonData));
+  TrustlineAuthorizedEffectResponse effect =
+      TrustlineAuthorizedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
+  assert(effect.account.accountId ==
+      "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
   assert(effect.assetType == "credit_alphanum12");
   assert(effect.assetCode == "TESTTEST");
-  assert(effect.trustor.accountId == "GB3E4AB4VWXJDUVN4Z3CPBU5HTMWVEQXONZYVDFMHQD6333KHCOL3UBR");
+  assert(effect.trustor.accountId ==
+      "GB3E4AB4VWXJDUVN4Z3CPBU5HTMWVEQXONZYVDFMHQD6333KHCOL3UBR");
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/33788507721730");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=33788507721730-2");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=33788507721730-2");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/33788507721730");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=33788507721730-2");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=33788507721730-2");
 }
 
 void testDeserializeTrustlineDeauthorizedEffect() {
@@ -519,16 +605,22 @@ void testDeserializeTrustlineDeauthorizedEffect() {
       "        \"trustor\": \"GB3E4AB4VWXJDUVN4Z3CPBU5HTMWVEQXONZYVDFMHQD6333KHCOL3UBR\"\n" +
       "      }";
 
-  TrustlineDeauthorizedEffectResponse effect = TrustlineDeauthorizedEffectResponse.fromJson(json.decode(jsonData));
+  TrustlineDeauthorizedEffectResponse effect =
+      TrustlineDeauthorizedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
+  assert(effect.account.accountId ==
+      "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
   assert(effect.assetType == "credit_alphanum4");
   assert(effect.assetCode == "EUR");
-  assert(effect.trustor.accountId == "GB3E4AB4VWXJDUVN4Z3CPBU5HTMWVEQXONZYVDFMHQD6333KHCOL3UBR");
+  assert(effect.trustor.accountId ==
+      "GB3E4AB4VWXJDUVN4Z3CPBU5HTMWVEQXONZYVDFMHQD6333KHCOL3UBR");
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/33788507721730");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=33788507721730-2");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=33788507721730-2");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/33788507721730");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=33788507721730-2");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=33788507721730-2");
 }
 
 void testDeserializeTradeEffect() {
@@ -561,19 +653,33 @@ void testDeserializeTradeEffect() {
       "        \"bought_asset_issuer\": \"GAHXPUDP3AK6F2QQM4FIRBGPNGKLRDDSTQCVKEXXKKRHJZUUQ23D5BU7\"\n" +
       "      }";
 
-  TradeEffectResponse effect = TradeEffectResponse.fromJson(json.decode(jsonData));
+  TradeEffectResponse effect =
+      TradeEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
-  assert(effect.seller.accountId == "GCVHDLN6EHZBYW2M3BQIY32C23E4GPIRZZDBNF2Q73DAZ5VJDRGSMYRB");
+  assert(effect.account.accountId ==
+      "GA6U5X6WOPNKKDKQULBR7IDHDBAQKOWPHYEC7WSXHZBFEYFD3XVZAKOO");
+  assert(effect.seller.accountId ==
+      "GCVHDLN6EHZBYW2M3BQIY32C23E4GPIRZZDBNF2Q73DAZ5VJDRGSMYRB");
   assert(effect.offerId == 1);
   assert(effect.soldAmount == "1000.0");
-  assert(effect.soldAsset == Asset.createNonNativeAsset("EUR", KeyPair.fromAccountId("GCWVFBJ24754I5GXG4JOEB72GJCL3MKWC7VAEYWKGQHPVH3ENPNBSKWS")));
+  assert(effect.soldAsset ==
+      Asset.createNonNativeAsset(
+          "EUR",
+          KeyPair.fromAccountId(
+              "GCWVFBJ24754I5GXG4JOEB72GJCL3MKWC7VAEYWKGQHPVH3ENPNBSKWS")));
   assert(effect.boughtAmount == "60.0");
-  assert(effect.boughtAsset == Asset.createNonNativeAsset("TESTTEST", KeyPair.fromAccountId("GAHXPUDP3AK6F2QQM4FIRBGPNGKLRDDSTQCVKEXXKKRHJZUUQ23D5BU7")));
+  assert(effect.boughtAsset ==
+      Asset.createNonNativeAsset(
+          "TESTTEST",
+          KeyPair.fromAccountId(
+              "GAHXPUDP3AK6F2QQM4FIRBGPNGKLRDDSTQCVKEXXKKRHJZUUQ23D5BU7")));
 
-  assert(effect.links.operation.href == "http://horizon-testnet.stellar.org/operations/33788507721730");
-  assert(effect.links.succeeds.href == "http://horizon-testnet.stellar.org/effects?order=desc&cursor=33788507721730-2");
-  assert(effect.links.precedes.href == "http://horizon-testnet.stellar.org/effects?order=asc&cursor=33788507721730-2");
+  assert(effect.links.operation.href ==
+      "http://horizon-testnet.stellar.org/operations/33788507721730");
+  assert(effect.links.succeeds.href ==
+      "http://horizon-testnet.stellar.org/effects?order=desc&cursor=33788507721730-2");
+  assert(effect.links.precedes.href ==
+      "http://horizon-testnet.stellar.org/effects?order=asc&cursor=33788507721730-2");
 }
 
 void testDeserializeDataCreatedEffect() {
@@ -597,9 +703,11 @@ void testDeserializeDataCreatedEffect() {
       "        \"created_at\": \"2018-06-06T10:23:57Z\"\n" +
       "      }";
 
-  DataCreatedEffectResponse effect = DataCreatedEffectResponse.fromJson(json.decode(jsonData));
+  DataCreatedEffectResponse effect =
+      DataCreatedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GDPFGP4IPE5DXG6XRXC4ZBUI43PAGRQ5VVNJ3LJTBXDBZ4ITO6HBHNSF");
+  assert(effect.account.accountId ==
+      "GDPFGP4IPE5DXG6XRXC4ZBUI43PAGRQ5VVNJ3LJTBXDBZ4ITO6HBHNSF");
   assert(effect.createdAt == "2018-06-06T10:23:57Z");
 }
 
@@ -624,9 +732,11 @@ void testDeserializeDataRemovedEffect() {
       "        \"created_at\": \"2018-06-06T10:23:57Z\"\n" +
       "      }";
 
-  DataRemovedEffectResponse effect = DataRemovedEffectResponse.fromJson(json.decode(jsonData));
+  DataRemovedEffectResponse effect =
+      DataRemovedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GDPFGP4IPE5DXG6XRXC4ZBUI43PAGRQ5VVNJ3LJTBXDBZ4ITO6HBHNSF");
+  assert(effect.account.accountId ==
+      "GDPFGP4IPE5DXG6XRXC4ZBUI43PAGRQ5VVNJ3LJTBXDBZ4ITO6HBHNSF");
   assert(effect.createdAt == "2018-06-06T10:23:57Z");
 }
 
@@ -651,9 +761,11 @@ void testDeserializeDataUpdatedEffect() {
       "        \"created_at\": \"2018-06-06T10:23:57Z\"\n" +
       "      }";
 
-  DataUpdatedEffectResponse effect = DataUpdatedEffectResponse.fromJson(json.decode(jsonData));
+  DataUpdatedEffectResponse effect =
+      DataUpdatedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GDPFGP4IPE5DXG6XRXC4ZBUI43PAGRQ5VVNJ3LJTBXDBZ4ITO6HBHNSF");
+  assert(effect.account.accountId ==
+      "GDPFGP4IPE5DXG6XRXC4ZBUI43PAGRQ5VVNJ3LJTBXDBZ4ITO6HBHNSF");
   assert(effect.createdAt == "2018-06-06T10:23:57Z");
 }
 
@@ -679,9 +791,11 @@ void testDeserializeSequenceBumpedEffect() {
       "        \"created_at\": \"2018-06-06T10:23:57Z\"\n" +
       "      }";
 
-  SequenceBumpedEffectResponse effect = SequenceBumpedEffectResponse.fromJson(json.decode(jsonData));
+  SequenceBumpedEffectResponse effect =
+      SequenceBumpedEffectResponse.fromJson(json.decode(jsonData));
 
-  assert(effect.account.accountId == "GDPFGP4IPE5DXG6XRXC4ZBUI43PAGRQ5VVNJ3LJTBXDBZ4ITO6HBHNSF");
+  assert(effect.account.accountId ==
+      "GDPFGP4IPE5DXG6XRXC4ZBUI43PAGRQ5VVNJ3LJTBXDBZ4ITO6HBHNSF");
   assert(effect.createdAt == "2018-06-06T10:23:57Z");
   assert(effect.newSequence == 79473726952833048);
 }
@@ -708,6 +822,4 @@ void main() {
   testDeserializeDataRemovedEffect();
   testDeserializeDataUpdatedEffect();
   testDeserializeSequenceBumpedEffect();
-
 }
-

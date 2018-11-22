@@ -10,8 +10,8 @@ class OperationResponseLinks {
   Link succeeds;
   Link transaction;
 
-  OperationResponseLinks(this.effects, this.precedes, this.self,
-      this.succeeds, this.transaction);
+  OperationResponseLinks(
+      this.effects, this.precedes, this.self, this.succeeds, this.transaction);
 
   factory OperationResponseLinks.fromJson(Map<String, dynamic> json) {
     return new OperationResponseLinks(
@@ -215,7 +215,8 @@ class BumpSequenceOperationResponse extends OperationResponse {
   BumpSequenceOperationResponse(this.bumpTo);
 
   factory BumpSequenceOperationResponse.fromJson(Map<String, dynamic> json) {
-    return new BumpSequenceOperationResponse(int.parse(json['bump_to'] as String))
+    return new BumpSequenceOperationResponse(
+        int.parse(json['bump_to'] as String))
       ..id = int.parse(json['id'] as String)
       ..sourceAccount = json['source_account'] == null
           ? null

@@ -63,7 +63,8 @@ class XdrAuthenticatedMessage {
     stream.writeInt(encodedAuthenticatedMessage.discriminant.uint32);
     switch (encodedAuthenticatedMessage.discriminant.uint32) {
       case 0:
-        XdrAuthenticatedMessageV0.encode(stream, encodedAuthenticatedMessage._v0);
+        XdrAuthenticatedMessageV0.encode(
+            stream, encodedAuthenticatedMessage._v0);
         break;
     }
   }
@@ -75,7 +76,8 @@ class XdrAuthenticatedMessage {
     decodedAuthenticatedMessage.discriminant = discriminant;
     switch (decodedAuthenticatedMessage.discriminant.uint32) {
       case 0:
-        decodedAuthenticatedMessage._v0 = XdrAuthenticatedMessageV0.decode(stream);
+        decodedAuthenticatedMessage._v0 =
+            XdrAuthenticatedMessageV0.decode(stream);
         break;
     }
     return decodedAuthenticatedMessage;
