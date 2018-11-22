@@ -2,7 +2,6 @@ import "package:eventsource/eventsource.dart";
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
-import 'dart:mirrors';
 import 'assets.dart';
 import 'key_pair.dart';
 import 'response.dart';
@@ -149,20 +148,15 @@ class ResponseHandler<T> {
       throw ErrorResponse(response.statusCode, content);
     }
 
-    var typeMirror = reflectType(T);
-    if (typeMirror is ClassMirror) {
-      T object =
-          typeMirror.newInstance(#fromJson, [json.decode(content)]).reflectee;
-
-      if (object is Response) {
-        object.setHeaders(response.headers);
-      }
-      if (object is TypedResponse) {
-        object.setType(_type);
-      }
-      return object;
+    T object = ResponseConverter.fromJson<T>(json.decode(content));
+    if (object is Response) {
+      object.setHeaders(response.headers);
     }
-    return null;
+    if (object is TypedResponse) {
+      object.setType(_type);
+    }
+    return object;
+
   }
 }
 
