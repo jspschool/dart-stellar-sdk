@@ -226,7 +226,7 @@ void testNoOperations() {
 
   Account account = new Account(source, 2908908335136768);
   try {
-    Transaction transaction = new TransactionBuilder(account).build();
+    new TransactionBuilder(account).build();
     throw Exception("fail");
   } catch (exception) {
     assert(exception.toString().contains("At least one operation required"));

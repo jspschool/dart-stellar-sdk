@@ -13,7 +13,7 @@ void testDecodeInvalidVersionByte() {
   try {
     StrKey.decodeCheck(VersionByte.SEED, address);
     throw Exception("fail");
-  } on FormatException catch (e) {}
+  } catch (e) {}
 }
 
 void testDecodeInvalidSeed() {

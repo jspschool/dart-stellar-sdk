@@ -74,7 +74,7 @@ void testSignWithoutSecret() {
       "GDEAOZWTVHQZGGJY6KG4NAGJQ6DXATXAJO3AMW7C4IXLKMPWWB4FDNFZ");
   String data = "hello world";
   try {
-    Uint8List sig = keypair.sign(utf8.encode(data));
+    keypair.sign(utf8.encode(data));
   } catch (e) {
     assert(
         "KeyPair does not contain secret key. Use KeyPair.fromSecretSeed method to create a new KeyPair with a secret key." ==

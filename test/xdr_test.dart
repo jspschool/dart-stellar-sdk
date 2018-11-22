@@ -62,7 +62,7 @@ void testString() {
       [0, 0, 0, 2, 'a'.codeUnitAt(0), 'b'.codeUnitAt(0), 1, 0]);
 
   try {
-    XdrString32 xdrObject = XdrString32.decode(new XdrDataInputStream(bytes));
+    XdrString32.decode(new XdrDataInputStream(bytes));
     throw Exception("Didn't throw IOException");
   } catch (expectedException) {
     assert(expectedException.toString().contains("non-zero padding"));
@@ -74,7 +74,7 @@ void testVarOpaque() {
       [0, 0, 0, 2, 'a'.codeUnitAt(0), 'b'.codeUnitAt(0), 1, 0]);
 
   try {
-    XdrDataValue xdrObject = XdrDataValue.decode(new XdrDataInputStream(bytes));
+    XdrDataValue.decode(new XdrDataInputStream(bytes));
     throw Exception("Didn't throw IOException");
   } catch (expectedException) {
     assert(expectedException.toString().contains("non-zero padding"));
