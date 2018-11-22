@@ -622,8 +622,7 @@ class OrderBookRequestBuilder extends RequestBuilder {
   OrderBookRequestBuilder buyingAsset(Asset asset) {
     _queryParameters.addAll({"buying_asset_type": asset.type});
     if (asset is AssetTypeCreditAlphaNum) {
-      AssetTypeCreditAlphaNum creditAlphaNumAsset =
-          asset as AssetTypeCreditAlphaNum;
+      AssetTypeCreditAlphaNum creditAlphaNumAsset = asset;
       _queryParameters.addAll({"buying_asset_code": creditAlphaNumAsset.code});
       _queryParameters.addAll(
           {"buying_asset_issuer": creditAlphaNumAsset.issuer.accountId});
@@ -634,8 +633,7 @@ class OrderBookRequestBuilder extends RequestBuilder {
   OrderBookRequestBuilder sellingAsset(Asset asset) {
     _queryParameters.addAll({"selling_asset_type": asset.type});
     if (asset is AssetTypeCreditAlphaNum) {
-      AssetTypeCreditAlphaNum creditAlphaNumAsset =
-          asset as AssetTypeCreditAlphaNum;
+      AssetTypeCreditAlphaNum creditAlphaNumAsset = asset;
       _queryParameters.addAll({"selling_asset_code": creditAlphaNumAsset.code});
       _queryParameters.addAll(
           {"selling_asset_issuer": creditAlphaNumAsset.issuer.accountId});
@@ -713,8 +711,7 @@ class PathsRequestBuilder extends RequestBuilder {
   PathsRequestBuilder destinationAsset(Asset asset) {
     _queryParameters.addAll({"destination_asset_type": asset.type});
     if (asset is AssetTypeCreditAlphaNum) {
-      AssetTypeCreditAlphaNum creditAlphaNumAsset =
-          asset as AssetTypeCreditAlphaNum;
+      AssetTypeCreditAlphaNum creditAlphaNumAsset = asset;
       _queryParameters
           .addAll({"destination_asset_code": creditAlphaNumAsset.code});
       _queryParameters.addAll(
@@ -845,8 +842,7 @@ class TradeAggregationsRequestBuilder extends RequestBuilder {
   void _baseAsset(Asset asset) {
     _queryParameters.addAll({"base_asset_type": asset.type});
     if (asset is AssetTypeCreditAlphaNum) {
-      AssetTypeCreditAlphaNum creditAlphaNumAsset =
-          asset as AssetTypeCreditAlphaNum;
+      AssetTypeCreditAlphaNum creditAlphaNumAsset = asset;
       _queryParameters.addAll({"base_asset_code": creditAlphaNumAsset.code});
       _queryParameters
           .addAll({"base_asset_issuer": creditAlphaNumAsset.issuer.accountId});
@@ -856,8 +852,7 @@ class TradeAggregationsRequestBuilder extends RequestBuilder {
   void _counterAsset(Asset asset) {
     _queryParameters.addAll({"counter_asset_type": asset.type});
     if (asset is AssetTypeCreditAlphaNum) {
-      AssetTypeCreditAlphaNum creditAlphaNumAsset =
-          asset as AssetTypeCreditAlphaNum;
+      AssetTypeCreditAlphaNum creditAlphaNumAsset = asset;
       _queryParameters.addAll({"counter_asset_code": creditAlphaNumAsset.code});
       _queryParameters.addAll(
           {"counter_asset_issuer": creditAlphaNumAsset.issuer.accountId});
@@ -889,8 +884,7 @@ class TradesRequestBuilder extends RequestBuilder {
   TradesRequestBuilder baseAsset(Asset asset) {
     _queryParameters.addAll({"base_asset_type": asset.type});
     if (asset is AssetTypeCreditAlphaNum) {
-      AssetTypeCreditAlphaNum creditAlphaNumAsset =
-          asset as AssetTypeCreditAlphaNum;
+      AssetTypeCreditAlphaNum creditAlphaNumAsset = asset;
       _queryParameters.addAll({"base_asset_code": creditAlphaNumAsset.code});
       _queryParameters
           .addAll({"base_asset_issuer": creditAlphaNumAsset.issuer.accountId});
@@ -901,8 +895,7 @@ class TradesRequestBuilder extends RequestBuilder {
   TradesRequestBuilder counterAsset(Asset asset) {
     _queryParameters.addAll({"counter_asset_type": asset.type});
     if (asset is AssetTypeCreditAlphaNum) {
-      AssetTypeCreditAlphaNum creditAlphaNumAsset =
-          asset as AssetTypeCreditAlphaNum;
+      AssetTypeCreditAlphaNum creditAlphaNumAsset = asset;
       _queryParameters.addAll({"counter_asset_code": creditAlphaNumAsset.code});
       _queryParameters.addAll(
           {"counter_asset_issuer": creditAlphaNumAsset.issuer.accountId});
