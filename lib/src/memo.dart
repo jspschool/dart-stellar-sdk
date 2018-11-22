@@ -201,7 +201,7 @@ class MemoId extends Memo {
     this._id = id;
   }
 
-  int get id => _id;
+  int getId() => _id;
 
   @override
   XdrMemo toXdr() {
@@ -217,7 +217,7 @@ class MemoId extends Memo {
   bool operator ==(Object o) {
     if (o == null || !(o is MemoId)) return false;
     MemoId memoId = o as MemoId;
-    return _id == memoId.id;
+    return _id == memoId.getId();
   }
 }
 

@@ -40,7 +40,7 @@ void testMemoTextTooLongUtf8() {
 
 void testMemoId() {
   MemoId memo = Memo.id(9223372036854775807);
-  assert(9223372036854775807 == memo.id);
+  assert(9223372036854775807 == memo.getId());
   assert(XdrMemoType.MEMO_ID == memo.toXdr().discriminant);
   assert(9223372036854775807 == memo.toXdr().id.uint64);
 }
@@ -52,7 +52,7 @@ void testParseMemoId() {
   TransactionResponse transactionResponse =
       TransactionResponse.fromJson(json.decode(element));
   MemoId memoId = transactionResponse.memo;
-  assert(longId == fixnum.Int64(memoId.id).toRadixStringUnsigned(10));
+  assert(longId == fixnum.Int64(memoId.getId()).toRadixStringUnsigned(10));
 }
 
 void testMemoHashSuccess() {
