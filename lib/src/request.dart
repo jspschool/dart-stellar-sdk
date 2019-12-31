@@ -493,9 +493,9 @@ class OffersRequestBuilder extends RequestBuilder {
 
 class OperationFeeStatsRequestBuilder extends RequestBuilder {
   OperationFeeStatsRequestBuilder(http.Client httpClient, Uri serverURI)
-      : super(httpClient, serverURI, ["operation_fee_stats"]);
+      : super(httpClient, serverURI, ["fee_stats"]);
 
-  ///Requests <code>GET /operation_fee_stats</code>
+  ///Requests <code>GET /fee_stats</code>
   Future<OperationFeeStatsResponse> execute() async {
     TypeToken type = new TypeToken<OperationFeeStatsResponse>();
     ResponseHandler<OperationFeeStatsResponse> responseHandler =

@@ -174,7 +174,7 @@ void testOrderBookRequestBuilder() {
 void testOperationFeeRequestBuilder() {
   Server server = new Server("https://horizon-testnet.stellar.org");
   Uri uri = server.operationFeeStats.buildUri();
-  assert("https://horizon-testnet.stellar.org/operation_fee_stats" ==
+  assert("https://horizon-testnet.stellar.org/fee_stats" ==
       uri.toString());
 }
 
