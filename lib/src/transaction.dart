@@ -244,8 +244,8 @@ class Transaction {
   }
 
   ///Generates TransactionEnvelope XDR object. Transaction need to have at least one signature.
-  XdrTransactionEnvelope toEnvelopeXdr() {
-    if (_mSignatures.length == 0) {
+  XdrTransactionEnvelope toEnvelopeXdr({bool allowZeroSigners = false}) {
+    if (_mSignatures.length == 0 && !allowZeroSigners) {
       throw Exception(
           "Transaction must be signed by at least one signer. Use transaction.sign().");
     }
@@ -261,8 +261,8 @@ class Transaction {
   }
 
   ///Returns base64-encoded TransactionEnvelope XDR object. Transaction need to have at least one signature.
-  String toEnvelopeXdrBase64() {
-    XdrTransactionEnvelope envelope = this.toEnvelopeXdr();
+  String toEnvelopeXdrBase64({bool allowZeroSigners = false}) {
+    XdrTransactionEnvelope envelope = this.toEnvelopeXdr(allowZeroSigners: allowZeroSigners);
     XdrDataOutputStream xdrOutputStream = XdrDataOutputStream();
     XdrTransactionEnvelope.encode(xdrOutputStream, envelope);
     return base64Encode(xdrOutputStream.bytes);

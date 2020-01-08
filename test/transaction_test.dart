@@ -217,6 +217,8 @@ void testToBase64EnvelopeXdrBuilderNoSignatures() {
         .toString()
         .contains("Transaction must be signed by at least one signer."));
   }
+
+  transaction.toEnvelopeXdrBase64(allowZeroSigners: true);
 }
 
 void testNoOperations() {
