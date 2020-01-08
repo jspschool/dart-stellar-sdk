@@ -714,7 +714,7 @@ class OperationFeeStatsResponse extends Response {
   int lastLedger;
 
   OperationFeeStatsResponse(
-      int min, int mode, int lastLedgerBaseFee, int lastLedger);
+      int this.min, int this.mode, int this.lastLedgerBaseFee, int this.lastLedger);
 
   factory OperationFeeStatsResponse.fromJson(Map<String, dynamic> json) {
     return new OperationFeeStatsResponse(
